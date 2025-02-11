@@ -1,0 +1,32 @@
+{
+  "name": "@zl-gp/utils",
+  "version": "0.0.1",
+  "description": "",
+  "main": "./dist/umd/index.umd.cjs",
+  "module": "./dist/es/index.js",
+  "types": "./dist/types/core/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/es/index.js",
+      "require": "./dist/umd/index.umd.cjs",
+      "types": "./dist/types/core/index.d.ts"
+    },
+    "./dist/": {
+      "import": "./dist/",
+      "require": "./dist/"
+    }
+  },
+  "sideEffects": [
+    "./dist/index.css",
+    "./dist/theme/index.css"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

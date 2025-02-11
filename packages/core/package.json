@@ -1,0 +1,15 @@
+{
+  "name": "@zl-gp/core",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "run-p build-es build-umd",
+    "build-umd": "vite build --config vite.umd.config.ts",
+    "build-es": "vite build --config vite.es.config.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
