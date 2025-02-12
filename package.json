@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "pnpm --filter @zl-gp/play dev",
     "build": "run-p type-check format build-theme build-core",
-    "build-core": "pnpm --filter @zl-gp/core build",
+    "build-core": "pnpm --filter zl-gp build",
     "build-theme": "pnpm --filter  @zl-gp/theme build",
     "preview": "vite preview",
     "test:unit": "vitest",
@@ -18,8 +18,13 @@
     "format": "prettier --write packages/core/ packages/components packages/play packages/utils "
   },
   "dependencies": {
+    "@zl-gp/components": "workspace:*",
+    "@zl-gp/play": "workspace:*",
+    "@zl-gp/theme": "workspace:*",
+    "@zl-gp/utils": "workspace:*",
     "lodash-es": "^4.17.21",
-    "vue": "^3.5.13"
+    "vue": "^3.5.13",
+    "zl-gp": "workspace:*"
   },
   "devDependencies": {
     "@tsconfig/node22": "^22.0.0",
@@ -33,10 +38,6 @@
     "@vue/eslint-config-typescript": "^14.3.0",
     "@vue/test-utils": "^2.4.6",
     "@vue/tsconfig": "^0.7.0",
-    "@zl-gp/components": "workspace:*",
-    "@zl-gp/play": "workspace:*",
-    "@zl-gp/theme": "workspace:*",
-    "@zl-gp/utils": "workspace:*",    
     "cypress": "^14.0.1",
     "eslint": "^9.18.0",
     "eslint-plugin-cypress": "^4.1.0",
@@ -45,7 +46,7 @@
     "jsdom": "^26.0.0",
     "npm-run-all2": "^7.0.2",
     "prettier": "^3.4.2",
-    "rollup-plugin-scss": "^4.0.1",
+    "rollup-plugin-sass": "^1.15.2",
     "sass": "^1.84.0",
     "sass-embedded": "^1.83.4",
     "scss": "^0.2.4",

@@ -1,4 +1,4 @@
-import scss from 'rollup-plugin-scss'
+import sass from 'rollup-plugin-sass'
 import { defineConfig } from 'vite'
 import { resolve } from 'path'
 
@@ -20,7 +20,7 @@ const create = (theme: string) => {
           format: 'esm',
           assetFileNames: 'index.css'
         },
-        plugins: [scss()]
+        plugins: [sass({ api: 'modern' })]
       }
     }
   })

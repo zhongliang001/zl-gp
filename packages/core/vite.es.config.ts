@@ -4,7 +4,7 @@ import { resolve } from 'path'
 import dts from 'vite-plugin-dts'
 import { readdirSync, readdir } from 'fs'
 import fs from 'fs'
-import scss from 'rollup-plugin-scss'
+import sass from 'rollup-plugin-sass'
 import { filter, map, delay } from 'lodash-es'
 
 function getDirectoriesSync(basePath: string) {
@@ -31,7 +31,7 @@ export default defineConfig({
       outDir: 'dist/types',
       afterBuild: moveStyles
     }),
-    scss({ fileName: 'index.css' })
+    sass({ api: 'modern' })
   ],
   build: {
     outDir: 'dist/es',
