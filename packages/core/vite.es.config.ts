@@ -33,13 +33,6 @@ export default defineConfig({
     }),
     scss({ fileName: 'index.css' })
   ],
-  css: {
-    preprocessorOptions: {
-      scss: {
-        additionalData: '@import "../theme/index.scss";'
-      }
-    }
-  },
   build: {
     outDir: 'dist/es',
     emptyOutDir: true,

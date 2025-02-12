@@ -1,0 +1,14 @@
+{
+  "name": "@zl-gp/theme",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "run-p build-dark build-light",
+    "build-dark": "vite build --config vite.config.ts dark",
+    "build-light": "vite build --config vite.config.ts light"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

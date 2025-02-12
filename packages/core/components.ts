@@ -1,6 +1,6 @@
 import type { Plugin } from 'vue'
+import { ZlContainer } from '@zl-gp/components'
 
-export default {
-} as unknown as Plugin[]
+export default { ZlContainer } as unknown as Plugin[]
 
 export * from '@zl-gp/components'

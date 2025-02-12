@@ -2,8 +2,28 @@
   "name": "@zl-gp/core",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
   "type": "module",
+  "main": "./dist/umd/index.umd.cjs",
+  "module": "./dist/es/index.js",
+  "types": "./dist/types/core/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/types/core/index.d.ts",
+      "import": "./dist/es/index.js",
+      "require": "./dist/umd/index.umd.cjs"
+    },
+    "./dist/": {
+      "import": "./dist/",
+      "require": "./dist/"
+    }
+  },
+  "sideEffects": [
+    "./dist/index.css",
+    "./dist/theme/index.css"
+  ],
   "scripts": {
     "build": "run-p build-es build-umd",
     "build-umd": "vite build --config vite.umd.config.ts",
