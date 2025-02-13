@@ -4,10 +4,14 @@ import type { HeaderProps } from './Header'
 defineOptions({
   name: 'ZlHeader'
 })
-defineProps<HeaderProps>()
+const { hwidth = 100 } = defineProps<HeaderProps>()
 </script>
 <template>
-  <div class="zl-header">
+  <header class="zl-header">
     <component :is="is"><slot></slot></component>
-  </div>
+    <hr :width="hwidth + '%'" />
+  </header>
 </template>
+<style lang="css">
+@import 'Header.scss';
+</style>

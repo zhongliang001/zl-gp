@@ -11,6 +11,9 @@ importers:
       '@zl-gp/components':
         specifier: workspace:*
         version: link:packages/components
+      '@zl-gp/hooks':
+        specifier: workspace:*
+        version: link:packages/hooks
       '@zl-gp/play':
         specifier: workspace:*
         version: link:packages/play
@@ -124,6 +127,8 @@ importers:
   packages/components: {}
 
   packages/core: {}
+
+  packages/hooks: {}
 
   packages/play: {}
 

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { App, Plugin } from 'vue'
 import { each } from 'lodash-es'
 

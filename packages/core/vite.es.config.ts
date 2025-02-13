@@ -57,6 +57,9 @@ export default defineConfig({
           if (id.includes('/packages/utils')) {
             return 'utils'
           }
+          if (id.includes('/packages/hooks')) {
+            return 'hooks'
+          }
           for (const dirName of getDirectoriesSync('../components')) {
             if (id.includes(`/packages/components/${dirName}`)) {
               return dirName

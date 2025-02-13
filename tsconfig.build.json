@@ -31,6 +31,7 @@
     "env.d.ts",
     "packages/core/index.ts",
     "packages/utils/**/*.ts",
+    "packages/hooks/**/*.ts",
     "packages/components/**/*.ts"
   ],
   "exclude": ["packages/components/vitest.config.ts"]

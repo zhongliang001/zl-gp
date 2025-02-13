@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@zl-gp/components": "workspace:*",
+     "@zl-gp/hooks": "workspace:*",
     "@zl-gp/play": "workspace:*",
     "@zl-gp/theme": "workspace:*",
     "@zl-gp/utils": "workspace:*",
