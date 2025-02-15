@@ -33,6 +33,9 @@ importers:
         specifier: workspace:*
         version: link:packages/core
     devDependencies:
+      '@cypress/vue':
+        specifier: ^6.0.2
+        version: 6.0.2(cypress@14.0.2)(vue@3.5.13(typescript@5.7.3))
       '@tsconfig/node22':
         specifier: ^22.0.0
         version: 22.0.0
@@ -325,6 +328,17 @@ packages:
   '@cypress/request@3.0.7':
     resolution: {integrity: sha512-LzxlLEMbBOPYB85uXrDqvD4MgcenjRBLIns3zyhx7vTPj/0u2eQhzXvPiGcaJrV38Q9dbkExWp6cOHPJ+EtFYg==}
     engines: {node: '>= 6'}
+
+  '@cypress/vue@6.0.2':
+    resolution: {integrity: sha512-To+Ik4CnhTPMmDh7VGpl5k0Z1LuE0xrI0j6LF7QyjROY2bkQwUE50WTmVPCz/Dvez9WrVpkJjRmflR5KlVmGiQ==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      '@cypress/webpack-dev-server': '*'
+      cypress: '>=7.0.0'
+      vue: '>=3.0.0'
+    peerDependenciesMeta:
+      '@cypress/webpack-dev-server':
+        optional: true
 
   '@cypress/xvfb@1.2.4':
     resolution: {integrity: sha512-skbBzPggOVYCbnGgV+0dmBdW/s77ZkAOXIC1knS8NagwDjBrNC1LuXtQJeiN6l+m7lzmHtaoUw/ctJKdqkG57Q==}
@@ -3433,6 +3447,11 @@ snapshots:
       tough-cookie: 5.1.1
       tunnel-agent: 0.6.0
       uuid: 8.3.2
+
+  '@cypress/vue@6.0.2(cypress@14.0.2)(vue@3.5.13(typescript@5.7.3))':
+    dependencies:
+      cypress: 14.0.2
+      vue: 3.5.13(typescript@5.7.3)
 
   '@cypress/xvfb@1.2.4(supports-color@8.1.1)':
     dependencies:
