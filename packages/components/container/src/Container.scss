@@ -1,6 +1,7 @@
 @use '../../base.scss';
+
 .zl-container {
-  border-radius: 0.25rem;
+  border-radius: var(--border-radius);
   text-align: left;
   padding-left: 4px;
   padding-right: 4px;

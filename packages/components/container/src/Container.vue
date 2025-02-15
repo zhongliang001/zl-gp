@@ -8,7 +8,7 @@ defineOptions({
   name: 'ZlContainer'
 })
 
-const { namespace } = usenamespace()
+const { namespace } = usenamespace('container')
 const { width = 100 } = defineProps<ContainerProps>()
 const slots = useSlots()
 
@@ -25,7 +25,7 @@ const flexed = computed(() => {
 })
 </script>
 <template>
-  <section :class="[[namespace('container')], { flex: flexed }]" :style="{ width: width + '%' }">
+  <section :class="[[namespace.className], { flex: flexed }]" :style="{ width: width + '%' }">
     <slot></slot>
   </section>
 </template>

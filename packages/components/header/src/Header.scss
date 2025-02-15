@@ -1,6 +1,6 @@
 @use '../../base.scss';
 .zl-header {
-  border-radius: 0.25rem;
+  border-radius: var(--border-radius);
   text-align: left;
   hr {
     color: black;
