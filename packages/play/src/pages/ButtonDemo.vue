@@ -1,4 +1,5 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+</script>
 <template>
   <zl-button name="test" type="primary">primary</zl-button>
   <zl-button name="test" type="success">success</zl-button>
