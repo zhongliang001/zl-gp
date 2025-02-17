@@ -1,7 +1,14 @@
 <template>
   <zl-container>
     <zl-header is="h1">
-      <RouterLink to="/button">button</RouterLink>
+      <zl-menu>
+        <zl-menu-item prop="a">
+          <RouterLink to="/button">button</RouterLink>
+        </zl-menu-item>
+        <zl-menu-item prop="b">
+          <RouterLink to="/button">button</RouterLink>
+        </zl-menu-item>
+      </zl-menu>
     </zl-header>
     <zl-main>
       <RouterView />

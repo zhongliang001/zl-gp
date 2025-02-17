@@ -15,7 +15,7 @@
     "test:e2e:dev": "start-server-and-test 'vite dev --port 4173' http://localhost:4173 'cypress open --component'",
     "type-check": "vue-tsc --build",
     "lint": "eslint . --fix",
-    "format": "prettier --write packages/core/ packages/components packages/play packages/utils "
+    "format": "prettier --write packages/core/ packages/components packages/hooks packages/play packages/utils "
   },
   "dependencies": {
     "@zl-gp/components": "workspace:*",

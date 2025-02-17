@@ -1,0 +1,9 @@
+@use '../../base.scss';
+
+.zl-menu-item {
+  border-radius: var(--border-radius);
+  display: inline-block;
+  &.selected {
+    background-color: hsl(211 75% 40%);
+  }
+}
