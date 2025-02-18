@@ -1,13 +1,18 @@
 <script lang="ts" setup>
 import { usenamespace } from '@zl-gp/hooks'
-import { MenuInjectKey, type MenuItemProp } from './Menu'
+import { MenuInjectKey } from './Menu'
+import type { MenuItemProp } from './MenuItem'
+import { MenuSubInjectKey } from './MenuSub'
+
 import { inject } from 'vue'
 defineOptions({
   name: 'ZlMenuItem'
 })
 const { namespace } = usenamespace('menu')
 
-const menuInjectKey = inject(MenuInjectKey)
+const menuInjectKey = inject(MenuInjectKey, null)
+
+const menuSubInjectKey = inject(MenuSubInjectKey, null)
 
 const props = defineProps<MenuItemProp>()
 
@@ -19,7 +24,8 @@ const handlerClick = () => {
   <div
     :class="[
       namespace.cs('item'),
-      { selected: menuInjectKey && menuInjectKey?.selected == props.prop }
+      { selected: menuInjectKey && menuInjectKey?.selected == props.prop },
+      { hidden: menuSubInjectKey && menuSubInjectKey.prop != menuInjectKey?.subSelected }
     ]"
     :prop="props.prop"
     @click="handlerClick"

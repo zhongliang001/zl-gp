@@ -1,10 +1,12 @@
 <template>
   <zl-container>
-    <zl-header is="h1">
-      <zl-menu>
-        <zl-menu-item prop="a">
-          <RouterLink to="/button">button</RouterLink>
-        </zl-menu-item>
+    <zl-header is="div">
+      <zl-menu flex="column">
+        <zl-menu-sub prop="tt" name="hi">
+          <zl-menu-item prop="a">
+            <RouterLink to="/button">按钮</RouterLink>
+          </zl-menu-item>
+        </zl-menu-sub>
         <zl-menu-item prop="b">
           <RouterLink to="/button">button</RouterLink>
         </zl-menu-item>
