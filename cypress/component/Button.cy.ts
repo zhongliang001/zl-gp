@@ -1,8 +1,8 @@
-import {ZlButton} from  '@zl-gp/components/button/'
+import { ZlButton } from '@zl-gp/components/button/'
 
 describe('<Button />', () => {
   it('nativeType', () => {
-    cy.mount(ZlButton, {
+    cy.mount(ZlButton as never, {
       props: {
         nativeType: 'submit'
       }
@@ -11,7 +11,7 @@ describe('<Button />', () => {
   })
 
   it('type', () => {
-    cy.mount(ZlButton, {
+    cy.mount(ZlButton as never, {
       props: {
         type: 'primary',
         nativeType: 'submit'
@@ -21,7 +21,7 @@ describe('<Button />', () => {
   })
 
   it('disabled true', () => {
-    cy.mount(ZlButton, {
+    cy.mount(ZlButton as never, {
       props: {
         disabled: true
       }
@@ -30,7 +30,7 @@ describe('<Button />', () => {
   })
 
   it('disabled false', () => {
-    cy.mount(ZlButton, {
+    cy.mount(ZlButton as never, {
       props: {
         disabled: false
       }
@@ -39,7 +39,7 @@ describe('<Button />', () => {
   })
 
   it('click', () => {
-    cy.mount(ZlButton, {
+    cy.mount(ZlButton as never, {
       props: {
         onClick: cy.spy().as('onClick')
       },
