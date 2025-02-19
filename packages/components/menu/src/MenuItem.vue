@@ -25,7 +25,10 @@ const handlerClick = () => {
     :class="[
       namespace.cs('item'),
       { selected: menuInjectKey && menuInjectKey?.selected == props.prop },
-      { hidden: menuSubInjectKey && menuSubInjectKey.prop != menuInjectKey?.subSelected }
+      {
+        hidden:
+          menuSubInjectKey && menuInjectKey && menuSubInjectKey.prop != menuInjectKey?.subSelected
+      }
     ]"
     :prop="props.prop"
     @click="handlerClick"
