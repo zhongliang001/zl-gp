@@ -5,10 +5,12 @@ const router = createRouter({
     {
       path: '/button',
       name: 'button',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import('../pages/ButtonDemo.vue')
+    },
+    {
+      path: '/row',
+      name: 'row',
+      component: () => import('../pages/RowDemo.vue')
     }
   ]
 })

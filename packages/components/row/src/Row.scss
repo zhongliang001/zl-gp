@@ -1,0 +1,6 @@
+@use '../../base.scss';
+
+.zl-row {
+  border-radius: var(--border-radius);
+  display: flex;
+}
