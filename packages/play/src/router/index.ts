@@ -11,6 +11,11 @@ const router = createRouter({
       path: '/row',
       name: 'row',
       component: () => import('../pages/RowDemo.vue')
+    },
+    {
+      path: '/form',
+      name: 'form',
+      component: () => import('../pages/FormDemo.vue')
     }
   ]
 })

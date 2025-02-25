@@ -1,0 +1,24 @@
+@use '../../base.scss';
+
+.zl-form {
+  border-radius: var(--border-radius);
+  .zl-form-item {
+    .field {
+      display: flex;
+      line-height: 30px;
+    }
+    .zl-form-item-lable {
+      display: inline-block;
+    }
+    .zl-form-item-field {
+      width: 100%;
+      padding-right: 17px;
+      .error {
+        color: red;
+        font-size: 12px;
+        line-height: 12px;
+        padding-left: 12px;
+      }
+    }
+  }
+}
