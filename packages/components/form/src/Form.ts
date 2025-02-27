@@ -7,14 +7,14 @@ export type Field = {
 }
 
 export interface FormProps {
-  name: string
-  url: string
-  enctype: 'application/x-www-form-urlencoded' | 'multipart/form - data' | 'text/plain'
-  method: 'POST' | 'GET' | 'post' | 'get'
-  novalidate: boolean
-  target: '_blank' | '_self' | '_parent' | '_top'
+  name?: string
+  url?: string
+  enctype?: 'application/x-www-form-urlencoded' | 'multipart/form - data' | 'text/plain'
+  method?: 'POST' | 'GET' | 'post' | 'get'
+  novalidate?: boolean
+  target?: '_blank' | '_self' | '_parent' | '_top'
   modelValue?: { [key: string]: string }
-  rules: FormRule[]
+  rules?: FormRule[]
 }
 
 export interface Form {
@@ -27,6 +27,9 @@ export const FormInjectkey: InjectionKey<FormContext> = Symbol('FormInjectkey')
 
 export type FormContext = {
   addItem: (formItem: FormItem) => void
+  ref: HTMLFormElement | null
+  reset: () => void
+  volidate: () => boolean
 }
 
 export type FormRule = {
@@ -57,7 +60,8 @@ export const useForm = (props: FormProps) => {
   const data = props.modelValue
 
   const initData = clone(props.modelValue)
-  const volidate = () => {
+  const volidate = (): boolean => {
+    let result = true
     if (rules) {
       rules.forEach((t: FormRule) => {
         const name = t.name
@@ -75,19 +79,23 @@ export const useForm = (props: FormProps) => {
           const rule: Rule[] = t.rule
           rule.forEach((ru) => {
             if (ru.reg) {
+              debugger
               if (!ru.reg.test(da)) {
                 item.valid(ru.message)
+                result = false
               }
             }
             if (ru.volidator) {
               if (!ru.volidator(da)) {
                 item.valid(ru.message)
+                result = false
               }
             }
           })
         }
       })
     }
+    return result
   }
 
   const reset = () => {

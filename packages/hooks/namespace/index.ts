@@ -5,7 +5,7 @@ export function usenamespace(id: string) {
   return {
     namespace: {
       className: className,
-      bs: (type: string) => {
+      bs: (type?: string) => {
         return className + ' ' + type
       },
       cs: (name: string) => {

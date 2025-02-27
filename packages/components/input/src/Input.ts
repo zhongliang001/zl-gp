@@ -2,7 +2,7 @@ import { computed, ref, type Ref, type SetupContext } from 'vue'
 export interface InputProps {
   type: 'text' | 'password'
   name: string
-  modelValue: string
+  modelValue?: string
   placeholder: string
   disabled: boolean
   formatter?: (value: string | number | undefined) => string
@@ -37,6 +37,7 @@ export const useInput = (
       height: props.height + 'px'
     }
     return {
+      name: props.name,
       placeholder: props.placeholder,
       disabled: props.disabled,
       readonly: props.readonly,
@@ -52,7 +53,12 @@ export const useInput = (
   const error = ref(false)
 
   const handlerInput = (event: Event) => {
+    const input: HTMLInputElement | null = _ref.value
     const { value } = event.target as HTMLInputElement
+    if (input) {
+      input.value = value
+    }
+
     emit('update:modelValue', value)
   }
 

@@ -10,7 +10,7 @@ const create = (theme: string) => {
       emptyOutDir: true,
       lib: {
         entry: resolve(__dirname, './' + theme + '/index.ts'),
-        name: 'GpUi',
+        name: 'ZlGp',
         fileName: 'index',
         formats: ['es']
       },

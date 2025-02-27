@@ -39,7 +39,7 @@ export default defineConfig({
     sourcemap: true,
     lib: {
       entry: resolve(__dirname, './index.ts'),
-      name: 'GpUi',
+      name: 'ZlGp',
       fileName: 'index',
       formats: ['es']
     },

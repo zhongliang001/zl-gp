@@ -9,7 +9,6 @@ defineOptions({
 const props = defineProps<FormProps>()
 
 const { namespace } = usenamespace('form')
-// const emit = defineEmits(['update:modelValue'])
 
 const { addItem, formItems, reset, _ref, volidate } = useForm(props)
 
@@ -20,7 +19,10 @@ onMounted(() => {
 provide(
   FormInjectkey,
   reactive({
-    addItem
+    addItem,
+    ref: _ref,
+    reset,
+    volidate
   })
 )
 

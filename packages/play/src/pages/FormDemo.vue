@@ -12,9 +12,10 @@ const data = ref({
 const form = ref<Form | null>(null)
 
 const click = () => {
-  if (form.value) {
-    form.value.reset()
-  }
+  // if (form.value) {
+  //   form.value.reset()
+  // }
+  console.log('---')
 }
 </script>
 <template>
@@ -55,6 +56,6 @@ const click = () => {
         </zl-form-item>
       </zl-col>
     </zl-row>
-    <zl-button native-type="button" @click="click">clear</zl-button>
+    <zl-button native-type="submit" @click="click">clear</zl-button>
   </zl-form>
 </template>
