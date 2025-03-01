@@ -19,7 +19,7 @@ export type ButtonEmits = typeof buttonEmits
 export function useButton(emit: SetupContext<ButtonEmits>['emit'], props: ButtonProps) {
   const _ref = ref<HTMLButtonElement>()
   const disabled = props.disabled
-  const formInjectkey = inject(FormInjectkey)
+  const formInjectkey = inject(FormInjectkey, undefined)
   const _props = {
     style: {
       width: props.width + 'rem',

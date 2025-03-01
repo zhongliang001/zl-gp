@@ -13,6 +13,8 @@ import {
   ZlMenuItem,
   ZlMenuSub,
   ZlRow,
+  ZlSelect,
+  ZlSelectOption,
   ZlTable,
   ZlTableColumn,
   ZlTableBody,
@@ -33,6 +35,8 @@ export default {
   ZlMenuItem,
   ZlMenuSub,
   ZlRow,
+  ZlSelect,
+  ZlSelectOption,
   ZlTable,
 
   ZlTableColumn,

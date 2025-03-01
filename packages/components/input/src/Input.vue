@@ -26,7 +26,9 @@ onMounted(() => {
   if (input) {
     input.value = props.modelValue as string
   }
-  emit('update:modelValue', props.modelValue)
+  if (props) {
+    emit('update:modelValue', props.modelValue)
+  }
   formItemInject?.addFiled({ reset: reset })
 })
 
