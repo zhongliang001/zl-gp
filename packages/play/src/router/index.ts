@@ -18,6 +18,11 @@ const router = createRouter({
       component: () => import('../pages/FormDemo.vue')
     },
     {
+      path: '/icon',
+      name: 'icon',
+      component: () => import('../pages/IconDemo.vue')
+    },
+    {
       path: '/select',
       name: 'select',
       component: () => import('../pages/SelectDemo.vue')

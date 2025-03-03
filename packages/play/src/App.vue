@@ -18,6 +18,9 @@
           <zl-menu-item prop="select">
             <RouterLink to="/select">select</RouterLink>
           </zl-menu-item>
+          <zl-menu-item prop="icon">
+            <RouterLink to="/icon">icon</RouterLink>
+          </zl-menu-item>
         </zl-menu-sub>
       </zl-menu>
     </zl-header>
