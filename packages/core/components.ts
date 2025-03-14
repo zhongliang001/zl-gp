@@ -12,7 +12,11 @@ import {
   ZlMenu,
   ZlMenuItem,
   ZlMenuSub,
-  ZlRow
+  ZlRow,
+  ZlTable,
+  ZlTableColumn,
+  ZlTableBody,
+  ZlTableHeader
 } from '@zl-gp/components'
 
 export default {
@@ -28,7 +32,12 @@ export default {
   ZlMenu,
   ZlMenuItem,
   ZlMenuSub,
-  ZlRow
+  ZlRow,
+  ZlTable,
+
+  ZlTableColumn,
+  ZlTableBody,
+  ZlTableHeader
 } as unknown as Plugin[]
 
 export * from '@zl-gp/components'

@@ -14,7 +14,7 @@ const props = withDefaults(defineProps<InputProps>(), {
 const { namespace } = usenamespace('input')
 const emit = defineEmits(['update:modelValue'])
 
-const formItemInject = inject(FormItemInjectKey)
+const formItemInject = inject(FormItemInjectKey, undefined)
 const _ref = ref<HTMLInputElement | null>(null)
 
 const setMessage = formItemInject?.setMessage

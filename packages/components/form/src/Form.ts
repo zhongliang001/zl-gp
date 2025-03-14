@@ -79,7 +79,6 @@ export const useForm = (props: FormProps) => {
           const rule: Rule[] = t.rule
           rule.forEach((ru) => {
             if (ru.reg) {
-              debugger
               if (!ru.reg.test(da)) {
                 item.valid(ru.message)
                 result = false

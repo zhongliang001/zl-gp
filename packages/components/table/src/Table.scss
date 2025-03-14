@@ -1,0 +1,22 @@
+@use '../../base.scss';
+
+.zl-table {
+  border-collapse: collapse;
+  .zl-tr {
+    &:nth-child(odd) {
+      background-color: #fff; // 奇数行背景色
+    }
+
+    &:nth-child(even) {
+      background-color: #f7f7f7; // 偶数行背景色
+    }
+  }
+
+  .zl-tr:hover .zl-td {
+    background-color: #99c6e4;
+  }
+
+  .zl-thead {
+    background-color: #424547;
+  }
+}

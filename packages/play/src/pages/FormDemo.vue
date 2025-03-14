@@ -12,10 +12,9 @@ const data = ref({
 const form = ref<Form | null>(null)
 
 const click = () => {
-  // if (form.value) {
-  //   form.value.reset()
-  // }
-  console.log('---')
+  if (form.value) {
+    form.value.reset()
+  }
 }
 </script>
 <template>
