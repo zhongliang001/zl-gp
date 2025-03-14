@@ -40,7 +40,6 @@ export default {
   ZlSelect,
   ZlSelectOption,
   ZlTable,
-
   ZlTableColumn,
   ZlTableBody,
   ZlTableHeader

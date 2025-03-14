@@ -26,8 +26,7 @@ const router = createRouter({
       path: '/select',
       name: 'select',
       component: () => import('../pages/SelectDemo.vue')
-    },
-    {
+    },{
       path: '/table',
       name: 'table',
       component: () => import('../pages/TableDemo.vue')
