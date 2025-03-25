@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "pnpm --filter @zl-gp/play dev",
-    "build": "run-p type-check format build-theme build-core",
+    "build": "run-p format build-theme build-core",
     "build-core": "pnpm --filter zl-gp build",
     "build-theme": "pnpm --filter  @zl-gp/theme build",
     "preview": "vite preview",

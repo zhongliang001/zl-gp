@@ -1,21 +1,21 @@
 import { computed, ref, type Ref, type SetupContext } from 'vue'
 export interface InputProps {
-  type: 'text' | 'password'
+  type: 'text' | 'password' | 'radio' | 'checkbox'
   name: string
   modelValue?: string
-  placeholder: string
-  disabled: boolean
+  placeholder?: string
+  disabled?: boolean
   formatter?: (value: string | number | undefined) => string
-  width: number
-  height: number
-  max: number
-  maxlength: number
-  min: number
-  minlength: number
-  pattern: RegExp
-  readonly: boolean
-  required: 'required'
-  step: number
+  width?: number
+  height?: number
+  max?: number
+  maxlength?: number
+  min?: number
+  minlength?: number
+  pattern?: RegExp
+  readonly?: boolean
+  required?: 'required'
+  step?: number
 }
 
 export const inputEmits = {
@@ -42,6 +42,7 @@ export const useInput = (
       disabled: props.disabled,
       readonly: props.readonly,
       maxlength: props.maxlength,
+      type: props.type,
       max: props.max,
       min: props.min,
       minlength: props.minlength,
@@ -113,6 +114,10 @@ export const useInput = (
     }
   }
 
+  const click = () => {
+    // event.stopPropagation()
+  }
+
   return {
     _ref,
     _props,
@@ -120,6 +125,7 @@ export const useInput = (
     error,
     focus,
     handlerInput,
-    reset
+    reset,
+    click
   }
 }

@@ -27,6 +27,7 @@ export default defineConfig({
   plugins: [
     vue(),
     dts({
+      pathsToAliases: true,
       tsconfigPath: '../../tsconfig.build.json',
       outDir: 'dist/types',
       afterBuild: moveStyles

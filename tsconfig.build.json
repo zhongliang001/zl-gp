@@ -24,7 +24,10 @@
     "types": ["node"],
     "baseUrl": "./",
     "paths": {
-      "@gp-ui/components": ["./packages/components"]
+      "@gp-ui/components": ["./packages/components"],
+      "@gp-ui/core": ["./packages/core"],
+      "@gp-ui/utils": ["./packages/utils"],
+      "@gp-ui/hooks": ["./packages/hooks"]
     }
   },
   "include": [

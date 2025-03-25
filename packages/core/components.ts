@@ -19,7 +19,8 @@ import {
   ZlTable,
   ZlTableColumn,
   ZlTableBody,
-  ZlTableHeader
+  ZlTableHeader,
+  ZlPagination
 } from '@zl-gp/components'
 
 export default {
@@ -36,6 +37,7 @@ export default {
   ZlMenu,
   ZlMenuItem,
   ZlMenuSub,
+  ZlPagination,
   ZlRow,
   ZlSelect,
   ZlSelectOption,

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { Form } from 'zl-gp'
+import type { Form } from 'zl-gp'
 
 const data = ref({
   a: '1',

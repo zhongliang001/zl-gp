@@ -19,7 +19,12 @@ const _ref = ref<HTMLInputElement | null>(null)
 
 const setMessage = formItemInject?.setMessage
 
-const { _props, blur, focus, reset, handlerInput, error } = useInput(props, emit, _ref, setMessage)
+const { _props, blur, click, focus, reset, handlerInput, error } = useInput(
+  props,
+  emit,
+  _ref,
+  setMessage
+)
 
 onMounted(() => {
   const input: HTMLInputElement | null = _ref.value
@@ -44,6 +49,7 @@ defineExpose({
     @input="handlerInput"
     @blur="blur"
     @focus="focus"
+    @click="click"
   />
 </template>
 <style lang="css">

@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
+import type { TableInstance } from 'zl-gp'
 
 const tableData = reactive([
   {
@@ -31,6 +32,15 @@ const add = () => {
     address: 'No. 189, Grove St, Los Angeles'
   })
 }
+
+const table = ref<TableInstance | null>(null)
+
+const getSel = () => {
+  if (table.value) {
+    const a = table.value.getSel()
+    console.log(a)
+  }
+}
 </script>
 <template>
   <!-- <zl-table ref="table" :data="data" :is-index="true" :isShowChecked="true" selType="single">
@@ -39,7 +49,7 @@ const add = () => {
   </zl-table> -->
   <!-- <zl-button @click="getSel">sel</zl-button> -->
 
-  <zl-table :data="tableData">
+  <zl-table ref="table" :data="tableData" :is-index="true" :isShowChecked="true" selType="single">
     <zl-table-column props="date" name="Date">
       <template #default="scope">
         <template v-if="scope && scope.row">
@@ -66,5 +76,7 @@ const add = () => {
       </template>
     </zl-table-column>
   </zl-table>
-  <zl-button @click="add"></zl-button>
+  <zl-pagination :total="10"></zl-pagination>
+  <zl-button @click="add">add</zl-button>
+  <zl-button @click="getSel">getSel</zl-button>
 </template>

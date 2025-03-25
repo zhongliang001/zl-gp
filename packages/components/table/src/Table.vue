@@ -9,11 +9,10 @@ defineOptions({
 
 const props = withDefaults(defineProps<TableProps>(), {
   isIndex: false,
-  isShowChecked: false,
-  selType: 'not-optional'
+  isShowChecked: false
 })
 
-const { addColumn, columns, getSel } = useTable(props)
+const { addColumn, columns, getSel, select } = useTable(props)
 const _ref = ref<HTMLTableElement | null>(null)
 
 const { namespace } = usenamespace('table')
@@ -28,7 +27,14 @@ provide(
 )
 
 const store = computed(() => {
-  return { data: ref(props.data), columns: columns }
+  return {
+    data: ref(props.data),
+    columns: columns,
+    isIndex: props.isIndex,
+    isShowChecked: props.isShowChecked,
+    selType: props.selType,
+    select: select
+  }
 })
 
 defineExpose(
@@ -40,7 +46,11 @@ defineExpose(
 </script>
 <template>
   <table ref="_ref" :class="namespace.className">
-    <zl-table-header :isIndex="isIndex" :isShowChecked="isShowChecked"></zl-table-header>
+    <zl-table-header
+      :store="store"
+      :isIndex="isIndex"
+      :isShowChecked="isShowChecked"
+    ></zl-table-header>
     <zl-table-body :store="store"></zl-table-body>
   </table>
   <slot></slot>

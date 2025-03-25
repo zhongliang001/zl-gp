@@ -5,7 +5,7 @@ export interface TableProps {
   data: { [key: string]: string }[]
   isIndex: boolean
   isShowChecked: boolean
-  selType: 'single' | 'multiple' | 'not-optional'
+  selType: 'single' | 'multiple'
 }
 
 export const TableInjectkey: InjectionKey<TableContext> = Symbol('TableInjectkey')
@@ -32,10 +32,6 @@ export const useTable = (prop: TableProps) => {
   }
 
   const getSel = (): { [key: string]: string } | { [key: string]: string }[] => {
-    if (prop.selType === 'not-optional') {
-      console.warn('表格数据不可选,不能调用此方法')
-      return {}
-    }
     if (prop.selType === 'single') {
       if (selIndx.value > data.length - 1) {
         return {}
@@ -56,10 +52,6 @@ export const useTable = (prop: TableProps) => {
   }
 
   const select = (index: number) => {
-    if (prop.selType === 'not-optional') {
-      selIndx.value = -1
-      return
-    }
     if (prop.selType === 'single') {
       selIndx.value = index
     } else {
