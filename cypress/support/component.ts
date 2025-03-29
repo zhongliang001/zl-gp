@@ -4,7 +4,8 @@ import './commands'
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 
-import { mount } from 'cypress/vue'
+// import { mount } from 'cypress/vue'
 // Ensure global styles are loaded
 
-Cypress.Commands.add('mount', mount)
+
+// Cypress.Commands.add('mount', mount)

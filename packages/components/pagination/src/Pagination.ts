@@ -1,18 +1,18 @@
 import type { Ref } from 'vue'
 
 export interface PaginationProps {
-  total: number
+  pageNum: number
 }
 
 export const usePagination = (currenPageNum: Ref<number>, props: PaginationProps) => {
-  const total = props.total
+  const pageNum = props.pageNum
 
   const gto = (num: number) => {
     currenPageNum.value = num
   }
 
   const next = () => {
-    if (currenPageNum.value !== total) {
+    if (currenPageNum.value !== pageNum) {
       currenPageNum.value++
     }
   }
@@ -25,6 +25,7 @@ export const usePagination = (currenPageNum: Ref<number>, props: PaginationProps
 
   const selPage = (num: number) => {
     currenPageNum.value = num
+    console.log(currenPageNum.value)
   }
 
   return {

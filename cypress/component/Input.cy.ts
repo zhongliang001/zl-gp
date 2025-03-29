@@ -1,8 +1,9 @@
 import { ZlInput } from '@zl-gp/components'
+import { mount } from 'cypress/vue'
 
 describe('Input.cy.ts', () => {
     it('renders input correctly', () => {
-        cy.mount(ZlInput as never, {
+        mount(ZlInput as never, {
             props: {
                 type: 'text',
                 name: 'username',
@@ -26,7 +27,7 @@ describe('Input.cy.ts', () => {
     })
 
     it('resets input correctly', () => {
-        cy.mount(ZlInput as never, {
+        mount(ZlInput as never, {
             props: {
                 type: 'text',
                 name: 'username',

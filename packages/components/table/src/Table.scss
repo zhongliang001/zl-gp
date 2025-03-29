@@ -1,8 +1,16 @@
 @use '../../base.scss';
 
 .zl-table {
-  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #333;
+  border-radius: 5px;
+  /* 圆角边框 */
+  border-collapse: separate;
+  border-spacing: 0;
+  /* 单元格间距 */
   .zl-tr {
+    border: 1px solid #333;
+    border-bottom: 3px solid #333;
     &:nth-child(odd) {
       background-color: #fff; // 奇数行背景色
     }
@@ -10,6 +18,11 @@
     &:nth-child(even) {
       background-color: #f7f7f7; // 偶数行背景色
     }
+  }
+  th,
+  td {
+    border: 1px solid #333;
+    border-bottom: 1px solid #333;
   }
 
   .zl-tr:hover .zl-td {

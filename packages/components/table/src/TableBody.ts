@@ -8,6 +8,7 @@ import {
 } from 'vue'
 import type { TableColumn } from './TableColumn'
 import { ZlInput } from '../../index'
+import { usenamespace } from '@zl-gp/hooks'
 
 export interface TableBodyProps {
   store: {
@@ -35,6 +36,8 @@ export const useTableBody = (store: TableBodyProps['store'], tbody: ShallowRef<V
     }
   }
 
+  const { namespace } = usenamespace('table-body')
+
   const genTableBody = () => {
     const children: VNode[] = []
     const isIndex = store.isIndex
@@ -47,13 +50,18 @@ export const useTableBody = (store: TableBodyProps['store'], tbody: ShallowRef<V
         $index: index
       }
       if (isIndex) {
-        const nd = h('td', index)
+        const nd = h('td', index + 1)
         childNodes.push(nd)
       }
       let selNd: VNode
       if (isShowChecked) {
         selNd = h(
           'td',
+          {
+            style: {
+              width: 16 + 'px'
+            }
+          },
           h(ZlInput, {
             name: 'sel',
             id: 'input-' + index,
@@ -73,7 +81,15 @@ export const useTableBody = (store: TableBodyProps['store'], tbody: ShallowRef<V
                 return n
               }
             })
-            childNodes.push(h('td', { key: 1 }, { default: () => [nodes] }))
+            childNodes.push(
+              h(
+                'td',
+                {
+                  key: 1
+                },
+                { default: () => [nodes] }
+              )
+            )
           } else {
             const node = h('td', dt[column.props])
             childNodes.push(node)
@@ -93,7 +109,8 @@ export const useTableBody = (store: TableBodyProps['store'], tbody: ShallowRef<V
         children.push(node)
       }
     })
-    tbody.value = h('tbody', children)
+
+    tbody.value = h('tbody', { class: namespace.className }, children)
   }
 
   return {

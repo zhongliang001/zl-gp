@@ -32,10 +32,14 @@ export const useInput = (
 ) => {
   const formatter = props.formatter
   const _props = computed(() => {
-    const style = {
-      width: props.width + '%',
-      height: props.height + 'px'
-    }
+    const normalType = ['text', 'password']
+    const style =
+      normalType.indexOf(props.type) > -1
+        ? {
+            width: `calc(${props.width + '%'}  - 8px)`,
+            height: props.height + 'px'
+          }
+        : {}
     return {
       name: props.name,
       placeholder: props.placeholder,

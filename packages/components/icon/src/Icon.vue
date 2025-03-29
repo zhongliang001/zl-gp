@@ -20,7 +20,7 @@ const ic: Ref<InconInfo> = computed(() => {
     return iconInfo
   } else {
     return {
-      d: '',
+      d: [],
       color: ''
     }
   }
@@ -28,6 +28,6 @@ const ic: Ref<InconInfo> = computed(() => {
 </script>
 <template>
   <svg class="icon" viewBox="0 0 1024 1024" :width="width" :height="height">
-    <path :d="ic.d" :fill="ic.color"></path>
+    <path v-for="(dc, index) in ic.d" v-bind:key="index" :d="dc" :fill="ic.color"></path>
   </svg>
 </template>

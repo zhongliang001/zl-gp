@@ -1,9 +1,10 @@
 {
   "extends": "@vue/tsconfig/tsconfig.dom.json",
-  "include": ["./e2e/**/*", "./support/**/*","vite.config.ts","env.d.ts"],
+  "include": ["./e2e/**/*", "./support/**/*","vite.config.ts","env.d.ts","cypress.d.ts","cypress.config.ts"],
   "exclude": ["./support/component.*"],
   "compilerOptions": {
     "isolatedModules": false,
-    "types": ["node","cypress"]
+    "types": ["node","cypress"],
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo"
   }
 }

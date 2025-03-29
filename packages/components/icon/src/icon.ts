@@ -2,12 +2,12 @@ export interface IconProps {
   name: string
   width: number
   height: number
-  color: string
+  color?: string
 }
 
 export type IconJsonType = { [key: string]: InconInfo }
 
 export type InconInfo = {
-  d: string
+  d: string[]
   color: string
 }

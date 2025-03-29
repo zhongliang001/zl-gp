@@ -47,7 +47,6 @@ const getSel = () => {
     <zl-table-column name="testa" props="a"></zl-table-column>
     <zl-table-column name="testb" props="b"></zl-table-column>
   </zl-table> -->
-  <!-- <zl-button @click="getSel">sel</zl-button> -->
 
   <zl-table ref="table" :data="tableData" :is-index="true" :isShowChecked="true" selType="single">
     <zl-table-column props="date" name="Date">
@@ -76,7 +75,8 @@ const getSel = () => {
       </template>
     </zl-table-column>
   </zl-table>
-  <zl-pagination :total="10"></zl-pagination>
+  <zl-pagination :page-num="10"></zl-pagination>
+  <zl-pagination :page-num="20"></zl-pagination>
   <zl-button @click="add">add</zl-button>
   <zl-button @click="getSel">getSel</zl-button>
 </template>

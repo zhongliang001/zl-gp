@@ -1,8 +1,9 @@
+import { mount } from 'cypress/vue'
 import { ZlMenu } from 'zl-gp'
 
 describe('Menu.cy.ts', () => {
   it('renders correctly', () => {
-    cy.mount(
+    mount(
       ZlMenu as never, {
       props: {
         is: 'div',

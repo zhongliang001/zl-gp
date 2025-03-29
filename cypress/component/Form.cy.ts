@@ -1,9 +1,10 @@
 // import { ZlForm } from '@zl-gp/components'
+import { mount } from 'cypress/vue'
 import FormTest from './FormTest.vue'
 
 describe('Form.cy.ts', () => {
     it('renders form correctly', () => {
-        cy.mount(FormTest as never, {
+        mount(FormTest as never, {
             props: {
                 name: 'test-form',
                 url: '/submit',
@@ -30,7 +31,7 @@ describe('Form.cy.ts', () => {
     })
 
     it('validates form correctly', () => {
-        cy.mount(FormTest as never, {
+        mount(FormTest as never, {
             props: {
                 name: 'test-form',
                 url: 'https://20094aec-df8d-48be-bd9e-311211343ef8.mock.pstmn.io/tr',

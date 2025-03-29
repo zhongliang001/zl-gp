@@ -24,10 +24,10 @@
     "types": ["node"],
     "baseUrl": "./",
     "paths": {
-      "@gp-ui/components": ["./packages/components"],
-      "@gp-ui/core": ["./packages/core"],
-      "@gp-ui/utils": ["./packages/utils"],
-      "@gp-ui/hooks": ["./packages/hooks"]
+      "@zl-gp/components": ["./packages/components"],
+      "@zl-gp/core": ["./packages/core"],
+      "@zl-gp/utils": ["./packages/utils"],
+      "@zl-gp/hooks": ["./packages/hooks"]
     }
   },
   "include": [
