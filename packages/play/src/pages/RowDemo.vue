@@ -1,15 +1,27 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const data = {
+  stockId: '',
+  stockName: '',
+  price: '',
+  transNum: '',
+  transDate: '',
+  transType: '',
+  transReason: ''
+}
+</script>
 <template>
-  <zl-row>
-    <zl-col>1</zl-col>
-    <zl-col>2</zl-col>
-  </zl-row>
-  <zl-row>
-    <zl-col>3</zl-col>
-    <zl-col>4</zl-col>
-  </zl-row>
-  <zl-row>
-    <zl-col :span="2">5</zl-col>
-    <zl-col>6</zl-col>
-  </zl-row>
+  <zl-container :width="100">
+    <zl-header is="h" :hwidth="20">新增交易信息</zl-header>
+    <zl-main>
+      <zl-form :data="data">
+        <zl-row :columns="2">
+          <zl-col :span="1">
+            <zl-form-item label="成交原因" prop="transReason">
+              <zl-input name="transReason" type="text" v-model="data.transReason"></zl-input>
+            </zl-form-item>
+          </zl-col>
+        </zl-row>
+      </zl-form>
+    </zl-main>
+  </zl-container>
 </template>

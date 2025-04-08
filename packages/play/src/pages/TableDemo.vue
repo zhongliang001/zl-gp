@@ -61,7 +61,6 @@ const getSel = () => {
         </template>
       </template>
     </zl-table-column>
-
     <zl-table-column props="name" name="Name">
       <template #default="scope">
         <template v-if="scope && scope.row">

@@ -6,6 +6,7 @@ $button-disbaled: color.adjust(blue, $lightness: 60%);
 
 .zl-button {
   border-radius: var(--border-radius);
+  border: 1px solid black;
   padding: 0.37rem 0.75rem;
   &:disabled {
     background-color: $button-disbaled;

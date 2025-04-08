@@ -2,7 +2,7 @@ import { reactive, ref, type InjectionKey, type Ref } from 'vue'
 import type { TableColumn } from './TableColumn'
 
 export interface TableProps {
-  data: { [key: string]: string }[]
+  data: { [key: string]: string | number }[]
   isIndex: boolean
   isShowChecked: boolean
   selType: 'single' | 'multiple'
@@ -13,12 +13,12 @@ export const TableInjectkey: InjectionKey<TableContext> = Symbol('TableInjectkey
 export type TableContext = {
   addColumn: (column: TableColumn) => void
   columns: TableColumn[]
-  data: { [key: string]: string }[]
+  data: { [key: string]: string | number }[]
 }
 
 export type TableInstance = {
   ref: Ref
-  getSel: () => { [key: string]: string } | { [key: string]: string }[]
+  getSel: () => { [key: string]: string | number } | { [key: string]: string | number }[]
 }
 
 export const useTable = (prop: TableProps) => {
@@ -31,7 +31,7 @@ export const useTable = (prop: TableProps) => {
     columns.push(column)
   }
 
-  const getSel = (): { [key: string]: string } | { [key: string]: string }[] => {
+  const getSel = (): { [key: string]: string | number } | { [key: string]: string | number }[] => {
     if (prop.selType === 'single') {
       if (selIndx.value > data.length - 1) {
         return {}
@@ -42,7 +42,7 @@ export const useTable = (prop: TableProps) => {
       if (selMulInd.value.length === 0) {
         return []
       } else {
-        return data.filter((d: { [key: string]: string }, idx: number) => {
+        return data.filter((d: { [key: string]: string | number }, idx: number) => {
           if (selMulInd.value.indexOf(idx) !== -1) {
             return d
           }

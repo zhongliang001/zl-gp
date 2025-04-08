@@ -32,6 +32,12 @@ onMounted(() => {
   }
 })
 
+type Row = { [key: string]: string | number }
+type index = number
+
+const row = ref<Row>()
+const index = ref<index>()
+
 defineExpose(
   reactive<Instance>({
     ref: _ref
@@ -40,6 +46,6 @@ defineExpose(
 </script>
 <template>
   <div ref="_ref">
-    <slot></slot>
+    <slot :row="row" :index="index"></slot>
   </div>
 </template>

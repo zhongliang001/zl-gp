@@ -2,9 +2,23 @@
 
 .zl-select {
   border-radius: var(--border-radius);
-  input {
-    width: 100%;
-    height: 30px;
+  .zl-select-sel {
+    border-radius: var(--border-radius);
+    border: 1px solid black;
+  }
+  .input {
+    border: none;
+    width: 98%;
+    :focus {
+      border: none;
+      outline: none;
+    }
+  }
+  .icon {
+    width: 2%;
+    &.hidden {
+      display: none;
+    }
   }
   .zl-select-options {
     &.hidden {

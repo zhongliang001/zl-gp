@@ -1,3 +1,3 @@
 export interface ContainerProps {
-  width: number
+  width?: number
 }

@@ -24,6 +24,7 @@ const {
   handlerEnd,
   hidden,
   init,
+  iconName,
   options,
   sel,
   update
@@ -55,16 +56,20 @@ defineExpose({
 </script>
 <template>
   <div ref="_ref" :class="namespace.className">
-    <input
-      ref="selInput"
-      :name="name"
-      type="text"
-      v-bind="_props"
-      @click="handlerClick"
-      @compositionstart="compositionStart"
-      @compositionend="compositionEnd($event, handlerEnd)"
-      @input="handlerInput($event, handlerEnd)"
-    />
+    <div class="zl-select-sel">
+      <input
+        class="input"
+        ref="selInput"
+        :name="name"
+        type="text"
+        v-bind="_props"
+        @click="handlerClick"
+        @compositionstart="compositionStart"
+        @compositionend="compositionEnd($event, handlerEnd)"
+        @input="handlerInput($event, handlerEnd)"
+      />
+      <zl-icon class="icon" :class="[{ hidden: disabled }]" :name="iconName"></zl-icon>
+    </div>
     <div :class="[namespace.cs('options'), { hidden: hidden }]" @mouseleave="handlerMouseleave">
       <div
         class="option"

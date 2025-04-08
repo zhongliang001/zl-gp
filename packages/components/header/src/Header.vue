@@ -4,12 +4,12 @@ import type { HeaderProps } from './Header'
 defineOptions({
   name: 'ZlHeader'
 })
-const { hwidth = 100 } = defineProps<HeaderProps>()
+const { is = 'h', width = 100, line = false } = defineProps<HeaderProps>()
 </script>
 <template>
   <header class="zl-header">
     <component :is="is"><slot></slot></component>
-    <hr :width="hwidth + '%'" />
+    <hr :class="[{ hidden: !line }]" :width="width + '%'" />
   </header>
 </template>
 <style lang="css">

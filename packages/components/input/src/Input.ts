@@ -2,7 +2,7 @@ import { computed, ref, type Ref, type SetupContext } from 'vue'
 export interface InputProps {
   type: 'text' | 'password' | 'radio' | 'checkbox'
   name: string
-  modelValue?: string
+  modelValue?: string | number
   placeholder?: string
   disabled?: boolean
   formatter?: (value: string | number | undefined) => string
@@ -93,7 +93,11 @@ export const useInput = (
   const focus = () => {
     const input: HTMLInputElement | null = _ref.value
     if (props.modelValue && input) {
-      input.value = props.modelValue
+      if (typeof props.modelValue === 'string') {
+        input.value = props.modelValue
+      } else {
+        input.value = props.modelValue.toString()
+      }
     }
     if (setMessage) {
       setMessage('')

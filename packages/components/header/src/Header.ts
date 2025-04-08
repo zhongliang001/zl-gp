@@ -1,4 +1,5 @@
 export interface HeaderProps {
-  is: string
-  hwidth: number
+  is?: string
+  width?: number
+  line?: boolean
 }

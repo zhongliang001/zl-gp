@@ -31,6 +31,8 @@ export const useSelect = (
     disabled: props.disabled
   }
 
+  const iconName = ref('arrow-right')
+
   const addOption = (option: Option) => {
     options.value.push(option)
   }
@@ -52,6 +54,7 @@ export const useSelect = (
    */
   const handlerClick = () => {
     hidden.value = false
+    iconName.value = 'arrow-down'
   }
 
   /**
@@ -59,10 +62,12 @@ export const useSelect = (
    */
   const handlerMouseleave = () => {
     hidden.value = true
+    iconName.value = 'arrow-right'
   }
 
   const handlerInput = (event: Event, isComposing: boolean) => {
     const target = event.target
+    iconName.value = 'arrow-down'
     if (!isComposing) {
       handlerEnd(target)
     }
@@ -122,6 +127,7 @@ export const useSelect = (
     handlerMouseleave,
     hidden,
     init,
+    iconName,
     options,
     sel,
     update

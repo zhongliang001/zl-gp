@@ -24,6 +24,9 @@
           <zl-menu-item prop="table">
             <RouterLink to="/table">table</RouterLink>
           </zl-menu-item>
+          <zl-menu-item prop="row">
+            <RouterLink to="/row">row</RouterLink>
+          </zl-menu-item>
         </zl-menu-sub>
       </zl-menu>
     </zl-header>

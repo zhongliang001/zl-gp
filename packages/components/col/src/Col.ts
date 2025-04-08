@@ -1,16 +1,27 @@
 import type { RowContext } from '@zl-gp/components/row/src/Row'
-import { computed } from 'vue'
+import { ref, watch } from 'vue'
 
 export interface ColProps {
-  span: number
+  span?: number
   offset?: number
 }
 
 const useCol = (props: ColProps, gutter: number, rowContext: RowContext | undefined) => {
-  const span = props.span
+  const span = props.span ? props.span : 0
   const offset = props.offset ? props.offset : 0
-  const _prop = computed(() => {
-    return {
+  const _prop = ref()
+  watch(
+    () => rowContext?.num,
+    () => {
+      console.log(rowContext?.num)
+      generateStyel()
+      console.log(_prop.value)
+    }
+  )
+
+  const generateStyel = () => {
+    debugger
+    _prop.value = {
       style: {
         'padding-left': gutter ? gutter / 2 + 'px' : '',
         'padding-right': gutter ? gutter / 2 + 'px' : '',
@@ -26,7 +37,7 @@ const useCol = (props: ColProps, gutter: number, rowContext: RowContext | undefi
           : '100 %'
       }
     }
-  })
+  }
   return {
     _prop
   }

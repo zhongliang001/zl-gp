@@ -54,6 +54,7 @@
     "scss": "^0.2.4",
     "start-server-and-test": "^2.0.10",
     "typescript": "~5.7.3",
+    "unplugin-vue-components": "^28.4.1",
     "vite": "^6.0.11",
     "vite-plugin-dts": "^4.5.0",
     "vite-plugin-vue-devtools": "^7.7.1",

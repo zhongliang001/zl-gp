@@ -47,7 +47,7 @@ export const useTableBody = (store: TableBodyProps['store'], tbody: ShallowRef<V
       const childNodes: VNode[] = []
       const scope = {
         row: dt,
-        $index: index
+        index: index
       }
       if (isIndex) {
         const nd = h('td', index + 1)

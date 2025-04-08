@@ -9,4 +9,9 @@ const a = ref('t1')
     <zl-select-option name="我是" value="t1"></zl-select-option>
     <zl-select-option name="案例1" value="t2"></zl-select-option>
   </zl-select>
+  <zl-select name="select" v-model="a" :disabled="true">
+    <zl-select-option name="测试1" value="t"></zl-select-option>
+    <zl-select-option name="我是" value="t1"></zl-select-option>
+    <zl-select-option name="案例1" value="t2"></zl-select-option>
+  </zl-select>
 </template>

@@ -7,11 +7,15 @@ defineOptions({
   name: 'ZlRow'
 })
 
-const { gutter = 0 } = defineProps<RowProps>()
+const { gutter = 0, columns } = defineProps<RowProps>()
 
 const num = ref(0)
 
 const addCol = (span: number, offset: number) => {
+  if (columns) {
+    num.value = columns
+    return
+  }
   num.value = num.value + span + offset
 }
 
