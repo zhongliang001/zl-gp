@@ -12,7 +12,7 @@ export interface InputProps {
   maxlength?: number
   min?: number
   minlength?: number
-  pattern?: RegExp
+  pattern?: RegExp | string
   readonly?: boolean
   required?: 'required'
   step?: number

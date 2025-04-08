@@ -3,7 +3,7 @@ import type { InjectionKey } from 'vue'
 export const RowInjectKey: InjectionKey<RowContext> = Symbol('menuInjectKey')
 
 export interface RowProps {
-  columns: number
+  columns?: number
   gutter?: number
 }
 
