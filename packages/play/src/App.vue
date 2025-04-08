@@ -7,7 +7,7 @@
             <RouterLink to="/button">按钮</RouterLink>
           </zl-menu-item>
           <zl-menu-item prop="row">
-            <RouterLink to="/row">layout</RouterLink>
+            <RouterLink to="/row">row</RouterLink>
           </zl-menu-item>
           <zl-menu-item prop="form">
             <RouterLink to="/form">form</RouterLink>
@@ -23,9 +23,6 @@
           </zl-menu-item>
           <zl-menu-item prop="table">
             <RouterLink to="/table">table</RouterLink>
-          </zl-menu-item>
-          <zl-menu-item prop="row">
-            <RouterLink to="/row">row</RouterLink>
           </zl-menu-item>
         </zl-menu-sub>
       </zl-menu>
