@@ -5,7 +5,7 @@ export const SelectInjectKey: InjectionKey<SelectContext> = Symbol('SelectInject
 
 export interface SelectProps {
   name: string
-  modelValue?: string
+  modelValue?: string | number
   disabled?: boolean
   filter?: boolean
 }
@@ -107,7 +107,7 @@ export const useSelect = (
     update(props.modelValue)
   }
 
-  const update = (val: string | undefined) => {
+  const update = (val: string | number | undefined) => {
     const input: HTMLInputElement | null = selInput.value
     options.value.forEach((option: Option) => {
       if (option.value === val) {
