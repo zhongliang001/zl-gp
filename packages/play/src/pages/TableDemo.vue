@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { reactive, ref } from 'vue'
-import type { TableInstance } from 'zl-gp'
+import { reactive, ref, watch } from 'vue'
+import type { TableInstance, Pagination } from 'zl-gp'
 
 const tableData = reactive([
   {
@@ -41,6 +41,18 @@ const getSel = () => {
     console.log(a)
   }
 }
+
+const pagination = ref<Pagination | null>(null)
+
+// const currentPageNum = ref(pagination.value?.currentPageNum)
+
+watch(
+  () => pagination.value?.currentPageNum,
+  () => {
+    console.log(pagination.value?.currentPageNum)
+  },
+  { deep: true }
+)
 </script>
 <template>
   <!-- <zl-table ref="table" :data="data" :is-index="true" :isShowChecked="true" selType="single">
@@ -74,8 +86,7 @@ const getSel = () => {
       </template>
     </zl-table-column>
   </zl-table>
-  <zl-pagination :page-num="10"></zl-pagination>
-  <zl-pagination :page-num="20"></zl-pagination>
+  <zl-pagination ref="pagination" :page-num="20"></zl-pagination>
   <zl-button @click="add">add</zl-button>
   <zl-button @click="getSel">getSel</zl-button>
 </template>

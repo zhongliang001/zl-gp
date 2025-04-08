@@ -4,28 +4,31 @@ export interface PaginationProps {
   pageNum: number
 }
 
-export const usePagination = (currenPageNum: Ref<number>, props: PaginationProps) => {
+export interface Pagination {
+  currentPageNum: Ref<number>
+}
+
+export const usePagination = (currentPageNum: Ref<number>, props: PaginationProps) => {
   const pageNum = props.pageNum
 
   const gto = (num: number) => {
-    currenPageNum.value = num
+    currentPageNum.value = num
   }
 
   const next = () => {
-    if (currenPageNum.value !== pageNum) {
-      currenPageNum.value++
+    if (currentPageNum.value !== pageNum) {
+      currentPageNum.value++
     }
   }
 
   const prev = () => {
-    if (currenPageNum.value !== 1) {
-      currenPageNum.value--
+    if (currentPageNum.value !== 1) {
+      currentPageNum.value--
     }
   }
 
   const selPage = (num: number) => {
-    currenPageNum.value = num
-    console.log(currenPageNum.value)
+    currentPageNum.value = num
   }
 
   return {
