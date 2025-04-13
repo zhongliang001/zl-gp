@@ -11,12 +11,15 @@
   .zl-tr {
     border: 1px solid #333;
     border-bottom: 3px solid #333;
-    &:nth-child(odd) {
+    &.is-selected {
+      background-color: rgb(27, 114, 245);
+    }
+    &:nth-child(odd):not(.is-selected) {
       background-color: #fff; // 奇数行背景色
     }
 
-    &:nth-child(even) {
-      background-color: #f7f7f7; // 偶数行背景色
+    &:nth-child(even):not(.is-selected) {
+      background-color: #bed1d175; // 偶数行背景色
     }
   }
   th,
@@ -25,7 +28,7 @@
     border-bottom: 1px solid #333;
   }
 
-  .zl-tr:hover .zl-td {
+  .zl-tr:hover:not(.is-selected) .zl-td {
     background-color: #99c6e4;
   }
 

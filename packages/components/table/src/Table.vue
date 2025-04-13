@@ -9,10 +9,11 @@ defineOptions({
 
 const props = withDefaults(defineProps<TableProps>(), {
   isIndex: false,
-  isShowChecked: false
+  isShowChecked: false,
+  selType: 'single'
 })
 
-const { addColumn, columns, getSel, select } = useTable(props)
+const { addColumn, columns, getSel, select, selIndx, selMulInd } = useTable(props)
 const _ref = ref<HTMLTableElement | null>(null)
 
 const { namespace } = usenamespace('table')
@@ -33,7 +34,9 @@ const store = computed(() => {
     isIndex: props.isIndex,
     isShowChecked: props.isShowChecked,
     selType: props.selType,
-    select: select
+    select: select,
+    selIndx: selIndx,
+    selMulInd: selMulInd
   }
 })
 

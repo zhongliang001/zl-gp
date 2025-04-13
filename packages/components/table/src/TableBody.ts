@@ -1,6 +1,7 @@
 import {
   h,
   isVNode,
+  nextTick,
   type Ref,
   type ShallowRef,
   type VNode,
@@ -18,18 +19,23 @@ export interface TableBodyProps {
     isShowChecked: boolean
     selType: 'single' | 'multiple'
     select: (index: number) => void
+    selIndx: Ref<number>
+    selMulInd: Ref<number[]>
   }
 }
 
 export const useTableBody = (store: TableBodyProps['store'], tbody: ShallowRef<VNode>) => {
   const trClick = (index: number, node: VNode) => {
     store.select(index)
+    genTableBody()
     if (node) {
       const children: VNodeNormalizedChildren = node.children
       if (Array.isArray(children)) {
         children.forEach((ele) => {
           if (isVNode(ele) && ele.el) {
-            ele.el.dispatchEvent(new Event('click'))
+            if (ele.el.type === 'radio' || ele.el.typ === 'checkbox') {
+              ele.el.checked = true
+            }
           }
         })
       }
@@ -38,11 +44,13 @@ export const useTableBody = (store: TableBodyProps['store'], tbody: ShallowRef<V
 
   const { namespace } = usenamespace('table-body')
 
-  const genTableBody = () => {
+  const genTableBody = async () => {
     const children: VNode[] = []
     const isIndex = store.isIndex
     const isShowChecked = store.isShowChecked
     const selType = store.selType
+    const selIndx = store.selIndx
+    const selMulInd = store.selMulInd
     store.data.value.forEach((dt, index) => {
       const childNodes: VNode[] = []
       const scope = {
@@ -58,6 +66,7 @@ export const useTableBody = (store: TableBodyProps['store'], tbody: ShallowRef<V
         selNd = h(
           'td',
           {
+            class: ['zl-td'],
             style: {
               width: 16 + 'px'
             }
@@ -85,6 +94,7 @@ export const useTableBody = (store: TableBodyProps['store'], tbody: ShallowRef<V
               h(
                 'td',
                 {
+                  class: 'zl-td',
                   key: 1
                 },
                 { default: () => [nodes] }
@@ -100,7 +110,12 @@ export const useTableBody = (store: TableBodyProps['store'], tbody: ShallowRef<V
         const node = h(
           'tr',
           {
-            onClick: () => {
+            class: [
+              'zl-tr',
+              { 'is-selected': selIndx.value === index || selMulInd.value.indexOf(index) !== -1 }
+            ],
+            onClick: (event: Event) => {
+              event.stopPropagation()
               trClick(index, selNd)
             }
           },
@@ -111,6 +126,7 @@ export const useTableBody = (store: TableBodyProps['store'], tbody: ShallowRef<V
     })
 
     tbody.value = h('tbody', { class: namespace.className }, children)
+    await nextTick()
   }
 
   return {

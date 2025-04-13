@@ -3,9 +3,9 @@ import type { TableColumn } from './TableColumn'
 
 export interface TableProps {
   data: { [key: string]: string | number }[]
-  isIndex: boolean
-  isShowChecked: boolean
-  selType: 'single' | 'multiple'
+  isIndex?: boolean
+  isShowChecked?: boolean
+  selType?: 'single' | 'multiple'
 }
 
 export const TableInjectkey: InjectionKey<TableContext> = Symbol('TableInjectkey')
@@ -67,6 +67,8 @@ export const useTable = (prop: TableProps) => {
     addColumn,
     columns,
     getSel,
-    select
+    select,
+    selIndx,
+    selMulInd
   }
 }

@@ -13,14 +13,11 @@ const useCol = (props: ColProps, gutter: number, rowContext: RowContext | undefi
   watch(
     () => rowContext?.num,
     () => {
-      console.log(rowContext?.num)
       generateStyel()
-      console.log(_prop.value)
     }
   )
 
   const generateStyel = () => {
-    debugger
     _prop.value = {
       style: {
         'padding-left': gutter ? gutter / 2 + 'px' : '',
