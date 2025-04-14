@@ -19,7 +19,7 @@ const _ref = ref<HTMLInputElement | null>(null)
 
 const setMessage = formItemInject?.setMessage
 
-const { _props, blur, click, focus, reset, handlerInput, error } = useInput(
+const { _props, autocomplete, blur, click, focus, reset, handlerInput, error } = useInput(
   props,
   emit,
   _ref,
@@ -46,6 +46,7 @@ defineExpose({
     ref="_ref"
     :class="[namespace.className, { error: error }]"
     v-bind="_props"
+    :autocomplete="autocomplete"
     @input="handlerInput"
     @blur="blur"
     @focus="focus"

@@ -51,7 +51,11 @@ const click = () => {
       </zl-col>
       <zl-col>
         <zl-form-item label="hi1" prop="d">
-          <zl-input name="test" placeholder="请输入" type="text" v-model="data.d"></zl-input>
+          <zl-select name="select" v-model="data.d">
+            <zl-select-option name="测试1" value="t"></zl-select-option>
+            <zl-select-option name="我是" value="t1"></zl-select-option>
+            <zl-select-option name="案例1" value="t2"></zl-select-option>
+          </zl-select>
         </zl-form-item>
       </zl-col>
     </zl-row>

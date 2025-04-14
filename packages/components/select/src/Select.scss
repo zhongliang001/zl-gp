@@ -2,6 +2,7 @@
 
 .zl-select {
   border-radius: var(--border-radius);
+  margin-left: 5px;
   .zl-select-sel {
     border-radius: var(--border-radius);
     border: 1px solid black;
@@ -24,21 +25,17 @@
     &.hidden {
       display: none;
     }
-    .option {
-      height: 30px;
-      line-height: 30px;
-      margin-left: 5px;
-      overflow: auto;
-      &:hover {
-        background-color: hsl(211 75% 40%);
-      }
-      &.hidden {
-        display: none;
-      }
-      .filter {
-        display: inline-block;
-        color: rgb(255, 0, 0);
-      }
+    position: absolute;
+  }
+
+  ul {
+    list-style-type: none;
+    padding-left: 0.1rem;
+    margin-top: 0.1rem;
+    margin-bottom: 0.1rem;
+    text-align: left;
+    li:hover {
+      background-color: blue;
     }
   }
 }

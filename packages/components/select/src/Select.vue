@@ -32,8 +32,20 @@ const {
 
 const { compositionStart, compositionEnd, handlerInput } = useInputMethod()
 
+const hh = ref(_ref.value?.offsetWidth)
+
 onMounted(() => {
   init()
+  if (_ref.value) {
+    const resizeObserver = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.target === _ref.value) {
+          hh.value = entry.contentRect.width
+        }
+      }
+    })
+    resizeObserver.observe(_ref.value)
+  }
 })
 
 watch(
@@ -62,6 +74,7 @@ defineExpose({
         ref="selInput"
         :name="name"
         type="text"
+        autocomplete="off"
         v-bind="_props"
         @click="handlerClick"
         @compositionstart="compositionStart"
@@ -70,15 +83,17 @@ defineExpose({
       />
       <zl-icon class="icon" :class="[{ hidden: disabled }]" :name="iconName"></zl-icon>
     </div>
-    <div :class="[namespace.cs('options'), { hidden: hidden }]" @mouseleave="handlerMouseleave">
-      <div
-        class="option"
-        :class="[{ hidden: item.filter }]"
-        v-for="(item, index) in options"
-        :key="index"
-        @click="sel(item)"
-        v-html="item.info"
-      ></div>
+    <div :class="[namespace.cs('options'), { hidden: hidden }]">
+      <ul @mouseleave="handlerMouseleave" :style="[{ width: hh + 'px' }]">
+        <li
+          class="option"
+          :class="[{ hidden: item.filter }]"
+          v-for="(item, index) in options"
+          :key="index"
+          @click="sel(item)"
+          v-html="item.info"
+        ></li>
+      </ul>
     </div>
   </div>
   <slot></slot>

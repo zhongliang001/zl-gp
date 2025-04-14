@@ -16,6 +16,7 @@ export interface InputProps {
   readonly?: boolean
   required?: 'required'
   step?: number
+  autocomplete?: 'on' | 'off'
 }
 
 export const inputEmits = {
@@ -54,6 +55,14 @@ export const useInput = (
       style
     }
   })
+  const autocomplete = ref('off')
+  if (props.autocomplete) {
+    autocomplete.value = props.autocomplete
+  } else {
+    if (props.type === 'password') {
+      autocomplete.value = 'on'
+    }
+  }
 
   const error = ref(false)
 
@@ -129,11 +138,12 @@ export const useInput = (
   return {
     _ref,
     _props,
+    autocomplete,
     blur,
+    click,
     error,
     focus,
     handlerInput,
-    reset,
-    click
+    reset
   }
 }
