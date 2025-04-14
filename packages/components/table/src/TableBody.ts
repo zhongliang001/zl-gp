@@ -58,7 +58,7 @@ export const useTableBody = (store: TableBodyProps['store'], tbody: ShallowRef<V
         index: index
       }
       if (isIndex) {
-        const nd = h('td', index + 1)
+        const nd = h('td', { class: ['zl-td'] }, index + 1)
         childNodes.push(nd)
       }
       let selNd: VNode
@@ -101,7 +101,7 @@ export const useTableBody = (store: TableBodyProps['store'], tbody: ShallowRef<V
               )
             )
           } else {
-            const node = h('td', dt[column.props])
+            const node = h('td', { class: ['zl-td'] }, dt[column.props])
             childNodes.push(node)
           }
         })
