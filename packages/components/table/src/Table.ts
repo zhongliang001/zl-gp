@@ -1,4 +1,4 @@
-import { reactive, ref, type InjectionKey, type Ref } from 'vue'
+import { reactive, ref, type InjectionKey, type Reactive, type Ref } from 'vue'
 import type { TableColumn } from './TableColumn'
 
 export interface TableProps {
@@ -6,6 +6,18 @@ export interface TableProps {
   isIndex?: boolean
   isShowChecked?: boolean
   selType?: 'single' | 'multiple'
+}
+
+export interface Store {
+  data: Ref<{ [key: string]: string | number }[]>
+  columns: Reactive<TableColumn[]>
+  isIndex: boolean
+  isShowChecked: boolean
+  selType: 'single' | 'multiple'
+  select: (index: number) => void
+  selIndx: Ref<number>
+  selMulInd: Ref<number[]>
+  unSelect: () => void
 }
 
 export const TableInjectkey: InjectionKey<TableContext> = Symbol('TableInjectkey')
@@ -63,12 +75,21 @@ export const useTable = (prop: TableProps) => {
     }
   }
 
+  const unSelect = () => {
+    if (prop.selType === 'single') {
+      selIndx.value = -1
+    } else {
+      selMulInd.value.splice(0, selMulInd.value.length)
+    }
+  }
+
   return {
     addColumn,
     columns,
     getSel,
     select,
     selIndx,
-    selMulInd
+    selMulInd,
+    unSelect
   }
 }

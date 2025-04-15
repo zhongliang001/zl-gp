@@ -17,6 +17,8 @@ watch(
   () => [store.data.value],
   (value) => {
     if (value) {
+      // 数据发生变化清除所有被选择的记录
+      store.unSelect()
       genTableBody()
     }
   },

@@ -2,29 +2,19 @@ import {
   h,
   isVNode,
   nextTick,
-  type Ref,
   type ShallowRef,
   type VNode,
   type VNodeNormalizedChildren
 } from 'vue'
-import type { TableColumn } from './TableColumn'
+import type { Store } from './Table.ts'
 import { ZlInput } from '../../index'
 import { usenamespace } from '@zl-gp/hooks'
 
 export interface TableBodyProps {
-  store: {
-    data: Ref<{ [key: string]: string }[]>
-    columns: TableColumn[]
-    isIndex: boolean
-    isShowChecked: boolean
-    selType: 'single' | 'multiple'
-    select: (index: number) => void
-    selIndx: Ref<number>
-    selMulInd: Ref<number[]>
-  }
+  store: Store
 }
 
-export const useTableBody = (store: TableBodyProps['store'], tbody: ShallowRef<VNode>) => {
+export const useTableBody = (store: Store, tbody: ShallowRef<VNode>) => {
   const trClick = (index: number, node: VNode) => {
     store.select(index)
     genTableBody()

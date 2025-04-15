@@ -23,7 +23,9 @@
    menu,table相关props需要重新配置
 
 2. ZlTable选中后页面没有样式变化  
-   table增加行选中没有背景颜色变化，无法确认选中那一条，需要给tr增加在选中后增加背景颜色变化
+   table增加行选中没有背景颜色变化，无法确认选中那一条，需要给tr增加在选中后增加背景颜色变化  
+   处理选中一条记录翻页后，仍然存在一条被选择的记录  
+   将类型Store从TableBody.ts转移到Table.ts
 
 3. 打包时需要删除 console.log和debug
 

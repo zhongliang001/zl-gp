@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { computed, provide, reactive, ref } from 'vue'
-import { TableInjectkey, useTable, type TableInstance, type TableProps } from './Table'
+import { computed, provide, reactive, ref, type Ref } from 'vue'
+import { TableInjectkey, useTable, type Store, type TableInstance, type TableProps } from './Table'
 import { usenamespace } from '@zl-gp/hooks'
 
 defineOptions({
@@ -13,7 +13,7 @@ const props = withDefaults(defineProps<TableProps>(), {
   selType: 'single'
 })
 
-const { addColumn, columns, getSel, select, selIndx, selMulInd } = useTable(props)
+const { addColumn, columns, getSel, select, selIndx, selMulInd, unSelect } = useTable(props)
 const _ref = ref<HTMLTableElement | null>(null)
 
 const { namespace } = usenamespace('table')
@@ -27,7 +27,7 @@ provide(
   })
 )
 
-const store = computed(() => {
+const store: Ref<Store> = computed(() => {
   return {
     data: ref(props.data),
     columns: columns,
@@ -36,7 +36,8 @@ const store = computed(() => {
     selType: props.selType,
     select: select,
     selIndx: selIndx,
-    selMulInd: selMulInd
+    selMulInd: selMulInd,
+    unSelect: unSelect
   }
 })
 
