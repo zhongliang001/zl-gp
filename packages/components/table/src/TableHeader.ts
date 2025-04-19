@@ -1,11 +1,7 @@
-import type { Ref } from 'vue'
-import type { TableColumn } from './TableColumn'
+import type { Store } from './Table'
 
 export interface TableHeaderProps {
-  store: {
-    data: Ref<{ [key: string]: string }[]>
-    columns: TableColumn[]
-  }
+  store: Store
   isIndex: boolean
   isShowChecked: boolean
 }

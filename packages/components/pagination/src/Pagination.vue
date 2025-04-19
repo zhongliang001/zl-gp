@@ -2,6 +2,7 @@
 import { h, reactive, ref } from 'vue'
 import { usePagination, type Pagination, type PaginationProps } from './Pagination'
 import { usenamespace } from '@zl-gp/hooks'
+import { ZlIcon } from '@zl-gp/components/icon'
 
 defineOptions({
   name: 'ZlPagination'

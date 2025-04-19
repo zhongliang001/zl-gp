@@ -2,6 +2,7 @@
 import { useInputMethod, usenamespace } from '@zl-gp/hooks'
 import { SelectInjectKey, useSelect, type SelectProps } from './Select'
 import { onMounted, provide, reactive, ref, watch } from 'vue'
+import { ZlIcon } from '@zl-gp/components/icon'
 
 defineOptions({
   name: 'ZlSelect'
@@ -81,7 +82,7 @@ defineExpose({
         @compositionend="compositionEnd($event, handlerEnd)"
         @input="handlerInput($event, handlerEnd)"
       />
-      <zl-icon class="icon" :class="[{ hidden: disabled }]" :name="iconName"></zl-icon>
+      <ZlIcon class="icon" :class="[{ hidden: disabled }]" :name="iconName"></ZlIcon>
     </div>
     <div :class="[namespace.cs('options'), { hidden: hidden }]">
       <ul @mouseleave="handlerMouseleave" :style="[{ width: hh + 'px' }]">

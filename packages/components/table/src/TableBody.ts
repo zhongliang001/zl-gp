@@ -7,7 +7,7 @@ import {
   type VNodeNormalizedChildren
 } from 'vue'
 import type { Store } from './Table.ts'
-import { ZlInput } from '../../index'
+import { ZlInput } from '@zl-gp/components/input'
 import { usenamespace } from '@zl-gp/hooks'
 
 export interface TableBodyProps {

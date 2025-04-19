@@ -2,6 +2,7 @@
 import { computed, provide, reactive, ref, type Ref } from 'vue'
 import { TableInjectkey, useTable, type Store, type TableInstance, type TableProps } from './Table'
 import { usenamespace } from '@zl-gp/hooks'
+import { ZlTableBody, ZlTableHeader } from '..'
 
 defineOptions({
   name: 'ZlTable'
@@ -50,12 +51,8 @@ defineExpose(
 </script>
 <template>
   <table ref="_ref" :class="namespace.className">
-    <zl-table-header
-      :store="store"
-      :isIndex="isIndex"
-      :isShowChecked="isShowChecked"
-    ></zl-table-header>
-    <zl-table-body :store="store"></zl-table-body>
+    <ZlTableHeader :store="store" :isIndex="isIndex" :isShowChecked="isShowChecked"></ZlTableHeader>
+    <ZlTableBody :store="store"></ZlTableBody>
   </table>
   <slot></slot>
 </template>

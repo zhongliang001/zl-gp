@@ -45,6 +45,7 @@ export default defineConfig({
       formats: ['es']
     },
     rollupOptions: {
+      treeshake: true,
       external: ['vue', '@popperjs/core', 'async-validator'],
       output: {
         assetFileNames: (assetInfo) => {
