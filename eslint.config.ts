@@ -24,12 +24,12 @@ export default defineConfigWithVueTs(
 
   pluginVue.configs['flat/essential'],
   vueTsConfigs.recommended,
-  
+
   {
     ...pluginVitest.configs.recommended,
     files: ['src/**/__tests__/*'],
   },
-  
+
   {
     ...pluginCypress.configs.recommended,
     files: [
@@ -37,5 +37,5 @@ export default defineConfigWithVueTs(
       'cypress/support/**/*.{js,ts,jsx,tsx}'
     ],
   },
-  skipFormatting,
+  skipFormatting
 )

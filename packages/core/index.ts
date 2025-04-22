@@ -1,7 +1,4 @@
-import { makeInstaller } from '../utils'
-import components from './components'
+export * from '@zl-gp/components'
+import install from './src/init'
 
-const installer = makeInstaller(components)
-
-export * from '../components'
-export default installer
+export default install

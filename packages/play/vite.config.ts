@@ -30,8 +30,6 @@ export default defineConfig({
       dts: true
     }),
     Components({
-      dirs: './src',
-      exclude: ['vue-router', /node_modules/],
       resolvers: [
         (name) => {
           if (name === 'default' || name === 'RouterLink' || name === 'RouterView') {
@@ -39,7 +37,7 @@ export default defineConfig({
           }
           const resolved = {
             name: name,
-            from: `zl-gp` // 修改解析逻辑，确保所有组件路径正确
+            from: `zl-gp`
           }
           return resolved
         }
@@ -64,6 +62,10 @@ export default defineConfig({
       treeshake: true,
       output: {
         manualChunks(id) {
+          if (id.includes('zl-gp')) {
+            const split = id.toString().split('node_modules/')[2].split('/')
+            return split[split.length - 1].toString()
+          }
           if (id.includes('node_modules')) {
             return id.toString().split('node_modules/')[1].split('/')[0].toString()
           }

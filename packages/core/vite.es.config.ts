@@ -67,6 +67,11 @@ export default defineConfig({
               return dirName
             }
           }
+          for (const dirName of getDirectoriesSync('./')) {
+            if (id.includes(`/packages/core/${dirName}`)) {
+              return 'core'
+            }
+          }
         },
         chunkFileNames(id) {
           return id.name + '.js'
