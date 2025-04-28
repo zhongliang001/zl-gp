@@ -21,6 +21,9 @@
           <zl-menu-item prop="icon">
             <RouterLink to="/icon">icon</RouterLink>
           </zl-menu-item>
+          <zl-menu-item prop="card">
+            <RouterLink to="/card">card</RouterLink>
+          </zl-menu-item>
         </zl-menu-sub>
       </zl-menu>
     </zl-header>

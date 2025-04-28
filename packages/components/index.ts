@@ -1,5 +1,6 @@
 export * from './aside'
 export * from './button'
+export * from './card'
 export * from './col'
 export * from './container'
 export * from './form'

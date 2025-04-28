@@ -1,4 +1,3 @@
-<!-- eslint-disable @typescript-eslint/no-explicit-any -->
 <script lang="ts" setup>
 import { computed, useSlots, type Component, type VNode } from 'vue'
 import type { ContainerProps } from './Container'

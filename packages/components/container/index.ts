@@ -1,4 +1,4 @@
-import { withInstall } from './../../utils/install'
+import { withInstall } from './../../utils'
 import Container from './src/Container.vue'
 
 export const ZlContainer = withInstall(Container)

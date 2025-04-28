@@ -1,6 +1,7 @@
 export { type Plugin } from 'vue'
 export { ZlAside } from '@zl-gp/components'
 export { ZlButton } from '@zl-gp/components/button'
+export { ZlCard } from '@zl-gp/components/card'
 export { ZlCol } from '@zl-gp/components/col'
 export { ZlContainer } from '@zl-gp/components/container'
 export { ZlForm, ZlFormItem } from '@zl-gp/components/form'

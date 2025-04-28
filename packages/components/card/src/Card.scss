@@ -1,0 +1,13 @@
+@use '@zl-gp/components/base.scss';
+
+.zl-card {
+  width: 98%;
+  border-radius: var(--border-radius);
+  box-shadow: 0 0 10px #000;
+
+  bot hr {
+    border: none;
+    height: 2px;
+    border-top: 1px dashed hsl(0 0% 73%);
+  }
+}
