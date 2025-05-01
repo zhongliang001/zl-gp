@@ -7,7 +7,7 @@ export interface ButtonProps {
   nativeType?: 'button' | 'submit' | 'reset' | undefined
   type?: 'primary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' | 'secondary'
   width?: number
-  height?: number
+  fontSize?: number
 }
 
 export const buttonEmits = {
@@ -23,7 +23,7 @@ export function useButton(emit: SetupContext<ButtonEmits>['emit'], props: Button
   const _props = {
     style: {
       width: props.width + 'rem',
-      height: props.height + 'rem'
+      fontSize: props.fontSize + 'rem'
     },
     type: props.nativeType,
     disabled: props.disabled

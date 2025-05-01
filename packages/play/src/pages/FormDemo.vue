@@ -16,6 +16,12 @@ const click = () => {
     form.value.reset()
   }
 }
+
+const volid = () => {
+  if (form.value) {
+    form.value.volidate()
+  }
+}
 </script>
 <template>
   <zl-form ref="form" v-model="data">
@@ -44,7 +50,7 @@ const click = () => {
             name="test"
             placeholder="请输入"
             type="text"
-            pattern="/^[A-Za-z]+$/"
+            pattern="^[A-Za-z]+$"
             v-model="data.c"
           ></zl-input>
         </zl-form-item>
@@ -59,6 +65,7 @@ const click = () => {
         </zl-form-item>
       </zl-col>
     </zl-row>
+    <zl-button native-type="submit" @click="volid">volid</zl-button>
     <zl-button native-type="submit" @click="click">clear</zl-button>
   </zl-form>
 </template>

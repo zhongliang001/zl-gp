@@ -9,7 +9,7 @@ export type Field = {
 export interface FormProps {
   name?: string
   url?: string
-  enctype?: 'application/x-www-form-urlencoded' | 'multipart/form - data' | 'text/plain'
+  enctype?: 'application/x-www-form-urlencoded' | 'multipart/form-data' | 'text/plain'
   method?: 'POST' | 'GET' | 'post' | 'get'
   novalidate?: boolean
   target?: '_blank' | '_self' | '_parent' | '_top'
@@ -21,6 +21,7 @@ export interface Form {
   reset: () => void
   value: unknown
   ref: HTMLFormElement | null
+  volidate: () => void
 }
 
 export const FormInjectkey: InjectionKey<FormContext> = Symbol('FormInjectkey')

@@ -1,26 +1,24 @@
-@use '../../base.scss';
-
 .zl-select {
-  border-radius: var(--border-radius);
   margin-left: 5px;
-  .zl-select-sel {
-    border-radius: var(--border-radius);
-    border: 1px solid black;
-  }
+
   .input {
     border: none;
     width: 98%;
+
     :focus {
       border: none;
       outline: none;
     }
   }
+
   .icon {
     width: 2%;
+
     &.hidden {
       display: none;
     }
   }
+
   .zl-select-options {
     &.hidden {
       display: none;
@@ -34,6 +32,7 @@
     margin-top: 0.1rem;
     margin-bottom: 0.1rem;
     text-align: left;
+
     li:hover {
       background-color: blue;
     }

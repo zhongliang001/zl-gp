@@ -30,6 +30,9 @@
     "build-umd": "vite build --config vite.umd.config.ts",
     "build-es": "vite build --config vite.es.config.ts"
   },
+  "peerDependencies": {
+    "@popperjs/core": "^2.11.8"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

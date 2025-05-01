@@ -2,26 +2,45 @@
 
 .zl-form {
   border-radius: var(--border-radius);
+
   .zl-form-item {
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+
     .field {
       display: flex;
       line-height: 30px;
     }
+
     .zl-form-item-lable {
       display: inline-block;
       width: 90px;
       font-size: 0.8rem;
       font-weight: 500;
       text-align: right;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
+
     .zl-form-item-field {
+      border: 1px solid black;
       width: 100%;
       padding-right: 17px;
-      .error {
+      border-radius: var(--border-radius);
+
+      &.error {
+        border: 1px solid red;
+      }
+    }
+
+    p {
+      &.error {
         color: red;
-        font-size: 12px;
+        font-size: 0.8rem;
         line-height: 12px;
         padding-left: 12px;
+        margin-top: -0.4rem;
+        background-color: white;
       }
     }
   }

@@ -1,5 +1,6 @@
-import { onMounted, ref, type InjectionKey } from 'vue'
+import { onMounted, ref, type InjectionKey, type Ref } from 'vue'
 import type { Field, FormContext } from './Form.ts'
+import { createPopper } from '@popperjs/core/lib/popper-lite'
 
 export const FormItemInjectKey: InjectionKey<FormItemContext> = Symbol('FormItemContext')
 export interface FormItemProps {
@@ -18,7 +19,12 @@ export type FormItemContext = {
   setMessage: (msg: string) => void
 }
 
-export const useFormItem = (prop: string, formInjectkey: FormContext | undefined) => {
+export const useFormItem = (
+  prop: string,
+  formInjectkey: FormContext | undefined,
+  input: Ref<HTMLDivElement | undefined>,
+  error: Ref<HTMLDivElement | undefined>
+) => {
   const field = ref<Field>()
   const addFiled = (f: Field) => {
     field.value = f
@@ -30,6 +36,11 @@ export const useFormItem = (prop: string, formInjectkey: FormContext | undefined
   }
   const addItem = formInjectkey?.addItem
   onMounted(() => {
+    if (input.value && error.value) {
+      createPopper(input.value, error.value, {
+        placement: 'bottom-start'
+      })
+    }
     if (addItem) {
       addItem({
         prop: prop,

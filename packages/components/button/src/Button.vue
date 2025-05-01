@@ -6,7 +6,10 @@ import { type SetupContext } from 'vue'
 defineOptions({
   name: 'ZlButton'
 })
-const props = withDefaults(defineProps<ButtonProps>(), { nativeType: 'button', height: 1.8 })
+const props = withDefaults(defineProps<ButtonProps>(), {
+  nativeType: 'button',
+  type: 'primary'
+})
 const { namespace } = usenamespace('button')
 const emit: SetupContext<ButtonEmits>['emit'] = defineEmits(buttonEmits)
 const { eventHandler, _props, _ref } = useButton(emit, props)

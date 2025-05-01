@@ -12,9 +12,10 @@ const { namespace } = usenamespace('form')
 
 const formInjectkey = inject(FormInjectkey)
 // const addItem = formInjectkey?.addItem
-
+const error = ref<HTMLDivElement>()
+const input = ref<HTMLDivElement>()
 const _ref = ref<HTMLDivElement>()
-const { addFiled, message, setMessage } = useFormItem(prop, formInjectkey)
+const { addFiled, message, setMessage } = useFormItem(prop, formInjectkey, input, error)
 
 provide(
   FormItemInjectKey,
@@ -32,10 +33,10 @@ defineExpose({
   <div :class="namespace.cs('item')" ref="_ref">
     <div class="field">
       <label :class="namespace.cs('item-lable')">{{ label }}</label>
-      <div :class="namespace.cs('item-field')">
+      <div ref="input" :class="[namespace.cs('item-field'), { error: message }]">
         <slot></slot>
-        <p :class="[{ error: message }]">{{ message }}</p>
       </div>
+      <p ref="error" :class="[{ error: message }]">{{ message }}</p>
     </div>
   </div>
 </template>

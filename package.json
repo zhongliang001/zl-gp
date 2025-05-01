@@ -18,13 +18,13 @@
     "format": "prettier --write packages/core/ packages/components packages/hooks packages/play packages/utils "
   },
   "dependencies": {
+    "@popperjs/core": "^2.11.8",
     "@zl-gp/components": "workspace:*",
     "@zl-gp/hooks": "workspace:*",
     "@zl-gp/play": "workspace:*",
     "@zl-gp/theme": "workspace:*",
     "@zl-gp/utils": "workspace:*",
-    "vue": "^3.5.13",
-    "zl-gp": "workspace:*"
+    "vue": "^3.5.13"
   },
   "devDependencies": {
     "@cypress/vue": "^6.0.2",
