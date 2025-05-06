@@ -5,6 +5,7 @@ import type { MenuItemProp } from './MenuItem'
 import { MenuSubInjectKey } from './MenuSub'
 
 import { inject } from 'vue'
+import { omit } from 'lodash-es'
 defineOptions({
   name: 'ZlMenuItem'
 })
@@ -15,6 +16,8 @@ const menuInjectKey = inject(MenuInjectKey, null)
 const menuSubInjectKey = inject(MenuSubInjectKey, null)
 
 const props = defineProps<MenuItemProp>()
+
+const _props = omit(props, ['prop'])
 
 const handlerClick = () => {
   menuInjectKey?.select(props.prop)
@@ -33,7 +36,7 @@ const handlerClick = () => {
     :prop="props.prop"
     @click="handlerClick"
   >
-    <slot></slot>
+    <RouterLink v-bind="_props"><slot></slot></RouterLink>
   </div>
 </template>
 <style lang="css">

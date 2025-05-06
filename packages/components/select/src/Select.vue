@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useInputMethod, usenamespace } from '@zl-gp/hooks'
+import { useInputMethod, usenamespace, useObserver } from '@zl-gp/hooks'
 import { SelectInjectKey, useSelect, type SelectProps } from './Select'
 import { onMounted, provide, reactive, ref, watch } from 'vue'
 import { ZlIcon } from '@zl-gp/components/icon'
@@ -33,19 +33,12 @@ const {
 
 const { compositionStart, compositionEnd, handlerInput } = useInputMethod()
 
-const hh = ref(_ref.value?.offsetWidth)
+const offsetWidth = ref(_ref.value?.offsetWidth)
 
 onMounted(() => {
   init()
   if (_ref.value) {
-    const resizeObserver = new ResizeObserver((entries) => {
-      for (const entry of entries) {
-        if (entry.target === _ref.value) {
-          hh.value = entry.contentRect.width
-        }
-      }
-    })
-    resizeObserver.observe(_ref.value)
+    useObserver(_ref, offsetWidth)
   }
 })
 
@@ -85,7 +78,7 @@ defineExpose({
       <ZlIcon class="icon" :class="[{ hidden: disabled }]" :name="iconName"></ZlIcon>
     </div>
     <div :class="[namespace.cs('options'), { hidden: hidden }]">
-      <ul @mouseleave="handlerMouseleave" :style="[{ width: hh + 'px' }]">
+      <ul @mouseleave="handlerMouseleave" :style="[{ width: offsetWidth + 'px' }]">
         <li
           class="option"
           :class="[{ hidden: item.filter }]"

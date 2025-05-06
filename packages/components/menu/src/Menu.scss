@@ -16,6 +16,11 @@
     &.hidden {
       display: none;
     }
+
+    a {
+      width: 100%;
+      display: flow;
+    }
   }
 
   .zl-menu-sub {
@@ -23,6 +28,8 @@
     font-size: 1.9rem;
     font-weight: 400;
     line-height: 26px;
+    width: 100%;
+    border: 1px solid #ccc;
 
     .sub-menu {
       position: absolute;

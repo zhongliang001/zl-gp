@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { usenamespace } from '@zl-gp/hooks'
+import { usenamespace, useObserver } from '@zl-gp/hooks'
 import { MenuSubInjectKey, type MenuSubProp } from './MenuSub'
-import { inject, provide, reactive } from 'vue'
+import { inject, onMounted, provide, reactive, ref } from 'vue'
 import { MenuInjectKey } from './Menu'
 
 defineOptions({
@@ -11,6 +11,15 @@ defineOptions({
 const { prop } = defineProps<MenuSubProp>()
 
 const menuInjectKey = inject(MenuInjectKey, null)
+
+const _ref = ref<HTMLDivElement | null>(null)
+const offsetWidth = ref(_ref.value?.offsetWidth)
+
+onMounted(() => {
+  if (_ref.value) {
+    useObserver(_ref, offsetWidth)
+  }
+})
 
 provide(MenuSubInjectKey, reactive({ prop }))
 
@@ -24,11 +33,12 @@ const sel = () => {
 }
 </script>
 <template>
-  <div :class="namespace.cs('sub')" @click="sel">
+  <div ref="_ref" :class="namespace.cs('sub')" @click="sel">
     {{ name }}
     <div
       :class="[{ 'sub-menu': menuInjectKey && menuInjectKey.flex == 'row' }]"
       @mouseleave="leave"
+      :style="[{ width: offsetWidth + 'px' }]"
     >
       <slot></slot>
     </div>
