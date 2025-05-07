@@ -33,8 +33,8 @@ const sel = () => {
 }
 </script>
 <template>
-  <div ref="_ref" :class="namespace.cs('sub')" @click="sel">
-    {{ name }}
+  <div ref="_ref" :class="namespace.cs('sub')">
+    <div @click="sel">{{ name }}</div>
     <div
       :class="[{ 'sub-menu': menuInjectKey && menuInjectKey.flex == 'row' }]"
       @mouseleave="leave"

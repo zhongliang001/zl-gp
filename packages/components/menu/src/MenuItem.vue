@@ -21,6 +21,7 @@ const _props = omit(props, ['prop'])
 
 const handlerClick = () => {
   menuInjectKey?.select(props.prop)
+  menuInjectKey?.unSubSelect()
 }
 </script>
 <template>
