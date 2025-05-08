@@ -11,6 +11,7 @@
           <zl-menu-item to="/icon" prop="icon">icon</zl-menu-item>
           <zl-menu-item to="/card" prop="card">card</zl-menu-item>
           <zl-menu-item to="/menu" prop="menu">menu</zl-menu-item>
+          <zl-menu-item to="/fileInput" prop="fileInput">fileInput</zl-menu-item>
         </zl-menu-sub>
       </zl-menu>
     </zl-header>

@@ -6,7 +6,8 @@ const data = ref({
   a: '1',
   b: '',
   c: '',
-  d: ''
+  d: '',
+  file: ''
 })
 
 const form = ref<Form | null>(null)

@@ -41,6 +41,11 @@ const router = createRouter({
       path: '/menu',
       name: 'menu',
       component: () => import('../pages/MenuDemo.vue')
+    },
+    {
+      path: '/fileInput',
+      name: 'fileInput',
+      component: () => import('../pages/FileInputDemo.vue')
     }
   ]
 })

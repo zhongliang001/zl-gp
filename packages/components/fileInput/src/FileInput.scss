@@ -1,0 +1,12 @@
+.zl-file-input {
+  position: relative;
+  z-index: 0;
+
+  input {
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    text-align: left;
+    left: 0;
+  }
+}

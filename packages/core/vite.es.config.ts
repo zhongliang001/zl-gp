@@ -38,6 +38,7 @@ export default defineConfig({
     outDir: 'dist/es',
     emptyOutDir: true,
     sourcemap: true,
+    minify: 'terser',
     lib: {
       entry: resolve(__dirname, './index.ts'),
       name: 'ZlGp',
