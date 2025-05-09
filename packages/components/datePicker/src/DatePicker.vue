@@ -5,6 +5,7 @@ import dayjs from 'dayjs'
 import { onMounted, onUnmounted, ref } from 'vue'
 import { ZlIcon } from '@zl-gp/components/icon'
 import { createPopper } from '@popperjs/core/lib/popper-lite'
+import offset from '@popperjs/core/lib/modifiers/offset'
 
 defineOptions({
   name: 'ZlDatePicker'
@@ -26,16 +27,11 @@ onMounted(() => {
   createPopper(_ref.value!, picker.value!, {
     placement: 'bottom-start',
     modifiers: [
+      offset,
       {
         name: 'offset',
         options: {
-          offset: [0, 8]
-        }
-      },
-      {
-        name: 'preventOverflow',
-        options: {
-          padding: 8
+          offset: [0, 1]
         }
       }
     ]

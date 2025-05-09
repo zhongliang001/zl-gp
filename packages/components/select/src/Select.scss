@@ -1,6 +1,4 @@
 .zl-select {
-  margin-left: 5px;
-
   .input {
     border: none;
     width: 98%;
@@ -23,6 +21,7 @@
     &.hidden {
       display: none;
     }
+
     position: absolute;
   }
 

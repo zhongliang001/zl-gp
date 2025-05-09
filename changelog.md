@@ -42,3 +42,8 @@
 
 1. ZlMenu
    点击选择菜单后，下拉菜单无法自动隐藏
+
+2. ZlSelect
+   修改下拉选对不齐的问题
+3. 新增ZlFileInput
+4. 新增ZlDatePicker
