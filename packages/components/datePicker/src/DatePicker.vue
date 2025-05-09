@@ -1,0 +1,122 @@
+<script lang="ts" setup>
+import { usenamespace, useObserver } from '@zl-gp/hooks'
+import { useDatePicker, type DatePickerProps } from './DatePicker'
+import dayjs from 'dayjs'
+import { onMounted, onUnmounted, ref } from 'vue'
+import { ZlIcon } from '@zl-gp/components/icon'
+import { createPopper } from '@popperjs/core/lib/popper-lite'
+
+defineOptions({
+  name: 'ZlDatePicker'
+})
+const emit = defineEmits(['update:modelValue'])
+const {
+  weekStart = 'sunday',
+  editable = false,
+  disabled = false,
+  format = 'YYYY-MM-DD'
+} = defineProps<DatePickerProps>()
+const { namespace } = usenamespace('date-picker')
+const _ref = ref<HTMLDivElement | null>(null)
+const picker = ref<HTMLDivElement | null>(null)
+const input = ref<HTMLInputElement | null>(null)
+const offsetWidth = ref(_ref.value?.offsetWidth)
+const show = ref<string>('')
+onMounted(() => {
+  createPopper(_ref.value!, picker.value!, {
+    placement: 'bottom-start',
+    modifiers: [
+      {
+        name: 'offset',
+        options: {
+          offset: [0, 8]
+        }
+      },
+      {
+        name: 'preventOverflow',
+        options: {
+          padding: 8
+        }
+      }
+    ]
+  })
+  if (_ref.value) {
+    useObserver(_ref, offsetWidth)
+  }
+  document.body.addEventListener('click', hiddenDaySel)
+})
+
+const hiddenDaySel = () => {
+  show.value = ''
+}
+
+onUnmounted(() => {
+  document.body.removeEventListener('click', hiddenDaySel)
+})
+
+const month = ref(dayjs().month() + 1)
+const year = ref(dayjs().year())
+const {
+  addMonth,
+  addYear,
+  dateTableCache,
+  monthTableCache,
+  subYear,
+  subMonth,
+  chooseDate,
+  chooseMonth,
+  chooseYear,
+  yearTableCache,
+  addYearPage,
+  subYearPage
+} = useDatePicker(year, month, weekStart, format, emit, disabled, input, show)
+</script>
+<template>
+  <div ref="_ref" :class="namespace.className">
+    <div>
+      <div>
+        <input
+          ref="input"
+          type="text"
+          :name="name"
+          @click="chooseDate($event)"
+          :readonly="!editable"
+          :disabled="disabled"
+        />
+      </div>
+      <div ref="picker" class="picker" :style="[{ width: offsetWidth + 'px' }]">
+        <div class="datepicker" v-show="show === 'date'">
+          <div>
+            <ZlIcon name="arrow-double-left" :width="10" :height="10" @click="subYear" />
+            <ZlIcon name="arrow-left" :width="10" :height="10" @click="subMonth" />
+            <button type="button" class="year-btn" @click="chooseYear($event)">{{ year }}</button>
+            <button type="button" class="month-btn" @click="chooseMonth($event)">
+              {{ month }}
+            </button>
+            <ZlIcon name="arrow-right" :width="10" :height="10" @click="addMonth" />
+            <ZlIcon name="arrow-double-right" :width="10" :height="10" @click="addYear" />
+          </div>
+          <div>
+            <component :is="dateTableCache"></component>
+          </div>
+        </div>
+        <div class="monthpicker" v-show="show === 'month'">
+          <component :is="monthTableCache"></component>
+        </div>
+        <div class="yearpicker" v-show="show === 'year'">
+          <div>
+            <ZlIcon name="arrow-left" :width="10" :height="10" @click="subYearPage" />
+            {{ year }}
+            <ZlIcon name="arrow-right" :width="10" :height="10" @click="addYearPage" />
+          </div>
+          <div>
+            <component :is="yearTableCache"></component>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<style lang="css">
+@import url(./DatePicker.scss);
+</style>

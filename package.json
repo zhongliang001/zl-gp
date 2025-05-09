@@ -24,6 +24,7 @@
     "@zl-gp/play": "workspace:*",
     "@zl-gp/theme": "workspace:*",
     "@zl-gp/utils": "workspace:*",
+    "dayjs": "^1.11.13",
     "vue": "^3.5.13"
   },
   "devDependencies": {

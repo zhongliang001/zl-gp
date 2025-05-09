@@ -46,6 +46,11 @@ const router = createRouter({
       path: '/fileInput',
       name: 'fileInput',
       component: () => import('../pages/FileInputDemo.vue')
+    },
+    {
+      path: '/datePicker',
+      name: 'datePicker',
+      component: () => import('../pages/DatePickerDemo.vue')
     }
   ]
 })

@@ -14,7 +14,7 @@ const slots = useSlots()
 const flexed = computed(() => {
   if (slots && slots.default) {
     const vNodes: VNode[] = slots.default({})
-    return vNodes.some((vNode: any) => {
+    return vNodes.some((vNode: VNode) => {
       const tag = (vNode.type as Component).name
       return tag === 'ZlAside'
     })
