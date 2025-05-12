@@ -31,7 +31,7 @@ describe('DatePicker Component', () => {
     cy.get('.year-btn').click();
     cy.get('.picker').should('be.visible');
     cy.get('.yearpicker').find('.icon').eq(0).click(); // 点击左箭头
-    cy.get('.ch-year-btn').should('contain', new Date().getFullYear() - 9); // 检查年份是否减少
+    cy.get('.year-btn').should('contain', new Date().getFullYear() - 9); // 检查年份是否减少
   });
 
   it('should navigate to next year page', () => {
