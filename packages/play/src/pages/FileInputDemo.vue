@@ -1,10 +1,9 @@
 <script setup lang="ts">
-const a = ''
+import { ref } from 'vue'
+import type { FileInput } from 'zl-gp'
+
+const fileInput = ref<FileInput | null>(null)
 </script>
 <template>
-  <zl-form>
-    <zl-form-item prop="file" label="上传">
-      <zl-file-input name="ss" v-model="a"></zl-file-input>
-    </zl-form-item>
-  </zl-form>
+  <zl-file-input type="primary" ref="fileInput" name="ss" :multiple="true"></zl-file-input>
 </template>

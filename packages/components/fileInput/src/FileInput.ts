@@ -1,36 +1,42 @@
-import type { InputEmits } from '@zl-gp/components'
-import type { Ref, SetupContext } from 'vue'
+import { ref, type Ref } from 'vue'
+import { remove } from 'lodash-es'
+
+export type FileInput = {
+  files: File[]
+}
 
 export interface FileInputProps {
   name: string
   modelValue?: string
+  accept?: string
+  multiple?: boolean
+  type?: 'primary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' | 'secondary'
 }
 
-export const useFileInput = (
-  _ref: Ref<HTMLInputElement | null>,
-  msg: Ref<string>,
-  emit: SetupContext<InputEmits>['emit']
-) => {
-  const inputHandler = (event: Event) => {
-    const input: HTMLInputElement | null = _ref.value
-    const { value } = event.target as HTMLInputElement
-    if (input) {
-      msg.value = value
-    }
-
-    emit('update:modelValue', value)
+export const useFileInput = (props: FileInputProps, _ref: Ref<HTMLInputElement | null>) => {
+  const _prop = {
+    name: props.name,
+    accept: props.accept,
+    multiple: props.multiple
   }
 
-  const reset = (value: string | undefined) => {
-    if (value) {
-      emit('update:modelValue', value)
-    } else {
-      emit('update:modelValue', '')
+  const files = ref<File[]>([])
+
+  const inputHandler = () => {
+    const input: HTMLInputElement | null = _ref.value
+    if (input?.files) {
+      files.value.push(...Array.from(input.files))
     }
+  }
+
+  const deleteFile = (file: File) => {
+    remove(files.value, (item) => item === file)
   }
 
   return {
-    inputHandler,
-    reset
+    _prop,
+    deleteFile,
+    files,
+    inputHandler
   }
 }

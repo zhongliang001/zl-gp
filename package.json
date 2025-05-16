@@ -19,6 +19,8 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
+    "@vueuse/components": "^13.2.0",
+    "@vueuse/core": "^13.2.0",
     "@zl-gp/components": "workspace:*",
     "@zl-gp/hooks": "workspace:*",
     "@zl-gp/play": "workspace:*",
@@ -60,7 +62,6 @@
     "unplugin-auto-import": "^19.1.2",
     "unplugin-vue-components": "^28.4.1",
     "vite": "^6.0.11",
-    "vite-plugin-compression": "^0.5.1",
     "vite-plugin-dts": "^4.5.0",
     "vite-plugin-vue-devtools": "^7.7.1",
     "vitest": "^3.0.5",

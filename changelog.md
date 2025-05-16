@@ -47,3 +47,9 @@
    修改下拉选对不齐的问题
 3. 新增ZlFileInput
 4. 新增ZlDatePicker
+
+### feature/v0.0.16 需要处理的问题
+
+1. ZlPagination 调整分页字符间距, pageSize需要设置为可以修改
+2. 表单输入需要增加清空输入
+3. 修改FileInput

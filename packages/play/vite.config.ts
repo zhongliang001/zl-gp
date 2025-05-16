@@ -4,7 +4,6 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import { visualizer } from 'rollup-plugin-visualizer'
-import viteCompression from 'vite-plugin-compression'
 import { fileURLToPath } from 'url'
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -18,7 +17,6 @@ export default defineConfig({
       filename: 'dist/test.html', // 分析图生成的文件名
       open: true // 如果存在本地服务端口，将在打包后自动展示
     }),
-    viteCompression(),
     AutoImport({
       imports: ['vue', 'vue-router'],
       packagePresets: [

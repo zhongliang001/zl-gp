@@ -37,5 +37,5 @@
     "packages/hooks/**/*.ts",
     "packages/components/**/*.ts"
   ],
-  "exclude": ["packages/components/vitest.config.ts","packages/core/vite.es.config.ts","packages/core/vite.umd.config.ts"]
+  "exclude": ["packages/components/vitest.config.ts","packages/core/vite.es.config.ts","packages/core/vite.umd.config.ts","packages/play/**/*.*"]
 }

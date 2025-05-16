@@ -1,6 +1,13 @@
+@use '../../base.scss' as base;
+
 .zl-file-input {
   position: relative;
   z-index: 0;
+  border-radius: var(--border-radius);
+  border: 1px solid black;
+  width: 200px;
+  padding: 0.4rem 1rem 0.6rem;
+  font-size: 0.9rem;
 
   input {
     opacity: 0;
@@ -8,5 +15,35 @@
     width: 100%;
     text-align: left;
     left: 0;
+  }
+
+  @include base.btn-color;
+
+  ul {
+    width: 100%;
+
+    li {
+      &:hover {
+        > svg {
+          display: unset;
+        }
+
+        > span {
+          width: calc(100% - 16px);
+        }
+      }
+
+      svg {
+        display: none;
+      }
+
+      span {
+        display: inline-block;
+        width: 100%;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+    }
   }
 }

@@ -1,4 +1,4 @@
-@use '../../base.scss';
+@use '../../base.scss' as base;
 @use 'sass:color';
 
 $button-hover: color.adjust(blue, $lightness: 40%);
@@ -11,19 +11,12 @@ $button-disbaled: color.adjust(blue, $lightness: 60%);
   padding-right: 1rem;
   padding-bottom: 0.6rem;
   padding-top: 0.4rem;
+
   &:disabled {
     background-color: $button-disbaled;
   }
 
-  @each $type in (primary, success, danger, warning, info, dark, light, secondary) {
-    &.#{$type}:not(:hover):not(:disabled) {
-      background-color: var(--#{$type});
-
-      @if $type ==dark {
-        color: color.invert(hsl(0, 0%, 0%), 100%);
-      }
-    }
-  }
+  @include base.btn-color;
 
   &:hover:not(:disabled) {
     background-color: $button-hover;

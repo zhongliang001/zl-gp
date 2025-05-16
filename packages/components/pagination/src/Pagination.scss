@@ -4,9 +4,11 @@
   .sel {
     background-color: red;
   }
+
   span {
-    width: 25px;
     display: inline-grid;
     text-decoration: underline;
+    margin-left: 2px;
+    margin-right: 2px;
   }
 }
