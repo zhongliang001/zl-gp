@@ -43,8 +43,8 @@ export function useButton(emit: SetupContext<ButtonEmits>['emit'], props: Button
       if (formInjectkey && formInjectkey.ref) {
         const re: HTMLFormElement = formInjectkey.ref
         let result = true
-        if (formInjectkey.volidate) {
-          result = formInjectkey.volidate()
+        if (formInjectkey.validate) {
+          result = formInjectkey.validate()
         }
         if (result) {
           re.submit()

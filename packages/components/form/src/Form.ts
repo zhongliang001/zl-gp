@@ -1,9 +1,10 @@
 import { ref, type InjectionKey, type Ref } from 'vue'
 import type { FormItem } from './FormItem'
-import { clone } from 'lodash-es'
+import { clone, find } from 'lodash-es'
 
 export type Field = {
   reset: (value: string | undefined) => void
+  valid?: (msg?: string | undefined) => boolean
 }
 
 export interface FormProps {
@@ -17,11 +18,11 @@ export interface FormProps {
   rules?: FormRule[]
 }
 
-export interface Form {
+export interface FormInstance {
   reset: () => void
   value: unknown
   ref: HTMLFormElement | null
-  volidate: () => void
+  validate: () => void
 }
 
 export const FormInjectkey: InjectionKey<FormContext> = Symbol('FormInjectkey')
@@ -30,17 +31,17 @@ export type FormContext = {
   addItem: (formItem: FormItem) => void
   ref: HTMLFormElement | null
   reset: () => void
-  volidate: () => boolean
+  validate: () => boolean
 }
 
 export type FormRule = {
   name: string
-  rule: Rule[]
+  rules: Rule[]
 }
 
 export type Rule = {
   reg: RegExp
-  volidator: (value: unknown) => boolean
+  validator: (value: unknown) => boolean
   message: string
 }
 
@@ -61,40 +62,33 @@ export const useForm = (props: FormProps) => {
   const data = props.modelValue
 
   const initData = clone(props.modelValue)
-  const volidate = (): boolean => {
+  const validate = (): boolean => {
     let result = true
-    if (rules) {
-      rules.forEach((t: FormRule) => {
-        const name = t.name
-        const items = formItems.value.filter((f) => {
-          if (f.prop == name) {
-            return f
+    formItems.value.forEach((item) => {
+      const name = item.prop
+      if (item.valid) {
+        result = item.valid()
+        if (!result) {
+          item.setMessage('校验失败')
+          result = false
+          return
+        }
+      }
+      const formRule = find(rules, (rule: FormRule) => {
+        return rule.name == name
+      })
+      if (formRule) {
+        formRule.rules.forEach((ru) => {
+          const da = data ? data[name] : undefined
+          if (ru.reg) {
+            if (da && !ru.reg.test(da)) {
+              item.setMessage(ru.message)
+              result = false
+            }
           }
         })
-        if (items) {
-          const item = items[0]
-          const da = data ? data[name] : undefined
-          if (!da) {
-            return
-          }
-          const rule: Rule[] = t.rule
-          rule.forEach((ru) => {
-            if (ru.reg) {
-              if (!ru.reg.test(da)) {
-                item.valid(ru.message)
-                result = false
-              }
-            }
-            if (ru.volidator) {
-              if (!ru.volidator(da)) {
-                item.valid(ru.message)
-                result = false
-              }
-            }
-          })
-        }
-      })
-    }
+      }
+    })
     return result
   }
 
@@ -114,6 +108,6 @@ export const useForm = (props: FormProps) => {
     addItem,
     reset,
     _ref,
-    volidate
+    validate
   }
 }

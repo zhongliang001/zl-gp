@@ -3,6 +3,7 @@ import { usenamespace } from '@zl-gp/hooks'
 import { useInput, type InputProps } from './Input'
 import { inject, onMounted, ref } from 'vue'
 import { FormItemInjectKey } from '@zl-gp/components/form/src/FormItem'
+import { ZlIcon } from '@zl-gp/components'
 defineOptions({
   name: 'ZlInput'
 })
@@ -19,12 +20,8 @@ const _ref = ref<HTMLInputElement | null>(null)
 
 const setMessage = formItemInject?.setMessage
 
-const { _props, autocomplete, blur, click, focus, reset, handlerInput, error } = useInput(
-  props,
-  emit,
-  _ref,
-  setMessage
-)
+const { _props, autocomplete, handlerBlur, click, handlerFocus, reset, handlerInput, error } =
+  useInput(props, emit, _ref, setMessage)
 
 onMounted(() => {
   const input: HTMLInputElement | null = _ref.value
@@ -34,7 +31,7 @@ onMounted(() => {
   if (props) {
     emit('update:modelValue', props.modelValue)
   }
-  formItemInject?.addFiled({ reset: reset })
+  formItemInject?.addFiled({ reset: reset, valid: props.valid })
 })
 
 defineExpose({
@@ -42,16 +39,18 @@ defineExpose({
 })
 </script>
 <template>
-  <input
-    ref="_ref"
-    :class="[namespace.className, { error: error }]"
-    v-bind="_props"
-    :autocomplete="autocomplete"
-    @input="handlerInput"
-    @blur="blur"
-    @focus="focus"
-    @click="click"
-  />
+  <div :class="[namespace.className, { error: error }]">
+    <input
+      ref="_ref"
+      v-bind="_props"
+      :autocomplete="autocomplete"
+      @input="handlerInput"
+      @blur="handlerBlur"
+      @focus="handlerFocus"
+      @click="click"
+    />
+    <ZlIcon v-if="clearable" name="close" :width="10" @click="reset" />
+  </div>
 </template>
 <style lang="css">
 @import url(input.scss);

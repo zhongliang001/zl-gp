@@ -10,8 +10,9 @@ export interface FormItemProps {
 
 export type FormItem = {
   prop: string
-  valid: (msg: string) => void
+  valid?: (msg?: string) => boolean
   field?: Field
+  setMessage: (msg: string) => void
 }
 
 export type FormItemContext = {
@@ -31,9 +32,6 @@ export const useFormItem = (
   }
   const message = ref()
 
-  const valid = (msg: string) => {
-    message.value = msg
-  }
   const addItem = formInjectkey?.addItem
   onMounted(() => {
     if (input.value && error.value) {
@@ -44,8 +42,9 @@ export const useFormItem = (
     if (addItem) {
       addItem({
         prop: prop,
-        valid: valid,
-        field: field.value
+        valid: field?.value?.valid,
+        field: field.value,
+        setMessage
       })
     }
   })

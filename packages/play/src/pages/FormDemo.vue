@@ -1,16 +1,16 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
-import type { Form } from 'zl-gp'
+import type { FormInstance, FormRule } from 'zl-gp'
 
 const data = ref({
-  a: '1',
+  test: '1',
   b: '',
   c: '',
   d: '',
   file: ''
 })
 
-const form = ref<Form | null>(null)
+const form = ref<FormInstance | null>(null)
 
 const click = () => {
   if (form.value) {
@@ -18,23 +18,41 @@ const click = () => {
   }
 }
 
-const volid = () => {
+const check = () => {
+  console.log('hh')
+  return true
+}
+
+const rule: FormRule[] = [
+  {
+    name: 'test',
+    rules: [
+      {
+        reg: /^[A-Za-z]+$/,
+        message: 'ssss'
+      }
+    ]
+  }
+]
+
+const valid = () => {
   if (form.value) {
-    form.value.volidate()
+    form.value.validate()
   }
 }
 </script>
 <template>
-  <zl-form ref="form" v-model="data">
+  <zl-form ref="form" v-model="data" :rules="rule">
     <zl-row>
       <zl-col>
-        <zl-form-item label="判断收否字符串" prop="a">
+        <zl-form-item label="判断收否字符串" prop="test">
           <zl-input
-            name="test"
+            name="www"
             placeholder="请输入"
             type="text"
-            pattern="^[A-Za-z]+$"
-            v-model="data.a"
+            v-model="data.test"
+            :maxlength="10"
+            :clearable="true"
           ></zl-input>
         </zl-form-item>
       </zl-col>
@@ -53,6 +71,7 @@ const volid = () => {
             type="text"
             pattern="^[A-Za-z]+$"
             v-model="data.c"
+            :valid="check"
           ></zl-input>
         </zl-form-item>
       </zl-col>
@@ -66,7 +85,7 @@ const volid = () => {
         </zl-form-item>
       </zl-col>
     </zl-row>
-    <zl-button native-type="submit" @click="volid">volid</zl-button>
-    <zl-button native-type="submit" @click="click">clear</zl-button>
+    <zl-button native-type="button" @click="valid">valid</zl-button>
+    <zl-button native-type="button" @click="click">clear</zl-button>
   </zl-form>
 </template>

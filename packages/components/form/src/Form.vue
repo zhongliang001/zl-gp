@@ -10,7 +10,7 @@ const props = defineProps<FormProps>()
 
 const { namespace } = usenamespace('form')
 
-const { addItem, formItems, reset, _ref, volidate } = useForm(props)
+const { addItem, formItems, reset, _ref, validate } = useForm(props)
 
 onMounted(() => {
   console.log(formItems)
@@ -22,13 +22,13 @@ provide(
     addItem,
     ref: _ref,
     reset,
-    volidate
+    validate
   })
 )
 
 defineExpose({
   ref: _ref,
-  volidate,
+  validate,
   reset
 })
 </script>

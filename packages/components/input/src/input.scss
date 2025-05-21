@@ -1,4 +1,18 @@
 .zl-input {
   margin-left: 5px;
-  border: none;
+  text-align: left;
+
+  input {
+    border: none;
+  }
+
+  svg {
+    display: none;
+  }
+
+  &:hover {
+    svg {
+      display: unset;
+    }
+  }
 }

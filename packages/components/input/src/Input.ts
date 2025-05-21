@@ -17,6 +17,8 @@ export interface InputProps {
   required?: 'required'
   step?: number
   autocomplete?: 'on' | 'off'
+  clearable?: boolean
+  valid?: (value: string | undefined) => boolean
 }
 
 export const inputEmits = {
@@ -37,7 +39,7 @@ export const useInput = (
     const style =
       normalType.indexOf(props.type) > -1
         ? {
-            width: `calc(${props.width + '%'}  - 8px)`,
+            width: `calc(${props.width + '%'}  - 10px)`,
             height: props.height + 'px'
           }
         : {}
@@ -67,16 +69,12 @@ export const useInput = (
   const error = ref(false)
 
   const handlerInput = (event: Event) => {
-    const input: HTMLInputElement | null = _ref.value
     const { value } = event.target as HTMLInputElement
-    if (input) {
-      input.value = value
-    }
 
     emit('update:modelValue', value)
   }
 
-  const blur = () => {
+  const handlerBlur = () => {
     const input: HTMLInputElement | null = _ref.value
     const value = input?.value
 
@@ -89,7 +87,6 @@ export const useInput = (
         setMessage('输入数据格式不对')
         error.value = true
       }
-
       emit('update:modelValue', '')
     } else {
       if (setMessage) {
@@ -99,7 +96,7 @@ export const useInput = (
     }
   }
 
-  const focus = () => {
+  const handlerFocus = () => {
     const input: HTMLInputElement | null = _ref.value
     if (props.modelValue && input) {
       if (typeof props.modelValue === 'string') {
@@ -121,10 +118,10 @@ export const useInput = (
       if (formatter) {
         input.value = formatter(value)
       } else {
-        input.value = value ? value : ''
+        input.value = value && typeof value !== 'object' ? value : ''
       }
     }
-    if (value) {
+    if (value && typeof value !== 'object') {
       emit('update:modelValue', value)
     } else {
       emit('update:modelValue', '')
@@ -139,10 +136,10 @@ export const useInput = (
     _ref,
     _props,
     autocomplete,
-    blur,
+    handlerBlur,
     click,
     error,
-    focus,
+    handlerFocus,
     handlerInput,
     reset
   }

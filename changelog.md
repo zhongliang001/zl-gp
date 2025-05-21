@@ -53,3 +53,5 @@
 1. ZlPagination 调整分页字符间距, pageSize需要设置为可以修改
 2. 表单输入需要增加清空输入
 3. 修改FileInput
+4. ZlInput增加clearable属性
+5. 将单元测试由cypress改为vitest
