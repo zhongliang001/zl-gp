@@ -19,7 +19,6 @@ const click = () => {
 }
 
 const check = () => {
-  console.log('hh')
   return true
 }
 

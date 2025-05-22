@@ -1,4 +1,4 @@
-import type { InputEmits } from '@zl-gp/core'
+import type { InputEmits } from '@zl-gp/components'
 import dayjs from 'dayjs'
 import { h, ref, type Ref, type SetupContext, type VNode } from 'vue'
 
@@ -167,7 +167,6 @@ export const useDatePicker = (
             'td',
             {
               onClick: (event: Event) => {
-                console.log(currentYear)
                 selectYear(event, currentYear)
               }
             },

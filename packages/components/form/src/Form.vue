@@ -29,7 +29,8 @@ provide(
 defineExpose({
   ref: _ref,
   validate,
-  reset
+  reset,
+  formItems
 })
 </script>
 <template>

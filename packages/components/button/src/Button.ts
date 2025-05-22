@@ -34,6 +34,7 @@ export function useButton(emit: SetupContext<ButtonEmits>['emit'], props: Button
       event.stopPropagation()
       return
     }
+
     if (props.nativeType === 'reset') {
       if (formInjectkey && formInjectkey.reset) {
         formInjectkey.reset()

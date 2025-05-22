@@ -39,9 +39,9 @@ export const useInput = (
     const style =
       normalType.indexOf(props.type) > -1
         ? {
-            width: `calc(${props.width + '%'}  - 10px)`,
-            height: props.height + 'px'
-          }
+          width: `calc(${props.width + '%'}  - 10px)`,
+          height: props.height + 'px'
+        }
         : {}
     return {
       name: props.name,
@@ -70,15 +70,14 @@ export const useInput = (
 
   const handlerInput = (event: Event) => {
     const { value } = event.target as HTMLInputElement
-
     emit('update:modelValue', value)
   }
 
   const handlerBlur = () => {
     const input: HTMLInputElement | null = _ref.value
     const value = input?.value
-
     if (formatter && input) {
+
       input.value = formatter(value)
     }
     if (props.pattern && value && !new RegExp(props.pattern).test(value) && input) {
@@ -105,6 +104,7 @@ export const useInput = (
         input.value = props.modelValue.toString()
       }
     }
+
     if (setMessage) {
       setMessage('')
       error.value = false

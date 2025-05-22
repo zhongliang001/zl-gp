@@ -41,7 +41,7 @@ export type FormRule = {
 
 export type Rule = {
   reg: RegExp
-  validator: (value: unknown) => boolean
+  validator?: (value: unknown) => boolean
   message: string
 }
 

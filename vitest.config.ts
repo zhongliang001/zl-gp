@@ -11,7 +11,15 @@ export default mergeConfig(
       root: fileURLToPath(new URL('./', import.meta.url)),
       coverage: {
         enabled: true,
-        exclude: ['**/play/**', '**/dist/**', '**/theme/**'],
+        exclude: [
+          '**/play/**',
+          '**/dist/**',
+          '**/theme/**',
+          "**/packages/core/**",
+          "*config.ts",
+          "vitest.workspace.ts",
+          "**/index.ts"
+        ],
         excludeAfterRemap: true,
         include: ['**/*.{js,ts,vue}'],
         provider: 'v8', // 使用 v8 覆盖率
