@@ -8,7 +8,7 @@ export interface RowProps {
 }
 
 export type RowContext = {
-  gutter: number
-  addCol: (span: number, offset: number) => void
-  num: number
+  gutter?: number
+  addCol?: (span: number, offset: number) => void
+  num?: number
 }

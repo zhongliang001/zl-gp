@@ -43,5 +43,4 @@ describe('ZlForm', () => {
     await flushPromises()
     expect(wrapper.findComponent(ZlInput).vm.modelValue).toEqual('1')
   })
-
 })

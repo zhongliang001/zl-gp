@@ -1,9 +1,15 @@
 import { flushPromises, mount } from '@vue/test-utils'
-import { describe, expect, it } from 'vitest'
+import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 import ZlInput from '..'
 import { ZlForm, ZlFormItem, type FormRule } from '../../form'
+import ZlButton from '../../button'
 
 describe('ZlInput', () => {
+  let originalSubmit: () => void
+  beforeAll(() => {
+    originalSubmit = HTMLFormElement.prototype.submit
+    HTMLFormElement.prototype.submit = function () {}
+  })
   it('渲染内容', () => {
     const wrapper = mount(ZlInput, {
       props: {
@@ -34,7 +40,7 @@ describe('ZlInput', () => {
     expect(wrapper2.findComponent(ZlInput).vm.autocomplete).equals('off')
   })
 
-  it('测试focus',async () => {
+  it('测试focus', async () => {
     const wrapper = mount({
       setup() {
         const data = { test: '1' }
@@ -65,11 +71,11 @@ describe('ZlInput', () => {
     expect(await wrapper.findComponent(ZlFormItem).get('p').text()).toEqual('')
   })
 
-  it('测试blur',async () => {
+  it('测试blur', async () => {
     const wrapper = mount({
       setup() {
         const data = { test: '1' }
-         const pattern = /^[A-Za-z]+$/
+        const pattern = /^[A-Za-z]+$/
         return () => (
           <ZlForm v-model={data}>
             <ZlFormItem label="test" prop="test">
@@ -81,37 +87,37 @@ describe('ZlInput', () => {
     })
     await wrapper.findComponent(ZlInput).get('input').trigger('blur')
     expect(await wrapper.findComponent(ZlFormItem).get('p').text()).toEqual('输入数据格式不对')
-    await wrapper.findComponent(ZlInput).setValue("S")
+    await wrapper.findComponent(ZlInput).setValue('S')
     await wrapper.findComponent(ZlInput).get('input').trigger('blur')
     expect(await wrapper.findComponent(ZlFormItem).get('p').text()).toEqual('')
   })
 
-  it('测试format',async () => {
+  it('测试format', async () => {
     const wrapper = mount(ZlInput, {
       props: {
         modelValue: 'test',
         type: 'text',
         name: 'text',
-        formatter: (value:  string | number | undefined) => {
-          return 's'+ value
+        formatter: (value: string | number | undefined) => {
+          return 's' + value
         }
       }
     })
-    await wrapper.findComponent(ZlInput).get('input').setValue("S")
+    await wrapper.findComponent(ZlInput).get('input').setValue('S')
     await wrapper.findComponent(ZlInput).get('input').trigger('blur')
     await flushPromises()
     expect(await wrapper.findComponent(ZlInput).get('input').element.value).toEqual('sS')
   })
 
-  it('测试reset1',async () => {
+  it('测试reset1', async () => {
     const wrapper = mount({
       setup() {
         const data = { test: 1 }
-        const formatter=(value:  string | number | undefined) => {
-          return 's'+ value
+        const formatter = (value: string | number | undefined) => {
+          return 's' + value
         }
         return () => (
-          <ZlForm v-model={data} >
+          <ZlForm v-model={data}>
             <ZlFormItem label="test" prop="test">
               <ZlInput type="text" name="test" v-model={data.test} formatter={formatter}></ZlInput>
             </ZlFormItem>
@@ -127,15 +133,16 @@ describe('ZlInput', () => {
     expect(await wrapper.findComponent(ZlInput).get('input').element.value).toEqual('s1')
   })
 
-  it('测试reset2',async () => {
+  it('测试reset2', async () => {
     const wrapper = mount({
       setup() {
         const data = { test: '' }
         return () => (
-          <ZlForm v-model={data} >
+          <ZlForm v-model={data}>
             <ZlFormItem label="test" prop="test">
-              <ZlInput type="text" name="test" v-model={data.test} ></ZlInput>
+              <ZlInput type="text" name="test" v-model={data.test}></ZlInput>
             </ZlFormItem>
+            <ZlButton nativeType="reset"></ZlButton>
           </ZlForm>
         )
       }
@@ -144,7 +151,7 @@ describe('ZlInput', () => {
     await wrapper.findComponent(ZlInput).get('input').trigger('blur')
     await flushPromises()
     expect(await wrapper.findComponent(ZlInput).get('input').element.value).equals('2')
-    await wrapper.findComponent(ZlForm).vm.reset()
+    await wrapper.findComponent(ZlButton).get('button').trigger('click')
     expect(await wrapper.findComponent(ZlInput).get('input').element.value).toEqual('')
   })
 
@@ -152,19 +159,28 @@ describe('ZlInput', () => {
     const wrapper = mount({
       setup() {
         const data = { test: '' }
-        const valid = () => {
-          return false
+        const valid = (value: string | undefined) => {
+          return value === '1'
         }
         return () => (
-          <ZlForm v-model={data} >
+          <ZlForm v-model={data}>
             <ZlFormItem label="test" prop="test">
-              <ZlInput type="text" name="test" v-model={data.test} valid={valid} ></ZlInput>
+              <ZlInput type="text" name="test" v-model={data.test} valid={valid}></ZlInput>
             </ZlFormItem>
+            <ZlButton nativeType="submit"></ZlButton>
           </ZlForm>
         )
       }
     })
-    await wrapper.findComponent(ZlForm).vm.validate()
+    await wrapper.findComponent(ZlButton).get('button').trigger('click')
     expect(await wrapper.findComponent(ZlFormItem).get('p').text()).toEqual('校验失败')
+    await wrapper.findComponent(ZlInput).get('input').setValue(1)
+    await wrapper.findComponent(ZlButton).get('button').trigger('click')
+    await flushPromises()
+    expect(await wrapper.findComponent(ZlFormItem).get('p').text()).toEqual('')
+  })
+
+  afterAll(() => {
+    HTMLFormElement.prototype.submit = originalSubmit
   })
 })

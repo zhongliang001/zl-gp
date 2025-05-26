@@ -1,23 +1,7 @@
 import type { InputEmits } from '@zl-gp/components'
 import dayjs from 'dayjs'
-import { h, ref, type Ref, type SetupContext, type VNode } from 'vue'
-
-export type Date = {
-  year: number
-  month: number
-  day: number
-  dStr: string
-}
-
-export interface DatePickerProps {
-  editable?: boolean
-  format?: string
-  disabled?: boolean
-  modelValue?: string
-  name?: string
-  showTime?: boolean
-  weekStart?: 'monday' | 'sunday'
-}
+import { h, ref, watch, type Ref, type SetupContext, type VNode } from 'vue'
+import type { Date } from './type'
 
 export const useDatePicker = (
   year: Ref<number>,
@@ -29,6 +13,12 @@ export const useDatePicker = (
   input: Ref<HTMLInputElement | null>,
   show: Ref<string>
 ) => {
+  watch(
+    () => [year.value, month.value],
+    (newVal) => {
+      cal(newVal[0], newVal[1])
+    }
+  )
   const addYear = () => {
     year.value++
   }
@@ -230,7 +220,9 @@ export const useDatePicker = (
   }
 
   const chooseDate = (event: Event) => {
+    console.log('disabled1')
     if (disabled) {
+      console.log('disabled2')
       return
     }
     cal(year.value, month.value)
@@ -262,10 +254,20 @@ export const useDatePicker = (
     genYearTable()
   }
 
+  const getYear = () => {
+    return year
+  }
+
+  const getMonth = () => {
+    return month
+  }
+
   return {
     addMonth,
     addYear,
     dateTableCache,
+    getMonth,
+    getYear,
     monthTableCache,
     subYear,
     subMonth,

@@ -22,16 +22,18 @@ const useCol = (props: ColProps, gutter: number, rowContext: RowContext | undefi
       style: {
         'padding-left': gutter ? gutter / 2 + 'px' : '',
         'padding-right': gutter ? gutter / 2 + 'px' : '',
-        'margin-left': rowContext
-          ? rowContext.num != 0
-            ? (1 / rowContext.num) * offset * 100 + '%'
+        'margin-left':
+          rowContext && rowContext.num
+            ? rowContext.num != 0
+              ? (1 / rowContext.num) * offset * 100 + '%'
+              : '100 %'
+            : '100 %',
+        width:
+          rowContext && rowContext.num
+            ? rowContext.num != 0
+              ? (1 / rowContext.num) * span * 100 + '%'
+              : '100 %'
             : '100 %'
-          : '100 %',
-        width: rowContext
-          ? rowContext.num != 0
-            ? (1 / rowContext.num) * span * 100 + '%'
-            : '100 %'
-          : '100 %'
       }
     }
   }

@@ -15,7 +15,8 @@ const emit: SetupContext<ButtonEmits>['emit'] = defineEmits(buttonEmits)
 const { eventHandler, _props, _ref } = useButton(emit, props)
 
 defineExpose({
-  ref: _ref
+  ref: _ref,
+  eventHandler: eventHandler
 })
 </script>
 <template>

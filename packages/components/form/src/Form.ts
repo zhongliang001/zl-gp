@@ -67,11 +67,14 @@ export const useForm = (props: FormProps) => {
     formItems.value.forEach((item) => {
       const name = item.prop
       if (item.valid) {
-        result = item.valid()
+        const da = data ? data[name] : undefined
+        result = item.valid(da)
         if (!result) {
           item.setMessage('校验失败')
           result = false
-          return
+        } else {
+          item.setMessage('')
+          result = true
         }
       }
       const formRule = find(rules, (rule: FormRule) => {

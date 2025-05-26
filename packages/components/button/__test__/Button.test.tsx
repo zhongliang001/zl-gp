@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
 import Button from '../src/Button.vue'
 import { ZlForm, ZlFormItem } from '../../form'
@@ -27,11 +27,17 @@ describe('ZlButton', () => {
     expect(wrapper.emitted()).toHaveProperty('click')
   })
 
-  it('禁用状态', () => {
+  it('禁用状态', async () => {
     const wrapper = mount(Button, {
       attrs: { disabled: true }
     })
     expect(wrapper.attributes('disabled')).toBeDefined()
+    const event = { stopPropagation: vi.fn() }
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    //  @ts-expect-error
+    await wrapper.vm.eventHandler(event)
+    expect(event.stopPropagation).toHaveBeenCalled()
+    expect(wrapper.emitted('click')).toBeUndefined()
   })
 
   it('测试reset', async () => {
