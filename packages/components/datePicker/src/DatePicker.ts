@@ -220,9 +220,7 @@ export const useDatePicker = (
   }
 
   const chooseDate = (event: Event) => {
-    console.log('disabled1')
     if (disabled) {
-      console.log('disabled2')
       return
     }
     cal(year.value, month.value)

@@ -43,6 +43,7 @@ export const useSelect = (
       input.value = val.name
     }
     emit('update:modelValue', val.value)
+    iconName.value = 'arrow-right'
     hidden.value = true
     if (props.filter) {
       filterWord()
@@ -65,14 +66,6 @@ export const useSelect = (
     iconName.value = 'arrow-right'
   }
 
-  const handlerInput = (event: Event, isComposing: boolean) => {
-    const target = event.target
-    iconName.value = 'arrow-down'
-    if (!isComposing) {
-      handlerEnd(target)
-    }
-  }
-
   const handlerEnd = (target: EventTarget | null) => {
     if (!props.filter) {
       return
@@ -92,7 +85,10 @@ export const useSelect = (
       if (word) {
         if (name.indexOf(word) !== -1) {
           option.filter = false
-          option.info = option.name.replaceAll(word, "<p class='filter'>" + word + '</p>')
+          option.info = option.name.replace(
+            new RegExp(word, 'g'),
+            "<p class='filter'>" + word + '</p>'
+          )
         } else {
           option.filter = true
         }
@@ -123,7 +119,6 @@ export const useSelect = (
     addOption,
     handlerClick,
     handlerEnd,
-    handlerInput,
     handlerMouseleave,
     hidden,
     init,

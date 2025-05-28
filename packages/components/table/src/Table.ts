@@ -1,5 +1,6 @@
 import { reactive, ref, type InjectionKey, type Reactive, type Ref } from 'vue'
 import type { TableColumn } from './TableColumn'
+import remove from 'lodash-es/remove'
 
 export interface TableProps {
   data: { [key: string]: string | number }[]
@@ -70,7 +71,9 @@ export const useTable = (prop: TableProps) => {
       if (selMulInd.value.indexOf(index) === -1) {
         selMulInd.value.push(index)
       } else {
-        selMulInd.value.splice(selMulInd.value.indexOf(index))
+        remove(selMulInd.value, (selVal) => {
+          return selVal === index
+        })
       }
     }
   }

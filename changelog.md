@@ -55,3 +55,4 @@
 3. 修改FileInput
 4. ZlInput增加clearable属性
 5. 将单元测试由cypress改为vitest
+6. 给组件增加vitest单元测试

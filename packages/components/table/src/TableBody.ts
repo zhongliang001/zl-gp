@@ -7,7 +7,6 @@ import {
   type VNodeNormalizedChildren
 } from 'vue'
 import type { Store } from './Table.ts'
-import { ZlInput } from '@zl-gp/components/input'
 import { usenamespace } from '@zl-gp/hooks'
 
 export interface TableBodyProps {
@@ -61,7 +60,7 @@ export const useTableBody = (store: Store, tbody: ShallowRef<VNode>) => {
               width: 16 + 'px'
             }
           },
-          h(ZlInput, {
+          h('input', {
             name: 'sel',
             id: 'input-' + index,
             'aria-label': index,
