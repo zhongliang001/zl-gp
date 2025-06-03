@@ -37,6 +37,7 @@
   "author": "",
   "license": "ISC",
   "publishConfig": {
-    "registry": "http://192.168.31.194:8081/repository/npmh/"
+    "registry": "http://192.168.31.194:8081/repository/npmh/",
+    "_auth": "ae0ef559-a17e-36c0-b277-5705fe15f46e"
   }
 }
