@@ -1,47 +1,10 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
-import Components from 'unplugin-vue-components/vite'
-import AutoImport from 'unplugin-auto-import/vite'
-import { visualizer } from 'rollup-plugin-visualizer'
 import { fileURLToPath } from 'url'
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    vue(),
-    vueDevTools(),
-    visualizer({
-      gzipSize: true,
-      brotliSize: true,
-      emitFile: false,
-      filename: 'dist/test.html', // 分析图生成的文件名
-      open: true // 如果存在本地服务端口，将在打包后自动展示
-    }),
-    AutoImport({
-      imports: ['vue', 'vue-router'],
-      packagePresets: [
-        {
-          package: 'zl-gp',
-          ignore: ['default', 'zl-gp']
-        }
-      ],
-      dts: true
-    }),
-    Components({
-      resolvers: [
-        (name) => {
-          if (name === 'default' || name === 'RouterLink' || name === 'RouterView') {
-            return undefined
-          }
-          const resolved = {
-            name: name,
-            from: `zl-gp`
-          }
-          return resolved
-        }
-      ]
-    })
-  ],
+  plugins: [vue(), vueDevTools()],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
