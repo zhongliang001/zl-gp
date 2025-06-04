@@ -16,10 +16,28 @@
 
   .picker {
     background-color: white;
+
+    > div {
+      border: 1px solid black;
+      border-top: none;
+      border-radius: var(--border-radius-bottom);
+    }
   }
 
   table {
     margin: auto;
     width: 100%;
+  }
+
+  td {
+    border-radius: var(--border-radius);
+
+    &:hover {
+      background-color: var(--info);
+    }
+  }
+
+  .sel {
+    background-color: var(--primary);
   }
 }

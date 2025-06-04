@@ -62,6 +62,7 @@ describe('测试datepicker', () => {
     expect(tds.length).toBeGreaterThan(0)
     const td: DOMWrapper<HTMLTableCellElement> = getTd(tds, today)
     await td.trigger('click')
+    expect(td.classes()).toContain('sel')
     expect(wrapper.get('input').element.value).equals(dayjs().format('YYYY-MM-DD'))
   })
 

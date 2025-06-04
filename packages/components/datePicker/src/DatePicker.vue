@@ -49,6 +49,7 @@ const hiddenDaySel = () => {
 
 const month = ref(dayjs().month() + 1)
 const year = ref(dayjs().year())
+const day = ref(dayjs().date())
 const {
   addMonth,
   addYear,
@@ -64,7 +65,7 @@ const {
   yearTableCache,
   addYearPage,
   subYearPage
-} = useDatePicker(year, month, weekStart, format, emit, disabled, input, show)
+} = useDatePicker(day, year, month, weekStart, format, emit, disabled, input, show)
 
 defineExpose(
   reactive<DatePickerInstance>({

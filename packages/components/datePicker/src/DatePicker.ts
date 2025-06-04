@@ -4,6 +4,7 @@ import { h, ref, watch, type Ref, type SetupContext, type VNode } from 'vue'
 import type { Date } from './type'
 
 export const useDatePicker = (
+  day: Ref<number>,
   year: Ref<number>,
   month: Ref<number>,
   weekStart: 'monday' | 'sunday',
@@ -96,7 +97,11 @@ export const useDatePicker = (
     if (date.year != year.value) {
       year.value = date.year
     }
+    if (date.day != day.value) {
+      day.value = date.day
+    }
     emit('update:modelValue', result)
+    show.value = ''
   }
 
   const selectMonth = (event: Event, n: number) => {
@@ -125,7 +130,21 @@ export const useDatePicker = (
     for (let i = 0; i < dates.length / 7; i++) {
       const tds: VNode[] = []
       for (let n = i * 7; n < (i + 1) * 7; n++) {
-        tds.push(h('td', { onClick: () => selectDate(dates[n]) }, dates[n].day))
+        tds.push(
+          h(
+            'td',
+            {
+              class: {
+                sel:
+                  dates[n].year === year.value &&
+                  dates[n].month === month.value &&
+                  dates[n].day === day.value
+              },
+              onClick: () => selectDate(dates[n])
+            },
+            dates[n].day
+          )
+        )
       }
       tbody.push(h('tr', tds))
     }
@@ -137,7 +156,18 @@ export const useDatePicker = (
     for (let i = 0; i < 4; i++) {
       const tds: VNode[] = []
       for (let n = i * 3 + 1; n < (i + 1) * 3 + 1; n++) {
-        tds.push(h('td', { onClick: (event: Event) => selectMonth(event, n) }, n))
+        tds.push(
+          h(
+            'td',
+            {
+              class: {
+                sel: n === month.value
+              },
+              onClick: (event: Event) => selectMonth(event, n)
+            },
+            n
+          )
+        )
       }
       tbody.push(h('tr', tds))
     }
@@ -156,6 +186,9 @@ export const useDatePicker = (
           h(
             'td',
             {
+              class: {
+                sel: currentYear === year.value
+              },
               onClick: (event: Event) => {
                 selectYear(event, currentYear)
               }

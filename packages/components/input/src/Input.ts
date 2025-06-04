@@ -39,7 +39,7 @@ export const useInput = (
     const style =
       normalType.indexOf(props.type) > -1
         ? {
-            width: `calc(${props.width + '%'}  - 10px)`,
+            width: `calc(${props.width + '%'}  - 14px)`,
             height: props.height + 'px'
           }
         : {}
