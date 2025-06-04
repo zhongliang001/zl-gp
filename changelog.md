@@ -56,3 +56,5 @@
 4. ZlInput增加clearable属性
 5. 将单元测试由cypress改为vitest
 6. 给组件增加vitest单元测试
+7. 新增commitlint + husky相关的依赖和配置，对代码提交进行规范
+8. 给publish增加auth，避免每次发布都需要登录
