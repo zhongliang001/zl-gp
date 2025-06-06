@@ -1,8 +1,9 @@
 <script lang="ts" setup>
-import { h, reactive, ref } from 'vue'
-import { usePagination, type Pagination, type PaginationProps } from './Pagination'
+import { h, ref } from 'vue'
+import { usePagination } from './Pagination'
 import { usenamespace } from '@zl-gp/hooks'
 import { ZlIcon } from '@zl-gp/components/icon'
+import type { PaginationProps } from './types'
 
 defineOptions({
   name: 'ZlPagination'
@@ -27,11 +28,9 @@ const renderPageItem = (idx: number) => {
     idx.toString()
   )
 }
-defineExpose(
-  reactive<Pagination>({
-    currentPageNum: currentPageNum
-  })
-)
+defineExpose({
+  currentPageNum: currentPageNum
+})
 </script>
 <template>
   <div :class="namespace.className">

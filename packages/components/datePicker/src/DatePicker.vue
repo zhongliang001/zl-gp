@@ -2,12 +2,12 @@
 import { usenamespace, useObserver } from '@zl-gp/hooks'
 import { useDatePicker } from './DatePicker'
 import dayjs from 'dayjs'
-import { onMounted, reactive, ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { ZlIcon } from '@zl-gp/components/icon'
 import { createPopper } from '@popperjs/core/lib/popper-lite'
 import offset from '@popperjs/core/lib/modifiers/offset'
 import { OnClickOutside } from '@vueuse/components'
-import type { DatePickerInstance, DatePickerProps } from './type'
+import type { DatePickerProps } from './types'
 
 defineOptions({
   name: 'ZlDatePicker'
@@ -67,12 +67,10 @@ const {
   subYearPage
 } = useDatePicker(day, year, month, weekStart, format, emit, disabled, input, show)
 
-defineExpose(
-  reactive<DatePickerInstance>({
-    getMonth: getMonth,
-    getYear: getYear
-  })
-)
+defineExpose({
+  getMonth: getMonth,
+  getYear: getYear
+})
 </script>
 <template>
   <OnClickOutside @trigger="hiddenDaySel">

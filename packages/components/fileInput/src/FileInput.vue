@@ -1,10 +1,11 @@
 <script lang="ts" setup>
 import { usenamespace } from '@zl-gp/hooks'
-import { useFileInput, type FileInputProps } from './FileInput'
+import { useFileInput } from './FileInput'
 import { onMounted, ref } from 'vue'
 import { createPopper } from '@popperjs/core/lib/popper-lite'
 import offset from '@popperjs/core/lib/modifiers/offset'
 import { ZlIcon } from '../../icon'
+import type { FileInputProps } from './types'
 
 defineOptions({
   name: 'ZlFileInput'

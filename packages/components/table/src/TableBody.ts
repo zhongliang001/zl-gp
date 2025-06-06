@@ -6,12 +6,8 @@ import {
   type VNode,
   type VNodeNormalizedChildren
 } from 'vue'
-import type { Store } from './Table.ts'
 import { usenamespace } from '@zl-gp/hooks'
-
-export interface TableBodyProps {
-  store: Store
-}
+import type { Store } from './types'
 
 export const useTableBody = (store: Store, tbody: ShallowRef<VNode>) => {
   const trClick = (index: number, node: VNode) => {

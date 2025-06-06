@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 import { usenamespace } from '@zl-gp/hooks'
-import { type ButtonProps, type ButtonEmits, buttonEmits, useButton } from './Button'
+import { useButton } from './Button'
 import { type SetupContext } from 'vue'
+import { buttonEmits, type ButtonEmits, type ButtonProps } from './types'
 
 defineOptions({
   name: 'ZlButton'

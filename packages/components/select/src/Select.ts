@@ -1,22 +1,7 @@
 import { ref, type InjectionKey, type Ref, type SetupContext } from 'vue'
-import type { Option } from './SelectOption'
+import type { Option, SelectContext, SelectEmits, SelectProps } from './types'
 
 export const SelectInjectKey: InjectionKey<SelectContext> = Symbol('SelectInjectKey')
-
-export interface SelectProps {
-  name: string
-  modelValue?: string | number
-  disabled?: boolean
-  filter?: boolean
-}
-
-export type SelectContext = {
-  addOption: (option: Option) => void
-}
-
-export type SelectEmits = {
-  ['update:modelValue']: (value: string) => string
-}
 
 export const useSelect = (
   props: SelectProps,

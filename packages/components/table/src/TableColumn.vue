@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { inject, onMounted, reactive, ref, useSlots } from 'vue'
-import type { Instance, TableColumn } from './TableColumn'
-import { TableInjectkey, type TableContext } from './Table'
+import { inject, onMounted, ref, useSlots } from 'vue'
+import { TableInjectkey } from './Table'
+import type { TableColumn, TableContext } from './types'
 
 defineOptions({
   name: 'ZlTableColumn'
@@ -38,11 +38,9 @@ type index = number
 const row = ref<Row>()
 const index = ref<index>()
 
-defineExpose(
-  reactive<Instance>({
-    ref: _ref
-  })
-)
+defineExpose({
+  ref: _ref
+})
 </script>
 <template>
   <div ref="_ref">

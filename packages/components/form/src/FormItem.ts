@@ -1,24 +1,8 @@
 import { onMounted, ref, type InjectionKey, type Ref } from 'vue'
-import type { Field, FormContext } from './Form.ts'
 import { createPopper } from '@popperjs/core/lib/popper-lite'
+import type { Field, FormContext, FormItemContext } from './types.ts'
 
 export const FormItemInjectKey: InjectionKey<FormItemContext> = Symbol('FormItemContext')
-export interface FormItemProps {
-  prop: string
-  label: string
-}
-
-export type FormItem = {
-  prop: string
-  valid?: (msg?: string) => boolean
-  field?: Field
-  setMessage: (msg: string) => void
-}
-
-export type FormItemContext = {
-  addFiled: (filed: Field) => void
-  setMessage: (msg: string) => void
-}
 
 export const useFormItem = (
   prop: string,

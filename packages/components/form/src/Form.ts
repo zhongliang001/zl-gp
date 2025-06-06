@@ -1,49 +1,8 @@
 import { ref, type InjectionKey, type Ref } from 'vue'
-import type { FormItem } from './FormItem'
 import { clone, find } from 'lodash-es'
-
-export type Field = {
-  reset: (value: string | undefined) => void
-  valid?: (msg?: string | undefined) => boolean
-}
-
-export interface FormProps {
-  name?: string
-  url?: string
-  enctype?: 'application/x-www-form-urlencoded' | 'multipart/form-data' | 'text/plain'
-  method?: 'POST' | 'GET' | 'post' | 'get'
-  novalidate?: boolean
-  target?: '_blank' | '_self' | '_parent' | '_top'
-  modelValue?: { [key: string]: string }
-  rules?: FormRule[]
-}
-
-export interface FormInstance {
-  reset: () => void
-  value: unknown
-  ref: HTMLFormElement | null
-  validate: () => void
-}
+import type { FormContext, FormItem, FormProps, FormRule } from './types'
 
 export const FormInjectkey: InjectionKey<FormContext> = Symbol('FormInjectkey')
-
-export type FormContext = {
-  addItem: (formItem: FormItem) => void
-  ref: HTMLFormElement | null
-  reset: () => void
-  validate: () => boolean
-}
-
-export type FormRule = {
-  name: string
-  rules: Rule[]
-}
-
-export type Rule = {
-  reg: RegExp
-  validator?: (value: unknown) => boolean
-  message: string
-}
 
 export const formEmits = {
   ['update:modelValue']: (value: string) => value

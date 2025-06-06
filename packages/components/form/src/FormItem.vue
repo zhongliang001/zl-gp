@@ -1,8 +1,9 @@
 <script lang="ts" setup>
 import { inject, provide, reactive, ref } from 'vue'
 import { FormInjectkey } from './Form'
-import { FormItemInjectKey, useFormItem, type FormItemProps } from './FormItem'
+import { FormItemInjectKey, useFormItem } from './FormItem'
 import { usenamespace } from '@zl-gp/hooks'
+import type { FormItemProps } from './types'
 defineOptions({
   name: 'ZlFormItem'
 })

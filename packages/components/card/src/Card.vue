@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 import { usenamespace } from '@zl-gp/hooks'
-import { useCard, type CardProps } from './Card'
+import { useCard } from './Card'
 import { ref } from 'vue'
+import type { CardProps } from './types'
 
 const prop = withDefaults(defineProps<CardProps>(), {
   height: 150,

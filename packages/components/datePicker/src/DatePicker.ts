@@ -1,7 +1,7 @@
-import type { InputEmits } from '@zl-gp/components'
 import dayjs from 'dayjs'
 import { h, ref, watch, type Ref, type SetupContext, type VNode } from 'vue'
-import type { Date } from './type'
+import type { Date } from './types'
+import type { InputEmits } from '../../input/src/types'
 
 export const useDatePicker = (
   day: Ref<number>,

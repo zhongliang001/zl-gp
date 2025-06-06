@@ -1,20 +1,6 @@
 import { FormInjectkey } from '../../form'
 import { inject, ref, type SetupContext } from 'vue'
-
-export interface ButtonProps {
-  name?: string
-  disabled?: boolean
-  nativeType?: 'button' | 'submit' | 'reset' | undefined
-  type?: 'primary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' | 'secondary'
-  width?: number
-  fontSize?: number
-}
-
-export const buttonEmits = {
-  click: (event: MouseEvent) => event instanceof MouseEvent
-}
-
-export type ButtonEmits = typeof buttonEmits
+import type { ButtonEmits, ButtonProps } from './types'
 
 export function useButton(emit: SetupContext<ButtonEmits>['emit'], props: ButtonProps) {
   const _ref = ref<HTMLButtonElement>()

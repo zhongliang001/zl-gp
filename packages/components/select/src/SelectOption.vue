@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { inject, onMounted } from 'vue'
-import type { SelectOptionProps } from './SelectOption'
 import { SelectInjectKey } from './Select'
+import type { SelectOptionProps } from './types'
 
 defineOptions({
   name: 'ZlSelectOption'

@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import { usenamespace } from '@zl-gp/hooks'
-import { RowInjectKey, type RowContext } from '@zl-gp/components/row/src/Row'
+import { RowInjectKey } from '@zl-gp/components/row/src/Row'
 import { inject, onMounted } from 'vue'
-import useCol, { type ColProps } from './Col'
+import useCol from './Col'
+import type { ColProps } from './types'
+import type { RowContext } from '../../row'
+
 defineOptions({
   name: 'ZlCol'
 })

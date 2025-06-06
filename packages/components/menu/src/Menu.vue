@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 import { provide, reactive, ref, type Ref } from 'vue'
-import { type MenuProps, MenuInjectKey, useMenu } from './Menu'
+import { MenuInjectKey, useMenu } from './Menu'
 import { usenamespace } from '@zl-gp/hooks'
+import type { MenuProps } from './types'
 defineOptions({
   name: 'ZlMenu'
 })

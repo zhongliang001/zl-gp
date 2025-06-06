@@ -1,9 +1,10 @@
 <script lang="ts" setup>
 import { usenamespace } from '@zl-gp/hooks'
-import { useInput, type InputProps } from './Input'
+import { useInput } from './Input'
 import { inject, onMounted, ref } from 'vue'
 import { FormItemInjectKey } from '@zl-gp/components/form/src/FormItem'
 import { ZlIcon } from '@zl-gp/components'
+import type { InputProps } from './types'
 defineOptions({
   name: 'ZlInput'
 })

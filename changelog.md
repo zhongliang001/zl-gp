@@ -58,3 +58,8 @@
 6. 给组件增加vitest单元测试
 7. 新增commitlint + husky相关的依赖和配置，对代码提交进行规范
 8. 给publish增加auth，避免每次发布都需要登录
+
+### feature/v0.0.17 需要处理的问题
+
+1. 修改datePicker杨思涵
+2. 代码结构重构，提取每个组件的instance,并将组件涉及类型提取到单独的types.ts文件中

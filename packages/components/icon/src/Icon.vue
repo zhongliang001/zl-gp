@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { computed, type Ref } from 'vue'
-import type { InconInfo, IconJsonType, IconProps } from './icon'
+import type { InconInfo, IconJsonType, IconProps } from './types'
 import iconjson from './icon.json'
 defineOptions({
   name: 'ZlIcon'

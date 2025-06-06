@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 import { onMounted, provide, reactive } from 'vue'
-import { FormInjectkey, useForm, type FormProps } from './Form'
+import { FormInjectkey, useForm } from './Form'
 import { usenamespace } from '@zl-gp/hooks'
+import type { FormProps } from './types'
 
 defineOptions({
   name: 'ZlForm'

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { computed, useSlots, type Component, type VNode } from 'vue'
-import type { ContainerProps } from './Container'
+import type { ContainerProps } from './types'
 import { usenamespace } from '@zl-gp/hooks'
 
 defineOptions({

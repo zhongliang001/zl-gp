@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { h, nextTick, onMounted, ref, shallowRef, watch } from 'vue'
-import { useTableBody, type TableBodyProps } from './TableBody'
+import { useTableBody } from './TableBody'
+import type { TableBodyProps } from './types'
 
 defineOptions({
   name: 'ZlTableBody'

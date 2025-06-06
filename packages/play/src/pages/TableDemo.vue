@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { reactive, ref, watch } from 'vue'
-import type { TableInstance, Pagination } from 'zl-gp'
+import type { TableInstance, PaginationInstance } from 'zl-gp'
 
 const tableData = reactive([
   {
@@ -42,7 +42,7 @@ const getSel = () => {
   }
 }
 
-const pagination = ref<Pagination | null>(null)
+const pagination = ref<PaginationInstance | null>(null)
 
 // const currentPageNum = ref(pagination.value?.currentPageNum)
 

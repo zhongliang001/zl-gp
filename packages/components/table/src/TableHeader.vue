@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { usenamespace } from '@zl-gp/hooks'
-import type { TableHeaderProps } from './TableHeader'
+import type { TableHeaderProps } from './types'
 
 defineOptions({
   name: 'ZlTableHeader'

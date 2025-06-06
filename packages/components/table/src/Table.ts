@@ -1,38 +1,8 @@
-import { reactive, ref, type InjectionKey, type Reactive, type Ref } from 'vue'
-import type { TableColumn } from './TableColumn'
+import { reactive, ref, type InjectionKey } from 'vue'
 import remove from 'lodash-es/remove'
-
-export interface TableProps {
-  data: { [key: string]: string | number }[]
-  isIndex?: boolean
-  isShowChecked?: boolean
-  selType?: 'single' | 'multiple'
-}
-
-export interface Store {
-  data: Ref<{ [key: string]: string | number }[]>
-  columns: Reactive<TableColumn[]>
-  isIndex: boolean
-  isShowChecked: boolean
-  selType: 'single' | 'multiple'
-  select: (index: number) => void
-  selIndx: Ref<number>
-  selMulInd: Ref<number[]>
-  unSelect: () => void
-}
+import type { TableColumn, TableContext, TableProps } from './types'
 
 export const TableInjectkey: InjectionKey<TableContext> = Symbol('TableInjectkey')
-
-export type TableContext = {
-  addColumn: (column: TableColumn) => void
-  columns: TableColumn[]
-  data: { [key: string]: string | number }[]
-}
-
-export type TableInstance = {
-  ref: Ref
-  getSel: () => { [key: string]: string | number } | { [key: string]: string | number }[]
-}
 
 export const useTable = (prop: TableProps) => {
   const data = prop.data

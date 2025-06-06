@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import { usenamespace } from '@zl-gp/hooks'
 import { MenuInjectKey } from './Menu'
-import type { MenuItemProp } from './MenuItem'
 import { MenuSubInjectKey } from './MenuSub'
 
 import { inject } from 'vue'
 import { omit } from 'lodash-es'
+import type { MenuItemProp } from './types'
 defineOptions({
   name: 'ZlMenuItem'
 })

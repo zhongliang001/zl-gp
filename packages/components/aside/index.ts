@@ -1,6 +1,7 @@
-import { withInstall } from '../../utils'
+import { withInstall, type SFCWithInstall } from '@zl-gp/utils'
 import Aside from './src/Aside.vue'
 
-export const ZlAside = withInstall(Aside)
+export const ZlAside: SFCWithInstall<typeof Aside> = withInstall(Aside)
 
 export default ZlAside
+export * from './src/instances'

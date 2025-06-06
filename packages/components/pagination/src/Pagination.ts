@@ -1,12 +1,5 @@
 import type { Ref } from 'vue'
-
-export interface PaginationProps {
-  pageNum: number
-}
-
-export interface Pagination {
-  currentPageNum: Ref<number>
-}
+import type { PaginationProps } from './types'
 
 export const usePagination = (currentPageNum: Ref<number>, props: PaginationProps) => {
   const pageNum = props.pageNum

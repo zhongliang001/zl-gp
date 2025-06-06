@@ -1,8 +1,9 @@
 <script lang="ts" setup>
 import { usenamespace, useObserver } from '@zl-gp/hooks'
-import { MenuSubInjectKey, type MenuSubProp } from './MenuSub'
+import { MenuSubInjectKey } from './MenuSub'
 import { inject, onMounted, provide, reactive, ref } from 'vue'
 import { MenuInjectKey } from './Menu'
+import type { MenuSubProp } from './types'
 
 defineOptions({
   name: 'ZlMenuSub'

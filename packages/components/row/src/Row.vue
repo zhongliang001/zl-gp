@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { usenamespace } from '@zl-gp/hooks'
-import { RowInjectKey, type RowProps } from './Row'
+import { RowInjectKey } from './Row'
 import { provide, reactive, ref } from 'vue'
+import type { RowProps } from './types'
 
 defineOptions({
   name: 'ZlRow'

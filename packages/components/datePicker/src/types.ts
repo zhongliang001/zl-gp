@@ -1,10 +1,3 @@
-import type { Ref } from 'vue'
-
-export type DatePickerInstance = {
-  getYear: () => Ref<number>
-  getMonth: () => Ref<number>
-}
-
 export type Date = {
   year: number
   month: number

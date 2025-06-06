@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { HeaderProps } from './Header'
+import type { HeaderProps } from './types'
 
 defineOptions({
   name: 'ZlHeader'

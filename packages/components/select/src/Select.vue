@@ -1,8 +1,9 @@
 <script lang="ts" setup>
 import { useInputMethod, usenamespace, useObserver } from '@zl-gp/hooks'
-import { SelectInjectKey, useSelect, type SelectProps } from './Select'
+import { SelectInjectKey, useSelect } from './Select'
 import { onMounted, provide, reactive, ref, watch } from 'vue'
 import { ZlIcon } from '@zl-gp/components/icon'
+import type { SelectProps } from './types'
 
 defineOptions({
   name: 'ZlSelect'

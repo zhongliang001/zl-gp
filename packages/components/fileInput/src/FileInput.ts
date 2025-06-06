@@ -1,17 +1,6 @@
 import { ref, type Ref } from 'vue'
 import { remove } from 'lodash-es'
-
-export type FileInput = {
-  files: File[]
-}
-
-export interface FileInputProps {
-  name: string
-  modelValue?: string
-  accept?: string
-  multiple?: boolean
-  type?: 'primary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' | 'secondary'
-}
+import type { FileInputProps } from './types'
 
 export const useFileInput = (props: FileInputProps, _ref: Ref<HTMLInputElement | null>) => {
   const _prop = {

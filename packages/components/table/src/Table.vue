@@ -1,8 +1,9 @@
 <script lang="ts" setup>
 import { computed, provide, reactive, ref, type Ref } from 'vue'
-import { TableInjectkey, useTable, type Store, type TableInstance, type TableProps } from './Table'
+import { TableInjectkey, useTable } from './Table'
 import { usenamespace } from '@zl-gp/hooks'
 import { ZlTableBody, ZlTableHeader } from '..'
+import type { Store, TableProps } from './types'
 
 defineOptions({
   name: 'ZlTable'
@@ -42,12 +43,10 @@ const store: Ref<Store> = computed(() => {
   }
 })
 
-defineExpose(
-  reactive<TableInstance>({
-    ref: _ref,
-    getSel
-  })
-)
+defineExpose({
+  ref: _ref,
+  getSel
+})
 </script>
 <template>
   <table ref="_ref" :class="namespace.className">

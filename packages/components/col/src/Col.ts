@@ -1,10 +1,6 @@
-import type { RowContext } from '@zl-gp/components/row/src/Row'
 import { ref, watch } from 'vue'
-
-export interface ColProps {
-  span?: number
-  offset?: number
-}
+import type { ColProps } from './types'
+import type { RowContext } from '../../row'
 
 const useCol = (props: ColProps, gutter: number, rowContext: RowContext | undefined) => {
   const span = props.span ? props.span : 0
