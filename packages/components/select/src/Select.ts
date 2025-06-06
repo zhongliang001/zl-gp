@@ -1,4 +1,4 @@
-import { ref, type InjectionKey, type Ref, type SetupContext } from 'vue'
+import { getCurrentInstance, ref, type InjectionKey, type Ref, type SetupContext } from 'vue'
 import type { Option, SelectContext, SelectEmits, SelectProps } from './types'
 
 export const SelectInjectKey: InjectionKey<SelectContext> = Symbol('SelectInjectKey')
@@ -10,7 +10,7 @@ export const useSelect = (
   selInput: Ref<HTMLInputElement | null>
 ) => {
   const hidden = ref(true)
-  const options = ref<Option[]>([])
+  const internalInstance = getCurrentInstance()
   const _props = {
     // readonly: !props.filter,
     disabled: props.disabled
@@ -19,7 +19,11 @@ export const useSelect = (
   const iconName = ref('arrow-right')
 
   const addOption = (option: Option) => {
-    options.value.push(option)
+    if (props.options) {
+      props.options?.push(option)
+    } else {
+      props.options = [option]
+    }
   }
 
   const sel = (val: Option) => {
@@ -64,15 +68,15 @@ export const useSelect = (
    * 通过输入的内容筛选下拉选
    * @param word 输入的字符
    */
-  const filterWord = (word?: string) => {
-    options.value.forEach((option: Option) => {
+  const filterWord = async (word?: string) => {
+    await props.options?.forEach((option: Option) => {
       const name = option.name
       if (word) {
         if (name.indexOf(word) !== -1) {
           option.filter = false
           option.info = option.name.replace(
             new RegExp(word, 'g'),
-            "<p class='filter'>" + word + '</p>'
+            "<span class='filter'>" + word + '</span>'
           )
         } else {
           option.filter = true
@@ -82,6 +86,8 @@ export const useSelect = (
         option.info = option.name
       }
     })
+    // 强制更新页面
+    internalInstance?.update()
   }
 
   const init = () => {
@@ -90,7 +96,7 @@ export const useSelect = (
 
   const update = (val: string | number | undefined) => {
     const input: HTMLInputElement | null = selInput.value
-    options.value.forEach((option: Option) => {
+    props.options?.forEach((option: Option) => {
       if (option.value === val) {
         if (input) {
           input.value = option.name
@@ -108,7 +114,6 @@ export const useSelect = (
     hidden,
     init,
     iconName,
-    options,
     sel,
     update
   }

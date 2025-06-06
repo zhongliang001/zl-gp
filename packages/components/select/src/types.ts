@@ -3,6 +3,7 @@ export interface SelectProps {
   modelValue?: string | number
   disabled?: boolean
   filter?: boolean
+  options?: Option[]
 }
 
 export type SelectContext = {
@@ -21,6 +22,6 @@ export interface SelectOptionProps {
 export type Option = {
   name: string
   value: string
-  info: string
-  filter: boolean
+  info?: string
+  filter?: boolean
 }

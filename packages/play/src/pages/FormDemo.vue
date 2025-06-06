@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
-import type { FormInstance, FormRule } from 'zl-gp'
+import type { FormInstance, FormRule, Option } from 'zl-gp'
 
 const data = ref({
   test: '1',
@@ -9,6 +9,21 @@ const data = ref({
   d: '',
   file: ''
 })
+
+const options: Option[] = [
+  {
+    name: '测试1',
+    value: ''
+  },
+  {
+    name: '我是',
+    value: 't1'
+  },
+  {
+    name: '案例1',
+    value: 't2'
+  }
+]
 
 const form = ref<FormInstance | null>(null)
 
@@ -76,11 +91,7 @@ const valid = () => {
       </zl-col>
       <zl-col>
         <zl-form-item label="hi1" prop="d">
-          <zl-select name="select" v-model="data.d">
-            <zl-select-option name="测试1" value="t"></zl-select-option>
-            <zl-select-option name="我是" value="t1"></zl-select-option>
-            <zl-select-option name="案例1" value="t2"></zl-select-option>
-          </zl-select>
+          <zl-select name="select" v-model="data.d" :options="options"></zl-select>
         </zl-form-item>
       </zl-col>
     </zl-row>

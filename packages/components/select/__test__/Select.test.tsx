@@ -125,6 +125,7 @@ describe('测试select', () => {
       }
     })
     wrapper.find('input').setValue('中')
+    wrapper.find('input').trigger('click')
     await flushPromises()
     expect(wrapper.findAll('li')[0].classes().indexOf('hidden')).eql(-1)
     expect(wrapper.findAll('li')[1].classes().indexOf('hidden')).eql(-1)

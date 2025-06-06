@@ -10,7 +10,8 @@ defineOptions({
 })
 
 const props = withDefaults(defineProps<SelectProps>(), {
-  filter: true
+  filter: true,
+  options: () => []
 })
 
 const { namespace } = usenamespace('select')
@@ -27,7 +28,6 @@ const {
   hidden,
   init,
   iconName,
-  options,
   sel,
   update
 } = useSelect(props, emit, _ref, selInput)
@@ -86,7 +86,7 @@ defineExpose({
           v-for="(item, index) in options"
           :key="index"
           @click="sel(item)"
-          v-html="item.info"
+          v-html="item.info ? item.info : (item.info = item.name)"
         ></li>
       </ul>
     </div>

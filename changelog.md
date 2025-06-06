@@ -61,5 +61,6 @@
 
 ### feature/v0.0.17 需要处理的问题
 
-1. 修改datePicker杨思涵
-2. 代码结构重构，提取每个组件的instance,并将组件涉及类型提取到单独的types.ts文件中
+1. 修改ZlDatePicker样式
+2. 代码结构重构，
+3. ZlSelect组件通过绑定options属性配置下拉选项，解决手动输入时无法正确筛选选项
