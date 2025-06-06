@@ -9,6 +9,6 @@ export const ZlMenuItem: SFCWithInstall<typeof MenuItem> = withInstall(MenuItem)
 
 export const ZlMenuSub: SFCWithInstall<typeof MenuSub> = withInstall(MenuSub)
 
-export default { ZlMenu, ZlMenuItem, ZlMenuSub }
+export default ZlMenu
 export * from './src/instances'
 export * from './src/types'

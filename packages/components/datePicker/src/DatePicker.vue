@@ -77,21 +77,15 @@ defineExpose({
     <div ref="_ref" :class="namespace.className">
       <div>
         <div>
-          <input
-            ref="input"
-            type="text"
-            :name="name"
-            @click="chooseDate($event)"
-            :readonly="!editable"
-          />
+          <input ref="input" type="text" :name="name" @click="chooseDate()" :readonly="!editable" />
         </div>
         <div ref="picker" class="picker" :style="[{ width: offsetWidth + 'px' }]">
           <div class="datepicker" v-show="show === 'date'">
             <div>
               <ZlIcon name="arrow-double-left" :width="10" :height="10" @click="subYear" />
               <ZlIcon name="arrow-left" :width="10" :height="10" @click="subMonth" />
-              <button type="button" class="year-btn" @click="chooseYear($event)">{{ year }}</button>
-              <button type="button" class="month-btn" @click="chooseMonth($event)">
+              <button type="button" class="year-btn" @click="chooseYear()">{{ year }}</button>
+              <button type="button" class="month-btn" @click="chooseMonth()">
                 {{ month }}
               </button>
               <ZlIcon name="arrow-right" :width="10" :height="10" @click="addMonth" />

@@ -19,7 +19,7 @@ export default mergeConfig(
           "**/packages/core/**",
           "*config.ts",
           "vitest.workspace.ts",
-          "**/index.ts"
+          "**/index.ts", "**/instances.ts", "**/types.ts"
         ],
         excludeAfterRemap: true,
         include: ['**/*.{js,ts,vue}'],

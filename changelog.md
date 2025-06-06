@@ -64,3 +64,4 @@
 1. 修改ZlDatePicker样式
 2. 代码结构重构，
 3. ZlSelect组件通过绑定options属性配置下拉选项，解决手动输入时无法正确筛选选项
+4. 新增switch组件

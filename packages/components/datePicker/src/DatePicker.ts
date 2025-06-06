@@ -104,14 +104,12 @@ export const useDatePicker = (
     show.value = ''
   }
 
-  const selectMonth = (event: Event, n: number) => {
-    event.stopPropagation()
+  const selectMonth = (n: number) => {
     month.value = n
     show.value = 'date'
   }
 
-  const selectYear = (event: Event, n: number) => {
-    event.stopPropagation()
+  const selectYear = (n: number) => {
     year.value = n
     chooseMonth()
     show.value = 'month'
@@ -163,7 +161,7 @@ export const useDatePicker = (
               class: {
                 sel: n === month.value
               },
-              onClick: (event: Event) => selectMonth(event, n)
+              onClick: () => selectMonth(n)
             },
             n
           )
@@ -189,8 +187,8 @@ export const useDatePicker = (
               class: {
                 sel: currentYear === year.value
               },
-              onClick: (event: Event) => {
-                selectYear(event, currentYear)
+              onClick: () => {
+                selectYear(currentYear)
               }
             },
             currentYear
@@ -252,35 +250,31 @@ export const useDatePicker = (
     return da
   }
 
-  const chooseDate = (event: Event) => {
+  const chooseDate = () => {
     if (disabled) {
       return
     }
     cal(year.value, month.value)
-    event.stopPropagation()
+
     show.value = 'date'
   }
 
-  const chooseMonth = (event?: Event) => {
-    event?.stopPropagation()
+  const chooseMonth = () => {
     genMonthTable()
     show.value = 'month'
   }
 
-  const chooseYear = (event: Event) => {
-    event.stopPropagation()
+  const chooseYear = () => {
     genYearTable()
     show.value = 'year'
   }
 
-  const subYearPage = (event: Event) => {
-    event.stopPropagation()
+  const subYearPage = () => {
     year.value = year.value - 9
     genYearTable()
   }
 
-  const addYearPage = (event: Event) => {
-    event.stopPropagation()
+  const addYearPage = () => {
     year.value = year.value + 9
     genYearTable()
   }
