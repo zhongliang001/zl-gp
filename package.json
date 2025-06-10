@@ -15,7 +15,7 @@
     "type-check": "vue-tsc --build",
     "lint": "eslint . --fix",
     "lint:lint-staged": "lint-staged",
-    "format": "prettier --write packages/core/ packages/components packages/hooks packages/play packages/utils ",
+    "format": "prettier --write packages/core/ packages/components packages/hooks packages/play packages/utils *.config.ts tsconfig* ",
     "prepare": "husky",
     "commitlint": "commitlint --edit",
     "commit": "cz"

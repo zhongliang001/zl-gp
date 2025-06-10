@@ -48,8 +48,7 @@ defineExpose({
       @input="handlerInput"
       @blur="handlerBlur"
       @focus="handlerFocus"
-      @click="click"
-    />
+      @click="click" />
     <ZlIcon v-if="clearable" name="close" :width="10" @click="reset" />
   </div>
 </template>

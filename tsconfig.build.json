@@ -38,5 +38,10 @@
     "packages/components/**/*.ts",
     "packages/components/**/*.vue"
   ],
-  "exclude": ["packages/components/vitest.config.ts","packages/core/vite.es.config.ts","packages/core/vite.umd.config.ts","packages/play/**/*.*"]
+  "exclude": [
+    "packages/components/vitest.config.ts",
+    "packages/core/vite.es.config.ts",
+    "packages/core/vite.umd.config.ts",
+    "packages/play/**/*.*"
+  ]
 }

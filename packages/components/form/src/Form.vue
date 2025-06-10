@@ -43,8 +43,7 @@ defineExpose({
     :method="method"
     :enctype="enctype"
     :novalidate="novalidate"
-    :target="target"
-  >
+    :target="target">
     <slot></slot>
   </form>
 </template>

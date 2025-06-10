@@ -39,8 +39,7 @@ const sel = () => {
     <div
       :class="[{ 'sub-menu': menuInjectKey && menuInjectKey.flex == 'row' }]"
       @mouseleave="leave"
-      :style="[{ width: offsetWidth + 'px' }]"
-    >
+      :style="[{ width: offsetWidth + 'px' }]">
       <slot></slot>
     </div>
   </div>

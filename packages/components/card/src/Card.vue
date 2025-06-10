@@ -27,23 +27,20 @@ const { _props } = useCard(prop)
     <div
       v-if="$slots.header"
       :class="namespace.cs('header')"
-      :style="[{ height: headerHeight + `px` }]"
-    >
+      :style="[{ height: headerHeight + `px` }]">
       <slot name="header"></slot>
       <hr width="100%" />
     </div>
     <div
       v-if="$slots.default"
       :class="namespace.cs('body')"
-      :style="[{ height: bodyHeight + `px` }]"
-    >
+      :style="[{ height: bodyHeight + `px` }]">
       <slot />
     </div>
     <div
       v-if="$slots.footer"
       :class="namespace.cs('footer')"
-      :style="[{ height: footerHeight + `px` }]"
-    >
+      :style="[{ height: footerHeight + `px` }]">
       <hr width="100%" />
       <slot name="footer"></slot>
     </div>

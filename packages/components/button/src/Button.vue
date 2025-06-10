@@ -26,8 +26,7 @@ defineExpose({
     :class="[namespace.bs(type)]"
     :name="name"
     v-bind="_props"
-    @click="eventHandler"
-  >
+    @click="eventHandler">
     <slot></slot>
   </button>
 </template>

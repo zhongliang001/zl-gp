@@ -66,8 +66,7 @@ const valid = () => {
             type="text"
             v-model="data.test"
             :maxlength="10"
-            :clearable="true"
-          ></zl-input>
+            :clearable="true"></zl-input>
         </zl-form-item>
       </zl-col>
       <zl-col>
@@ -85,8 +84,7 @@ const valid = () => {
             type="text"
             pattern="^[A-Za-z]+$"
             v-model="data.c"
-            :valid="check"
-          ></zl-input>
+            :valid="check"></zl-input>
         </zl-form-item>
       </zl-col>
       <zl-col>

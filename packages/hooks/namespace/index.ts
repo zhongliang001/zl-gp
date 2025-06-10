@@ -10,6 +10,11 @@ export function usenamespace(id: string) {
       },
       cs: (name: string) => {
         return className + '-' + name
+      },
+      size: (size: string | undefined) => {
+        if (size) {
+          return id + '--' + size
+        }
       }
     }
   }

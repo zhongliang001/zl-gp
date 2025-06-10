@@ -74,8 +74,7 @@ defineExpose({
         @click="handlerClick"
         @compositionstart="compositionStart"
         @compositionend="compositionEnd($event, handlerEnd)"
-        @input="handlerInput($event, handlerEnd)"
-      />
+        @input="handlerInput($event, handlerEnd)" />
       <ZlIcon class="icon" :class="[{ hidden: disabled }]" :name="iconName"></ZlIcon>
     </div>
     <div :class="[namespace.cs('options'), { hidden: hidden }]">
@@ -86,8 +85,7 @@ defineExpose({
           v-for="(item, index) in options"
           :key="index"
           @click="sel(item)"
-          v-html="item.info ? item.info : (item.info = item.name)"
-        ></li>
+          v-html="item.info ? item.info : (item.info = item.name)"></li>
       </ul>
     </div>
   </div>

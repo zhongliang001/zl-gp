@@ -54,8 +54,7 @@ defineExpose({
             currentPageNum <= pageNum - 5 &&
             idx >= currentPageNum - 2 &&
             idx <= currentPageNum + 2
-          "
-        >
+          ">
           <component :is="renderPageItem(idx)"></component>
         </template>
         <template v-else-if="currentPageNum <= pageNum - 5 && idx === pageNum">

@@ -7,6 +7,7 @@
   --border-radius: 0.25rem;
   --border-radius-bottom: 0 0 0.25rem 0.25rem;
   --button-color-blue: blue;
+  --button-color-transparent: hsla(0, 0%, 0%, 0);
   --primary: hsl(216, 98%, 52%);
   --sucess: hsl(152, 69%, 31%);
   --danger: hsl(354, 70%, 54%);
@@ -16,6 +17,8 @@
   --light: hsl(210, 17%, 98%);
   --secondary: hsl(208, 7%, 46%);
   --color-white: hsl(0 0% 93%);
+  --switch-color: hsl(354, 70%, 54%);
+  --switch-checked-color: hsl(222, 17%, 88%);
   font-family:
     'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', 'Source Han Sans SC', 'Noto Sans CJK SC',
     'WenQuanYi Micro Hei', sans-serif;

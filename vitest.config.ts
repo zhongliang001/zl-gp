@@ -16,17 +16,21 @@ export default mergeConfig(
           '**/play/**',
           '**/dist/**',
           '**/theme/**',
-          "**/packages/core/**",
-          "*config.ts",
-          "vitest.workspace.ts",
-          "**/index.ts", "**/instances.ts", "**/types.ts"
+          '**/packages/core/**',
+          '*config.ts',
+          'vitest.workspace.ts',
+          '**/index.ts',
+          '**/instances.ts',
+          '**/types.ts',
+          'commitlint.config.js',
+          ' env.d.ts '
         ],
         excludeAfterRemap: true,
         include: ['**/*.{js,ts,vue}'],
         provider: 'v8', // 使用 v8 覆盖率
         reportsDirectory: './coverage',
         reporter: ['text', 'html']
-      },
-    },
-  }),
+      }
+    }
+  })
 )

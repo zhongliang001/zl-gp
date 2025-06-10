@@ -35,8 +35,7 @@ const handlerClick = () => {
       }
     ]"
     :prop="props.prop"
-    @click="handlerClick"
-  >
+    @click="handlerClick">
     <RouterLink v-bind="_props"><slot></slot></RouterLink>
   </div>
 </template>

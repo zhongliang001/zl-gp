@@ -68,8 +68,7 @@ watch(
             name="test"
             placeholder="请输入"
             type="text"
-            v-model="scope.row.date"
-          ></zl-input>
+            v-model="scope.row.date"></zl-input>
         </template>
       </template>
     </zl-table-column>
@@ -80,8 +79,7 @@ watch(
             name="name"
             placeholder="请输入"
             type="text"
-            v-model="scope.row.name"
-          ></zl-input>
+            v-model="scope.row.name"></zl-input>
         </template>
       </template>
     </zl-table-column>

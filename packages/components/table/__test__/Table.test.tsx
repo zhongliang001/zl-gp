@@ -64,8 +64,7 @@ describe('测试Table', () => {
                     modelValue={scope.row.date}
                     onUpdate:modelValue={(val: string | number) => {
                       if (scope.row) scope.row.date = val
-                    }}
-                  ></ZlInput>
+                    }}></ZlInput>
                 ) : null
             }}
           />,
