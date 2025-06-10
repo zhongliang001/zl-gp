@@ -1,12 +1,45 @@
-.switch {
-  border: 1px solid rgb(255, 73, 73);
-  width: 40px;
-  height: 17px;
-  border-radius: 0.5rem;
-  vertical-align: middle;
-  display: table-cell;
-  vertical-align: middle;
-  background-color: rgb(255, 73, 73);
+@use '../../base.scss';
+
+.zl-switch {
+  height: 30px;
+  text-align: left;
+  align-items: center;
+  display: inline-flex;
+  position: relative;
+
+  .text {
+    display: flex;
+    color: white;
+
+    .left {
+      padding: 0 16px 0 1px;
+    }
+
+    .right {
+      padding: 0px 12px 0px 1px;
+    }
+
+    span {
+      line-height: 16px;
+    }
+  }
+
+  .switch {
+    border: 1px solid var(--button-color-transparent);
+    min-width: 40px;
+    height: 18px;
+    border-radius: 1rem;
+    vertical-align: middle;
+    background-color: var(--switch-color);
+    display: inline-flex;
+    transition: background-color 2s;
+  }
+
+  &.checked {
+    .switch {
+      background-color: var(--switch-checked-color);
+    }
+  }
 
   .circle {
     border: 1px solid white;
@@ -16,15 +49,103 @@
     border-radius: 1rem;
     background-color: white;
     margin-left: 1px;
-    transition: transform 0.2s;
+    left: 0px;
+    transition: all 0.3s;
+    position: relative;
   }
 
   .circle.right {
-    transform: translateX(20px);
+    left: calc(100% - 18px);
+    position: absolute;
+    margin-left: 1px;
+  }
+
+  .relative {
+    position: relative;
+
+    .circle.right {
+      margin-left: 2px;
+    }
   }
 
   input {
     opacity: 0;
     position: absolute;
+  }
+}
+
+.switch--large {
+  .switch {
+    border: 2.5px solid var(--button-color-transparent);
+    min-width: 50px;
+    height: 24px;
+  }
+
+  .text {
+    .left {
+      padding: 0 20px 0 1px;
+    }
+
+    span {
+      line-height: 20px;
+    }
+  }
+
+  .circle {
+    width: 20px;
+    height: 20px;
+  }
+
+  .circle.right {
+    left: calc(100% - 22px);
+    position: absolute;
+    margin-left: 1px;
+  }
+
+  .relative {
+    position: relative;
+
+    .circle.right {
+      margin-left: 2px;
+    }
+  }
+}
+
+.switch--small {
+  .switch {
+    border: 2.5px solid var(--button-color-transparent);
+    min-width: 30px;
+    height: 16px;
+    font-size: 12px;
+  }
+
+  .text {
+    .left {
+      padding: 0px 12px 0px 1px;
+    }
+  }
+
+  span {
+    line-height: 12px;
+  }
+
+  .circle {
+    width: 12px;
+    height: 12px;
+    margin-left: 0px;
+  }
+
+  .circle.right {
+    left: calc(100% - 15px);
+    position: absolute;
+    margin-left: 1px;
+  }
+
+  .relative {
+    position: relative;
+
+    .circle.right {
+      margin-left: 3px;
+    }
   }
 }
