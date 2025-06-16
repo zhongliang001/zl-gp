@@ -104,6 +104,15 @@ export const useDatePicker = (
     show.value = ''
   }
 
+  const reset = () => {
+    const inputRef: HTMLInputElement | null = input.value
+    if (inputRef) {
+      inputRef.value = ''
+    }
+    emit('update:modelValue', '')
+    show.value = ''
+  }
+
   const selectMonth = (n: number) => {
     month.value = n
     show.value = 'date'
@@ -290,6 +299,7 @@ export const useDatePicker = (
   return {
     addMonth,
     addYear,
+    reset,
     dateTableCache,
     getMonth,
     getYear,

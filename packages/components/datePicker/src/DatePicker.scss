@@ -3,7 +3,7 @@
 
   input {
     border: none;
-    width: 100%;
+    width: calc(100% - 16px);
   }
 
   .month-btn {
@@ -39,5 +39,15 @@
 
   .sel {
     background-color: var(--primary);
+  }
+
+  svg {
+    display: none;
+  }
+
+  &:hover {
+    svg {
+      display: unset;
+    }
   }
 }

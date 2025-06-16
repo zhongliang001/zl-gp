@@ -2,12 +2,13 @@
 import { usenamespace, useObserver } from '@zl-gp/hooks'
 import { useDatePicker } from './DatePicker'
 import dayjs from 'dayjs'
-import { onMounted, ref } from 'vue'
+import { inject, onMounted, ref } from 'vue'
 import { ZlIcon } from '@zl-gp/components/icon'
 import { createPopper } from '@popperjs/core/lib/popper-lite'
 import offset from '@popperjs/core/lib/modifiers/offset'
 import { OnClickOutside } from '@vueuse/components'
 import type { DatePickerProps } from './types'
+import { FormItemInjectKey } from '../../form/src/FormItem'
 
 defineOptions({
   name: 'ZlDatePicker'
@@ -19,6 +20,8 @@ const {
   disabled = false,
   format = 'YYYY-MM-DD'
 } = defineProps<DatePickerProps>()
+const formItemInject = inject(FormItemInjectKey, undefined)
+
 const { namespace } = usenamespace('date-picker')
 const _ref = ref<HTMLDivElement | null>(null)
 const picker = ref<HTMLDivElement | null>(null)
@@ -41,6 +44,7 @@ onMounted(() => {
   if (_ref.value) {
     useObserver(_ref, offsetWidth)
   }
+  formItemInject?.addFiled({ reset: reset })
 })
 
 const hiddenDaySel = () => {
@@ -64,12 +68,13 @@ const {
   chooseYear,
   yearTableCache,
   addYearPage,
+  reset,
   subYearPage
 } = useDatePicker(day, year, month, weekStart, format, emit, disabled, input, show)
 
 defineExpose({
-  getMonth: getMonth,
-  getYear: getYear
+  getMonth,
+  getYear
 })
 </script>
 <template>
@@ -78,6 +83,7 @@ defineExpose({
       <div>
         <div>
           <input ref="input" type="text" :name="name" @click="chooseDate()" :readonly="!editable" />
+          <ZlIcon v-if="clearable" name="close" :width="10" @click="reset" />
         </div>
         <div ref="picker" class="picker" :style="[{ width: offsetWidth + 'px' }]">
           <div class="datepicker" v-show="show === 'date'">

@@ -13,4 +13,5 @@ export interface DatePickerProps {
   name?: string
   showTime?: boolean
   weekStart?: 'monday' | 'sunday'
+  clearable?: boolean
 }

@@ -72,7 +72,7 @@ describe('测试datepicker', () => {
       const wrapper = mount(ZlDatePicker)
       wrapper.get('input').trigger('click')
       await flushPromises()
-      await wrapper.findAllComponents(ZlIcon)[0].trigger('click')
+      await wrapper.findAll('.datepicker')[0].findAllComponents(ZlIcon)[0].trigger('click')
       const tds = getTds(wrapper, today)
       const td: DOMWrapper<HTMLTableCellElement> = getTd(tds, today)
       await td.trigger('click')
@@ -85,7 +85,7 @@ describe('测试datepicker', () => {
       const wrapper = mount(ZlDatePicker)
       wrapper.get('input').trigger('click')
       await flushPromises()
-      await wrapper.findAllComponents(ZlIcon)[3].trigger('click')
+      await wrapper.findAll('.datepicker')[0].findAllComponents(ZlIcon)[3].trigger('click')
       const tds = getTds(wrapper, today)
       const td: DOMWrapper<HTMLTableCellElement> = getTd(tds, today)
       await td.trigger('click')
@@ -99,7 +99,7 @@ describe('测试datepicker', () => {
       const wrapper = mount(ZlDatePicker)
       wrapper.get('input').trigger('click')
       await flushPromises()
-      await wrapper.findAllComponents(ZlIcon)[1].trigger('click')
+      await wrapper.findAll('.datepicker')[0].findAllComponents(ZlIcon)[1].trigger('click')
       const tds = getTds(wrapper, today)
       const td: DOMWrapper<HTMLTableCellElement> = getTd(tds, today)
       await td.trigger('click')
@@ -112,7 +112,7 @@ describe('测试datepicker', () => {
       const wrapper = mount(ZlDatePicker)
       wrapper.get('input').trigger('click')
       await flushPromises()
-      await wrapper.findAllComponents(ZlIcon)[2].trigger('click')
+      await wrapper.findAll('.datepicker')[0].findAllComponents(ZlIcon)[2].trigger('click')
       const tds = getTds(wrapper, today)
       const td: DOMWrapper<HTMLTableCellElement> = getTd(tds, today)
       await td.trigger('click')
@@ -129,7 +129,7 @@ describe('测试datepicker', () => {
       await flushPromises()
       let times = 12 - month
       while (times >= 0) {
-        await wrapper.findAllComponents(ZlIcon)[2].trigger('click')
+        await wrapper.findAll('.datepicker')[0].findAllComponents(ZlIcon)[2].trigger('click')
         times--
       }
       const tds = getTds(wrapper, today)
@@ -145,7 +145,7 @@ describe('测试datepicker', () => {
       await flushPromises()
       let times = month
       while (times > 0) {
-        await wrapper.findAllComponents(ZlIcon)[1].trigger('click')
+        await wrapper.findAll('.datepicker')[0].findAllComponents(ZlIcon)[1].trigger('click')
         times--
       }
       const tds = getTds(wrapper, today)
