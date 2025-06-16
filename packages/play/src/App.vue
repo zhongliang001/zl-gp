@@ -14,6 +14,7 @@
           <zl-menu-item to="/fileInput" prop="fileInput">fileInput</zl-menu-item>
           <zl-menu-item to="/datePicker" prop="datePicker">datePicker</zl-menu-item>
           <zl-menu-item to="/switch" prop="switch">switch</zl-menu-item>
+          <zl-menu-item to="/radio" prop="radio">radio</zl-menu-item>
         </zl-menu-sub>
       </zl-menu>
     </zl-header>

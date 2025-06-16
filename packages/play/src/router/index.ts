@@ -56,6 +56,11 @@ const router = createRouter({
       path: '/switch',
       name: 'switch',
       component: () => import('../pages/SwitchDemo.vue')
+    },
+    {
+      path: '/radio',
+      name: 'radio',
+      component: () => import('../pages/RadioDemo.vue')
     }
   ]
 })
