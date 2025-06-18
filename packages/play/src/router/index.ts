@@ -61,6 +61,11 @@ const router = createRouter({
       path: '/radio',
       name: 'radio',
       component: () => import('../pages/RadioDemo.vue')
+    },
+    {
+      path: '/transfer',
+      name: 'transfer',
+      component: () => import('../pages/TransferDemo.vue')
     }
   ]
 })
