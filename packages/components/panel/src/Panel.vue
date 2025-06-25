@@ -7,7 +7,7 @@ import ZlIcon from '../../icon'
 defineOptions({
   name: 'ZlPanel'
 })
-const { forTab = false, isFolder = false } = defineProps<PanelProps>()
+const { isFolder = false } = defineProps<PanelProps>()
 const { namespace } = usenamespace('panel')
 
 const _ref = ref<HTMLDivElement>()
@@ -18,6 +18,9 @@ const foldState = ref(false)
 const fold = () => {
   if (isFolder) {
     foldState.value = !foldState.value
+    arrowDirect.value = 'arrow-right'
+  } else {
+    arrowDirect.value = 'arrow-down'
   }
 }
 defineExpose({
@@ -26,12 +29,12 @@ defineExpose({
 </script>
 <template>
   <div :class="namespace.className" ref="_ref">
-    <div class="title" v-if="!forTab" @click="fold">
+    <div class="title" @click="fold">
       <span>{{ title }}</span>
       <ZlIcon :name="arrowDirect" v-if="isFolder"></ZlIcon>
     </div>
     <transition name="panel-fade">
-      <div class="main" v-if="foldState && !forTab">
+      <div class="main" v-if="!foldState">
         <slot></slot>
       </div>
     </transition>

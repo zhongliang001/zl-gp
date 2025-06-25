@@ -17,6 +17,7 @@
           <zl-menu-item to="/radio" prop="radio">radio</zl-menu-item>
           <zl-menu-item to="/transfer" prop="transfer">transfer</zl-menu-item>
           <zl-menu-item to="/tab" prop="tab">tab</zl-menu-item>
+          <zl-menu-item to="/panel" prop="panel">panel</zl-menu-item>
         </zl-menu-sub>
       </zl-menu>
     </zl-header>

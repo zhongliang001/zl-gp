@@ -1,5 +1,5 @@
-import { computed, onMounted } from "vue"
-import type { TabsContext } from "./types"
+import { computed, onMounted } from 'vue'
+import type { TabsContext } from './types'
 
 export const useTabPanel = (tb: TabsContext | undefined, name: string) => {
   onMounted(() => {

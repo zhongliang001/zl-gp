@@ -80,6 +80,11 @@ const router = createRouter({
           path: '/tab',
           name: 'tab',
           component: () => import('../pages/TabDemo.vue')
+        },
+        {
+          path: '/panel',
+          name: 'panel',
+          component: () => import('../pages/PanelDemo.vue')
         }
       ]
     }
