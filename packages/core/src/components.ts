@@ -1,4 +1,5 @@
 export { ZlAside } from '@zl-gp/components'
+export { ZlBadge } from '@zl-gp/components/badge'
 export { ZlButton } from '@zl-gp/components/button'
 export { ZlCard } from '@zl-gp/components/card'
 export { ZlCol } from '@zl-gp/components/col'

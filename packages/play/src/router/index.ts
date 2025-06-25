@@ -85,6 +85,11 @@ const router = createRouter({
           path: '/panel',
           name: 'panel',
           component: () => import('../pages/PanelDemo.vue')
+        },
+        {
+          path: '/badge',
+          name: 'badge',
+          component: () => import('../pages/BadgeDemo.vue')
         }
       ]
     }
