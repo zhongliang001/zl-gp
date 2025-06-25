@@ -70,3 +70,4 @@
 
 1. 新增radio组件
 2. datePicker增加reset方法，可以一键清空按钮
+3. 增加transfer, tabs, panel组件

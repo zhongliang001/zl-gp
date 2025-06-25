@@ -16,14 +16,12 @@
           <zl-menu-item to="/switch" prop="switch">switch</zl-menu-item>
           <zl-menu-item to="/radio" prop="radio">radio</zl-menu-item>
           <zl-menu-item to="/transfer" prop="transfer">transfer</zl-menu-item>
+          <zl-menu-item to="/tab" prop="tab">tab</zl-menu-item>
         </zl-menu-sub>
       </zl-menu>
     </zl-header>
     <zl-main>
-      <RouterView />
+      <zl-tabs :isMenu="true"></zl-tabs>
     </zl-main>
   </zl-container>
 </template>
-<script setup lang="ts">
-import { RouterView } from 'vue-router'
-</script>

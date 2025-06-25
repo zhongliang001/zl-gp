@@ -1,0 +1,62 @@
+@use '../../base.scss';
+@use 'sass:color';
+
+.zl-tab {
+  width: 100%;
+
+  .titles {
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .title {
+      border-radius: var(--border-radius);
+      border: 1px solid var(--border-color);
+      display: inline-block;
+      margin-right: 1px;
+      max-width: 160px;
+      height: 40px;
+      width: 100%;
+
+      &.hover {
+        // border-left: 1px solid black;
+        background-color: rgb(121, 134, 253) !important;
+      }
+
+      &.sel {
+        background-color: var(--primary);
+      }
+
+      span {
+        width: calc(100% - 16px);
+        line-height: 40px;
+        font-size: 20px;
+        display: inline-block;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        vertical-align: middle;
+        user-select: none;
+      }
+
+      &:hover {
+        background-color: color.adjust(blue, $lightness: 40%);
+
+        svg {
+          display: unset;
+        }
+      }
+
+      svg {
+        display: none;
+      }
+    }
+  }
+}

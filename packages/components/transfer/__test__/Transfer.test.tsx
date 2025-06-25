@@ -106,7 +106,8 @@ describe('测试Transfer', () => {
     const rightBox = ref({ reset: vi.fn(), selIdx: -1 })
     const options = [{ value: 'a', name: 'A' }]
     const emit = vi.fn()
-
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     useTransfer(options, leftBox, rightBox, emit)
 
     leftBox.value.selIdx = 0
