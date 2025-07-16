@@ -1,0 +1,18 @@
+.zl-tree {
+  width: 100%;
+  text-align: left;
+
+  .branch {
+    padding-left: 10px;
+  }
+
+  .tree-enter-active,
+  .tree-leave-active {
+    transition: opacity 0.5s ease;
+  }
+
+  .tree-enter-from,
+  .tree-leave-to {
+    opacity: 0;
+  }
+}

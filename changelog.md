@@ -72,3 +72,4 @@
 2. datePicker增加reset方法，可以一键清空按钮
 3. 增加transfer, tabs, panel组件
 4. 新增badge组件
+5. 增加checkbox，tree组件

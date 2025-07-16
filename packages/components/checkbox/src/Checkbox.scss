@@ -1,0 +1,44 @@
+@use '../../base.scss';
+
+.zl-checkbox {
+  display: inline-flex;
+  padding-left: 3px;
+  padding-top: 3px;
+
+  input {
+    cursor: pointer;
+    opacity: 0;
+    position: position;
+  }
+
+  label {
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .tag {
+    display: inline-flex;
+    border: 1px solid hsl(156, 79%, 40%);
+    border-radius: var(--border-radius);
+
+    cursor: pointer;
+
+    &.disbaled {
+      cursor: not-allowed;
+      background-color: #eee;
+    }
+
+    .label {
+      border-right: 1px solid hsl(156, 79%, 40%);
+      background-color: #c2c2c2;
+      user-select: none;
+    }
+
+    &.selected {
+      .label {
+        background-color: hsl(156, 79%, 40%);
+        color: rgb(240, 234, 234);
+      }
+    }
+  }
+}

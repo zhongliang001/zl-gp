@@ -31,7 +31,7 @@ export default defineConfig({
       tsconfigPath: '../../tsconfig.build.json',
       outDir: 'dist/types',
       afterBuild: moveStyles,
-      exclude: '**/__test__/**'
+      exclude: ['**/__test__/**']
     }),
     sass({ api: 'modern' })
   ],

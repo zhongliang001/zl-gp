@@ -19,6 +19,8 @@
           <zl-menu-item to="/tab" prop="tab">tab</zl-menu-item>
           <zl-menu-item to="/panel" prop="panel">panel</zl-menu-item>
           <zl-menu-item to="/badge" prop="badge">badge</zl-menu-item>
+          <zl-menu-item to="/tree" prop="tree">tree</zl-menu-item>
+          <zl-menu-item to="/checkbox" prop="checkbox">checkbox</zl-menu-item>
         </zl-menu-sub>
       </zl-menu>
     </zl-header>

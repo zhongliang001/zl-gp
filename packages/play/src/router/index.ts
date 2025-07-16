@@ -90,6 +90,16 @@ const router = createRouter({
           path: '/badge',
           name: 'badge',
           component: () => import('../pages/BadgeDemo.vue')
+        },
+        {
+          path: '/tree',
+          name: 'tree',
+          component: () => import('../pages/TreeDemo.vue')
+        },
+        {
+          path: '/checkbox',
+          name: 'checkbox',
+          component: () => import('../pages/CheckboxDemo.vue')
         }
       ]
     }
