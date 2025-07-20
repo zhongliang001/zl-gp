@@ -1,11 +1,11 @@
 import { remove } from 'lodash-es'
 import { ref, type Ref } from 'vue'
-import type { TreeNodeExport } from './types'
+import type { TreeNodeExport, TreeProps } from './types'
 import { getNodeByNodeId, getSelectedNode } from './common'
 
-export const useTree = (treeNodeRefs: Ref<TreeNodeExport[]>) => {
+export const useTree = (treeNodeRefs: Ref<TreeNodeExport[]>, props: TreeProps) => {
   const expandIndex = ref<number[]>([])
-
+  const checkable = props.checkable
   const telescoping = (index: number) => {
     if (expandIndex.value?.indexOf(index) === -1) {
       expandIndex.value.push(index)
@@ -35,12 +35,31 @@ export const useTree = (treeNodeRefs: Ref<TreeNodeExport[]>) => {
     return selectedValue
   }
 
+  const selectAll = () => {
+    if (!checkable) {
+      return
+    }
+    treeNodeRefs.value.forEach(node => {
+      node.checked()
+    })
+  }
+
+  const unselectAll = () => {
+    if (!checkable) {
+      return
+    }
+    treeNodeRefs.value.forEach(node => {
+      node.unchecked()
+    })
+  }
+
   return {
     expandIndex,
     getTreeNodeByNodeId,
     getSelectedTreeNode,
     getSelectedValue,
-
-    telescoping
+    selectAll,
+    telescoping,
+    unselectAll
   }
 }

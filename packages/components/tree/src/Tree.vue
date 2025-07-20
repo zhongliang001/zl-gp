@@ -8,18 +8,21 @@ defineOptions({
   name: 'ZlTree'
 })
 
-const { data, expand } = defineProps<TreeProps>()
+const props = defineProps<TreeProps>()
 
 const _ref = ref<HTMLDivElement>()
 const treeNodeRefs = ref([]) as Ref<TreeNodeExport[]>
 const { namespace } = usenamespace('tree')
-const { getTreeNodeByNodeId, getSelectedTreeNode, getSelectedValue } = useTree(treeNodeRefs)
+const { getTreeNodeByNodeId, getSelectedTreeNode, getSelectedValue, selectAll, unselectAll } =
+  useTree(treeNodeRefs, props)
 
 defineExpose({
   ref: _ref,
   getTreeNodeByNodeId,
   getSelectedTreeNode,
-  getSelectedValue
+  getSelectedValue,
+  selectAll,
+  unselectAll
 })
 </script>
 <template>

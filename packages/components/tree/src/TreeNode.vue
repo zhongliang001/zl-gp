@@ -3,6 +3,7 @@ import { ref, type Ref } from 'vue'
 import type { TreeNodeExport, TreeNodeProps } from './types'
 import ZlCheckbox, { type CheckboxIntance } from '../../checkbox'
 import { useTreeNode } from './TreeNode'
+import ZlIcon from '../../icon'
 
 defineOptions({
   name: 'ZlTreeNode'
@@ -20,6 +21,7 @@ const emit = defineEmits(['update'])
 
 const {
   change,
+  checked,
   click,
   expand,
   getSelectCount,
@@ -27,11 +29,13 @@ const {
   getTreeNodeByNodeId,
   halfSelected,
   selectValue,
+  unchecked,
   update
 } = useTreeNode(props, checkboxRef, treeNodeRefs, emit)
 
 defineExpose({
   ref: _ref,
+  checked,
   nodeId: props.nodeData.nodeId,
   expand,
   getSelectCount,
@@ -41,11 +45,13 @@ defineExpose({
   checkboxRef,
   halfSelected,
   selectValue,
+  unchecked,
   update
 })
 </script>
 <template>
   <div ref="_ref" class="branch" :class="nodeData.class" @click.stop="click()">
+    <ZlIcon :name="expand ? 'shrink' : 'unfold'" :width="20" :height="20"></ZlIcon>
     <ZlCheckbox
       ref="checkboxRef"
       v-if="checkable"
@@ -63,7 +69,6 @@ defineExpose({
           :node-data="item"
           :checkable="checkable"
           :expand="expand"
-          :parent="index"
           @update="update"></ZlTreeNode>
       </Transition>
     </template>

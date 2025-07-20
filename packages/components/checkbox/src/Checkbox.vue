@@ -35,7 +35,7 @@ defineExpose({
 })
 </script>
 <template>
-  <div :class="namespace.className" ref="_ref">
+  <div :class="namespace.className" ref="_ref" @click="click($event)">
     <input
       ref="inputRef"
       type="checkbox"
@@ -49,16 +49,14 @@ defineExpose({
         :name="checkState"
         :width="20"
         :height="20"
-        :color="disabled || readonly ? 'rgb(209, 209, 209)' : '#515151'"
-        @click="click($event)"></ZlIcon>
+        :color="disabled || readonly ? 'rgb(209, 209, 209)' : '#515151'"></ZlIcon>
       <label>{{ label }}</label>
     </template>
 
     <div
       class="tag"
       v-if="skin === 'tag' || skin === 'customize'"
-      :class="[{ selected: selected }, { disbaled: disabled || readonly }]"
-      @click.stop="click($event)">
+      :class="[{ selected: selected }, { disbaled: disabled || readonly }]">
       <div class="label">
         <template v-if="skin === 'customize'"><slot></slot></template>
         <template v-else>{{ label }}</template>

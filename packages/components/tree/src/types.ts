@@ -1,7 +1,6 @@
 import type { Ref } from 'vue'
 import type { CheckboxIntance } from '../../checkbox'
 export interface TreeProps {
-  parent?: number
   data: TreeBranch[]
   checkable: boolean
   expand?: boolean
@@ -23,7 +22,6 @@ export type TreeContext = {
 
 export interface TreeNodeProps {
   nodeData: TreeBranch
-  index: number
   checkable: boolean
   expand?: boolean
   modelValue?: string[]
@@ -32,6 +30,7 @@ export interface TreeNodeProps {
 export type TreeNodeExport = {
   ref: Ref<HTMLDivElement | undefined, HTMLDivElement | undefined>
   nodeId: string
+  checked: () => void
   checkboxRef: CheckboxIntance
   halfSelected: Ref<boolean>
   getSelectCount: () => number
@@ -39,5 +38,6 @@ export type TreeNodeExport = {
   treeNodeRefs: TreeNodeExport[]
   selectValue: []
   update: () => void
+  unchecked: () => void
   getTreeNodeByNodeId: (nodeId: string) => TreeNodeExport | undefined
 }

@@ -43,21 +43,7 @@ const data = reactive([
     ]
   }
 ])
-
-const nodeData = {
-  name: '父节点',
-  value: 'parent',
-  class: '',
-  disabled: false,
-  children: [
-    { name: '子节点1', value: 'child1', class: '', disabled: false, children: [] },
-    { name: '子节点2', value: 'child2', class: '', disabled: false, children: [] }
-  ]
-}
 </script>
 <template>
   <zl-tree :data="data" :checkable="true" :expand="true"></zl-tree>
-  <div class="node">
-    <zl-tree-node :nodeData="nodeData"></zl-tree-node>
-  </div>
 </template>

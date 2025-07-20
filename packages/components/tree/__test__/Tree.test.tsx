@@ -2,7 +2,6 @@ import { flushPromises, mount } from '@vue/test-utils'
 import { describe, expect, it } from 'vitest'
 import ZlTree from '..'
 import { nextTick } from 'vue'
-import ZlIcon from '../../icon'
 
 describe('ZlTree', () => {
   const data = [
@@ -132,7 +131,7 @@ describe('ZlTree', () => {
     })
     expect(checkboxs.length).toBe(8)
     await flushPromises()
-    checkboxs[1].findComponent(ZlIcon).trigger('click')
+    checkboxs[1].trigger('click')
     await flushPromises()
     const result = wrapper.vm.getTreeNodeByNodeId('11')
     expect(result?.getSelectCount()).toBe(2)
@@ -141,13 +140,13 @@ describe('ZlTree', () => {
     expect(wrapper.vm.getSelectedTreeNode().length).toBe(3)
     expect(wrapper.vm.getSelectedValue().length).toBe(3)
 
-    await checkboxs[2].findComponent(ZlIcon).trigger('click')
+    await checkboxs[2].trigger('click')
     await nextTick()
     expect(result?.halfSelected).toBe(true)
     expect(wrapper.vm.getSelectedTreeNode().length).toBe(1)
     expect(wrapper.vm.getSelectedValue().length).toBe(1)
 
-    await checkboxs[3].findComponent(ZlIcon).trigger('click')
+    await checkboxs[3].trigger('click')
     await nextTick()
     expect(result?.selectValue.length).toBe(0)
     expect(wrapper.vm.getSelectedTreeNode().length).toBe(0)
@@ -163,5 +162,21 @@ describe('ZlTree', () => {
     })
     const result = wrapper.vm.getTreeNodeByNodeId('ww')
     expect(result?.nodeId).eql('ww')
+  })
+
+  it('测试全选',async () => {
+    const wrapper = mount(ZlTree, {
+      props: {
+        data,
+        checkable: true
+      }
+    })
+     await flushPromises()
+    wrapper.vm.selectAll()
+    await flushPromises()
+    expect(wrapper.vm.getSelectedTreeNode().length).toBe(8)
+    wrapper.vm.unselectAll()
+    await flushPromises()
+    expect(wrapper.vm.getSelectedTreeNode().length).toBe(0)
   })
 })

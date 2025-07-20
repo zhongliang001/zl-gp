@@ -90,15 +90,29 @@ export const useTreeNode = (
     return getSelectedNode(treeNodeRefs)
   }
 
+  const checked = () => {
+    if (!checkboxRef.value?.selected || halfSelected) {
+      checkboxRef.value?.select()
+    }
+  }
+
+  const unchecked = () => {
+    if (checkboxRef.value?.selected || halfSelected) {
+      checkboxRef.value?.unselect()
+    }
+  }
+
   return {
     change,
     click,
+    checked,
     expand,
     getSelectCount,
     getSelectedTreeNode,
     getTreeNodeByNodeId,
     halfSelected,
     selectValue,
+    unchecked,
     update
   }
 }
