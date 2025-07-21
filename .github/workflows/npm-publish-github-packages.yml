@@ -48,7 +48,6 @@ jobs:
           node-version: 20
           registry-url: 18.17.1
       - run: cd packages/core
-      - run: pnpm update:version
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_PUBLISH_TOKEN}}
