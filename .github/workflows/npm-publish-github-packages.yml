@@ -32,7 +32,7 @@ jobs:
         run: pnpm test:unit
       - name: Build
         run: pnpm build
-  publish-gpr:
+  publish-pro:
     needs: build
     runs-on: ubuntu-latest
     if: ${{ github.repository_owner == 'zhongliang001' }}
@@ -41,6 +41,8 @@ jobs:
       packages: write
     steps:
       - uses: actions/checkout@v4
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 20
