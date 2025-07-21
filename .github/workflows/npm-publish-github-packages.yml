@@ -11,6 +11,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    if: ${{ github.repository_owner == 'zhongliang001' }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -44,7 +45,7 @@ jobs:
         with:
           node-version: 20
           registry-url: 18.17.1
-      - run: cd package/core
+      - run: cd packages/core
       - run: pnpm update:version
       - run: npm publish
         env:
@@ -52,5 +53,4 @@ jobs:
           TAG_VERSION: 0.0.${{ steps.date.outputs.date }}
           GIT_HEAD: ${{env.GIT_HEAD}}
           REGISTRY: https://registry.npmjs.com/
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_OPTIONS: --max-old-space-size=4096
