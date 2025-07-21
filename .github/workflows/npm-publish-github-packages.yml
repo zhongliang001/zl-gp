@@ -42,14 +42,14 @@ jobs:
         uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
-          registry-url: 18.17.1
+          node-version: 18.17.1
+          registry-url: https://registry.npmjs.com/
       - name: Install dependencies
         run: pnpm i --frozen-lockfile
       - name: Build
         run: pnpm build 
       - run: cd packages/core
-      - run: pnpm publish
+      - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_PUBLISH_TOKEN}}
           TAG_VERSION: 0.0.${{ steps.date.outputs.date }}
