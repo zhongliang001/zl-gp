@@ -48,7 +48,7 @@ jobs:
           node-version: 20
           registry-url: 18.17.1
       - run: cd packages/core
-      - run: npm publish
+      - run: pnpm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_PUBLISH_TOKEN}}
           TAG_VERSION: 0.0.${{ steps.date.outputs.date }}
