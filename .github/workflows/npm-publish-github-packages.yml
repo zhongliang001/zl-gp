@@ -9,7 +9,7 @@ on:
     - master
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     if: ${{ github.repository_owner == 'zhongliang001' }}
     steps:
@@ -23,17 +23,14 @@ jobs:
         with:
           node-version: 18.17.1
       - name: Install dependencies
-        run: pnpm i --frozen-lockfile
-        
+        run: pnpm i --frozen-lockfile        
       - name: Lint
         run: pnpm lint
-
       - name: Test
         run: pnpm test:unit
-      - name: Build
-        run: pnpm build
+      
   publish-pro:
-    needs: build
+    needs: test
     runs-on: ubuntu-latest
     if: ${{ github.repository_owner == 'zhongliang001' }}
     permissions:
@@ -47,6 +44,10 @@ jobs:
         with:
           node-version: 20
           registry-url: 18.17.1
+      - name: Install dependencies
+        run: pnpm i --frozen-lockfile
+      - name: Build
+        run: pnpm build 
       - run: cd packages/core
       - run: pnpm publish
         env:
