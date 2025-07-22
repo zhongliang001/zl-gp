@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "type": "module",
-  "scripts": {
+  "scripts": {   
     "dev": "pnpm --filter @zl-gp/play dev",
     "build-dev": "pnpm --filter @zl-gp/play build",
     "build": "run-p format build-theme build-core",
@@ -18,9 +18,12 @@
     "format": "prettier --write packages/core/ packages/components packages/hooks packages/play packages/utils *.config.ts tsconfig* ",
     "prepare": "husky",
     "commitlint": "commitlint --edit",
-    "commit": "cz"
+    "commit": "cz",
+    "changeset": "changeset",
+    "version": "changeset version && pnpm install"
   },
   "dependencies": {
+    "@changesets/cli": "^2.29.5",
     "@popperjs/core": "^2.11.8",
     "@vueuse/components": "^13.2.0",
     "@vueuse/core": "^13.2.0",

@@ -51,6 +51,10 @@ jobs:
         run: pnpm i --frozen-lockfile
       - name: Build
         run: pnpm build
+      - name: ChangeVersion
+        with:
+          version: pnpm run version
+          publish: pnpm exec changeset
       - name: Publish
         working-directory: packages/core
         run: npm publish
