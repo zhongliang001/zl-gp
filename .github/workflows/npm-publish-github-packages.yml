@@ -63,8 +63,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GIT_HEAD: ${{env.GIT_HEAD}}
       - name: Set npm registry and auth
+        working-directory: packages/core
         run: |
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_PUBLISH_TOKEN }}" > ~/.npmrc
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_PUBLISH_TOKEN }}" > .npmrc
           echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_PUBLISH_TOKEN }}" > $GITHUB_WORKSPACE/.npmrc
 
       - name: Check npm registry
@@ -72,9 +73,7 @@ jobs:
 
       - name: Publish
         working-directory: packages/core
-        run: |
-          pwd
-          npm publish --access public
+        run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
           NODE_OPTIONS: --max-old-space-size=4096
