@@ -51,10 +51,11 @@ jobs:
         run: pnpm i --frozen-lockfile
       - name: Build
         run: pnpm build
+      - name: Ignore hooksPath
+        run: git config --global core.hooksPath /dev/null
       - name: ChangeVersion
         id: changesets
         uses: changesets/action@v1
-        run: git config --global core.hooksPath /dev/null
         with:
           version: pnpm run version
           publish: pnpm exec changeset
