@@ -37,8 +37,9 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ github.repository_owner == 'zhongliang001' }}
     permissions:
-      contents: read
+      contents: write
       packages: write
+      pull-requests: write
     steps:
       - uses: actions/checkout@v4
       - name: Setup pnpm
