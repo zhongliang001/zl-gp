@@ -54,6 +54,7 @@ jobs:
       - name: ChangeVersion
         id: changesets
         uses: changesets/action@v1
+        run: git config --global core.hooksPath /dev/null
         with:
           version: pnpm run version
           publish: pnpm exec changeset
