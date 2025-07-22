@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "type": "module",
-  "scripts": {   
+  "scripts": {
     "dev": "pnpm --filter @zl-gp/play dev",
     "build-dev": "pnpm --filter @zl-gp/play build",
     "build": "run-p format build-theme build-core",
@@ -83,6 +83,7 @@
       "useEmoji": true
     }
   },
+  "packageManager": "pnpm@10.5.2",
   "husky": {
     "hooks": {
       "prepare-commit-msg": "exec < /dev/tty && npx cz --hook || true"
