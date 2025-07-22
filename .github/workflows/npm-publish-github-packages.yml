@@ -58,7 +58,7 @@ jobs:
           version: pnpm run version
           publish: pnpm exec changeset
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish
         working-directory: packages/core
         run: npm publish
