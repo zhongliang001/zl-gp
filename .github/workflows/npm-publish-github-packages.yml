@@ -57,11 +57,13 @@ jobs:
         with:
           version: pnpm run version
           publish: pnpm exec changeset
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish
         working-directory: packages/core
         run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GIT_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GIT_HEAD: ${{env.GIT_HEAD}}
           REGISTRY: https://registry.npmjs.com/
           NODE_OPTIONS: --max-old-space-size=4096
