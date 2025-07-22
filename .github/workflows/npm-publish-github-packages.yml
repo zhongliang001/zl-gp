@@ -6,33 +6,34 @@ name: Node.js Package
 on:
   push:
     branches:
-    - feature/v0.0.2
+      - master
+  workflow_dispatch:
+
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     if: ${{ github.repository_owner == 'zhongliang001' }}
     steps:
+      - name: Check secrets
+        run: echo "NPM_PUBLISH_TOKEN is ${{ secrets.NPM_PUBLISH_TOKEN != '' }}"
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
       - name: Setup node
-        uses:  actions/setup-node@v4
+        uses: actions/setup-node@v4
         with:
           node-version: 18.17.1
       - name: Install dependencies
         run: pnpm i --frozen-lockfile
-        
       - name: Lint
         run: pnpm lint
-
       - name: Test
         run: pnpm test:unit
-      - name: Build
-        run: pnpm build
-  publish-gpr:
-    needs: build
+
+  publish-pro:
+    needs: test
     runs-on: ubuntu-latest
     if: ${{ github.repository_owner == 'zhongliang001' }}
     permissions:
@@ -40,17 +41,21 @@ jobs:
       packages: write
     steps:
       - uses: actions/checkout@v4
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
-          registry-url: 18.17.1
-      - run: cd package/core
-      - run: pnpm update:version
-      - run: npm publish
+          node-version: 18.17.1
+          registry-url: https://registry.npmjs.com/
+      - name: Install dependencies
+        run: pnpm i --frozen-lockfile
+      - name: Build
+        run: pnpm build
+      - name: Publish
+        working-directory: packages/core
+        run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_PUBLISH_TOKEN}}
-          TAG_VERSION: 0.0.${{ steps.date.outputs.date }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
           GIT_HEAD: ${{env.GIT_HEAD}}
           REGISTRY: https://registry.npmjs.com/
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_OPTIONS: --max-old-space-size=4096
