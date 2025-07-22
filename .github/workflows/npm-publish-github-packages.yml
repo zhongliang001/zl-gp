@@ -51,8 +51,10 @@ jobs:
         run: pnpm i --frozen-lockfile
       - name: Build
         run: pnpm build
-      - name: Ignore hooksPath
-        run: git config --global core.hooksPath /dev/null
+      - name: Disable git hooks
+        run: |
+          git config --global core.hooksPath /dev/null
+          rm -rf .git/hooks
       - name: ChangeVersion
         id: changesets
         uses: changesets/action@v1
