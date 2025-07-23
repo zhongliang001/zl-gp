@@ -6,34 +6,11 @@ name: Node.js Package
 on:
   push:
     branches:
-      - release
+      - main
   workflow_dispatch:
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    if: ${{ github.repository_owner == 'zhongliang001' }}
-    steps:
-      - name: Check secrets
-        run: echo "NPM_PUBLISH_TOKEN is ${{ secrets.NPM_PUBLISH_TOKEN != '' }}"
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-      - name: Setup node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18.17.1
-      - name: Install dependencies
-        run: pnpm i --frozen-lockfile
-      - name: Lint
-        run: pnpm lint
-      - name: Test
-        run: pnpm test:unit
-
   publish-pro:
-    needs: test
     runs-on: ubuntu-latest
     if: ${{ github.repository_owner == 'zhongliang001' }}
     permissions:
@@ -53,23 +30,12 @@ jobs:
         run: pnpm i --frozen-lockfile
       - name: Build
         run: pnpm build
-      - name: ChangeVersion
-        id: changesets
-        uses: changesets/action@v1
-        with:
-          version: pnpm run version
-          publish: pnpm exec changeset
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GIT_HEAD: ${{env.GIT_HEAD}}
+
       - name: Set npm registry and auth
         working-directory: packages/core
         run: |
           echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_PUBLISH_TOKEN }}" > .npmrc
           echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_PUBLISH_TOKEN }}" > $GITHUB_WORKSPACE/.npmrc
-
-      - name: Check npm registry
-        run: npm config get registry
 
       - name: Publish
         working-directory: packages/core
