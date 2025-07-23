@@ -30,7 +30,7 @@ jobs:
       - name: Test
         run: pnpm test:unit
 
-  publish-pro:
+  update-version:
     needs: test
     runs-on: ubuntu-latest
     if: ${{ github.repository_owner == 'zhongliang001' }}
