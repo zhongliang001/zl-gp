@@ -1,13 +1,39 @@
-@use '@zl-gp/components/base.scss';
+@use '../../base.scss' as base;
 
 .zl-card {
   width: 98%;
   border-radius: var(--border-radius);
   box-shadow: 0 0 10px #000;
 
-  bot hr {
+  .zl-card-header {
+    @include base.position;
+
+    span {
+      height: 2rem;
+      line-height: 2rem;
+      display: inline-block;
+      padding: 0.2rem;
+    }
+  }
+
+  hr {
     border: none;
-    height: 2px;
-    border-top: 1px dashed hsl(0 0% 73%);
+    height: 0.1rem;
+    border-top: 1px solid hsl(0 0% 73%);
+  }
+
+  .zl-card-body {
+    @include base.position;
+  }
+
+  .zl-card-footer {
+    @include base.position;
+
+    span {
+      height: 2rem;
+      line-height: 2rem;
+      display: inline-block;
+      padding: 0.2rem;
+    }
   }
 }

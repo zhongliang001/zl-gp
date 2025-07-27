@@ -3,7 +3,7 @@ import { usenamespace } from '@zl-gp/hooks'
 import { MenuInjectKey } from './Menu'
 import { MenuSubInjectKey } from './MenuSub'
 
-import { inject } from 'vue'
+import { inject, ref } from 'vue'
 import { omit } from 'lodash-es'
 import type { MenuItemProp } from './types'
 defineOptions({
@@ -15,6 +15,8 @@ const menuInjectKey = inject(MenuInjectKey, null)
 
 const menuSubInjectKey = inject(MenuSubInjectKey, null)
 
+const _ref = ref<HTMLDivElement>()
+
 const props = defineProps<MenuItemProp>()
 
 const _props = omit(props, ['prop'])
@@ -23,6 +25,10 @@ const handlerClick = () => {
   menuInjectKey?.select(props.prop)
   menuInjectKey?.unSubSelect()
 }
+
+defineExpose({
+  ref: _ref
+})
 </script>
 <template>
   <div
@@ -34,6 +40,7 @@ const handlerClick = () => {
           menuSubInjectKey && menuInjectKey && menuSubInjectKey.prop != menuInjectKey?.subSelected
       }
     ]"
+    ref="_ref"
     :prop="props.prop"
     @click="handlerClick">
     <RouterLink v-bind="_props"><slot></slot></RouterLink>

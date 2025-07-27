@@ -100,6 +100,11 @@ const router = createRouter({
           path: '/checkbox',
           name: 'checkbox',
           component: () => import('../pages/CheckboxDemo.vue')
+        },
+        {
+          path: '/layout',
+          name: 'layout',
+          component: () => import('../pages/LayoutDemo.vue')
         }
       ]
     }

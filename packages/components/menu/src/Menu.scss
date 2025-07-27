@@ -9,6 +9,8 @@
     border-radius: var(--border-radius);
     border: 1px solid #ccc;
     overflow: hidden;
+    height: 2rem;
+    line-height: 2rem;
 
     &.selected {
       background-color: hsl(211 75% 40%);
@@ -29,12 +31,17 @@
 
   .zl-menu-sub {
     border-radius: var(--border-radius);
-    font-size: 1.9rem;
-    font-weight: 400;
-    line-height: 26px;
     width: 100%;
     border: 1px solid #ccc;
     z-index: 1;
+    height: 2rem;
+    line-height: 2rem;
+
+    .subtitle {
+      height: 2rem;
+      display: inline-block;
+      line-height: 2rem;
+    }
 
     .sub-menu {
       position: absolute;

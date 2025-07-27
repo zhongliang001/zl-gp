@@ -8,7 +8,7 @@ const { is = 'h', width = 100, line = false } = defineProps<HeaderProps>()
 </script>
 <template>
   <header class="zl-header">
-    <component :is="is"><slot></slot></component>
+    <component :is="is" class="zl-header-com"><slot></slot></component>
     <hr :class="[{ hidden: !line }]" :width="width + '%'" />
   </header>
 </template>
