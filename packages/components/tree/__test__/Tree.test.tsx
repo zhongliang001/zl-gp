@@ -164,14 +164,14 @@ describe('ZlTree', () => {
     expect(result?.nodeId).eql('ww')
   })
 
-  it('测试全选',async () => {
+  it('测试全选', async () => {
     const wrapper = mount(ZlTree, {
       props: {
         data,
         checkable: true
       }
     })
-     await flushPromises()
+    await flushPromises()
     wrapper.vm.selectAll()
     await flushPromises()
     expect(wrapper.vm.getSelectedTreeNode().length).toBe(8)

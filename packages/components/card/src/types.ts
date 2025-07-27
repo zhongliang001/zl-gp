@@ -4,4 +4,7 @@ export interface CardProps {
   headerHeight?: number
   footerHeight?: number
   backgroundColor?: string
+  bodyPosition?: 'right' | 'left' | 'center'
+  titlePosition?: 'right' | 'left' | 'center'
+  footPosition?: 'right' | 'left' | 'center'
 }

@@ -11,6 +11,7 @@ $button-disbaled: color.adjust(blue, $lightness: 60%);
   padding-right: 1rem;
   padding-bottom: 0.6rem;
   padding-top: 0.4rem;
+  margin: 0.2rem;
 
   &:disabled {
     background-color: $button-disbaled;

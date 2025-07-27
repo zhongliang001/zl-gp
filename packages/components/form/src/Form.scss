@@ -2,6 +2,7 @@
 
 .zl-form {
   border-radius: var(--border-radius);
+  padding: 0.2rem;
 
   .zl-form-item {
     margin-bottom: 0.5rem;
@@ -18,8 +19,7 @@
       font-size: 0.8rem;
       font-weight: 500;
       text-align: right;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+      max-width: 90px;
     }
 
     .zl-form-item-field {
