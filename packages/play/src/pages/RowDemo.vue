@@ -11,7 +11,7 @@ const data = {
 </script>
 <template>
   <zl-container :width="100">
-    <zl-header is="h" :hwidth="20">新增交易信息</zl-header>
+    <zl-header is="h">新增交易信息</zl-header>
     <zl-main>
       <zl-form :data="data">
         <zl-row :columns="2">

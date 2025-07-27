@@ -61,3 +61,11 @@ input {
     }
   }
 }
+
+@mixin position {
+  @each $type in (right, left, center) {
+    &.#{$type} {
+      text-align: #{$type};
+    }
+  }
+}

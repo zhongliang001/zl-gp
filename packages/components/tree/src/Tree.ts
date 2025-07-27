@@ -39,7 +39,7 @@ export const useTree = (treeNodeRefs: Ref<TreeNodeExport[]>, props: TreeProps) =
     if (!checkable) {
       return
     }
-    treeNodeRefs.value.forEach(node => {
+    treeNodeRefs.value.forEach((node) => {
       node.checked()
     })
   }
@@ -48,7 +48,7 @@ export const useTree = (treeNodeRefs: Ref<TreeNodeExport[]>, props: TreeProps) =
     if (!checkable) {
       return
     }
-    treeNodeRefs.value.forEach(node => {
+    treeNodeRefs.value.forEach((node) => {
       node.unchecked()
     })
   }

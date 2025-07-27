@@ -12,6 +12,9 @@ const props = withDefaults(defineProps<MenuProps>(), {
   flex: 'row'
 })
 const { namespace } = usenamespace('menu')
+
+const _ref = ref<HTMLDivElement>()
+
 const selected: Ref<string> = ref<string>('')
 
 const select = (ele: string) => {
@@ -34,9 +37,13 @@ provide(
   MenuInjectKey,
   reactive({ selected, select, subSelected, subSelect, unSubSelect, flex: props.flex })
 )
+
+defineExpose({
+  ref: _ref
+})
 </script>
 <template>
-  <component :class="namespace.className" v-bind="_props" :is="is">
+  <component ref="_ref" :class="namespace.className" v-bind="_props" :is="is">
     <slot></slot>
   </component>
 </template>
