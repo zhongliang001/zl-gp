@@ -1,9 +1,10 @@
 <script lang="ts" setup>
 import { useInputMethod, usenamespace, useObserver } from '@zl-gp/hooks'
 import { SelectInjectKey, useSelect } from './Select'
-import { onMounted, provide, reactive, ref, watch } from 'vue'
+import { inject, onMounted, provide, reactive, ref, watch } from 'vue'
 import { ZlIcon } from '@zl-gp/components/icon'
 import type { SelectProps } from './types'
+import { FormItemInjectKey } from '../../form/src/FormItem'
 
 defineOptions({
   name: 'ZlSelect'
@@ -11,7 +12,8 @@ defineOptions({
 
 const props = withDefaults(defineProps<SelectProps>(), {
   filter: true,
-  options: () => []
+  options: () => [],
+  required: false
 })
 
 const { namespace } = usenamespace('select')
@@ -19,6 +21,8 @@ const emit = defineEmits(['update:modelValue'])
 const _ref = ref<HTMLDivElement | null>(null)
 const selInput = ref<HTMLInputElement | null>(null)
 
+const formItemInject = inject(FormItemInjectKey, undefined)
+const setMessage = formItemInject?.setMessage
 const {
   _props,
   addOption,
@@ -29,8 +33,13 @@ const {
   init,
   iconName,
   sel,
-  update
-} = useSelect(props, emit, _ref, selInput)
+  update,
+  reset,
+  setValidResult,
+  validFlag,
+  error,
+  valid
+} = useSelect(props, emit, _ref, selInput, setMessage)
 
 const { compositionStart, compositionEnd, handlerInput } = useInputMethod()
 
@@ -41,6 +50,7 @@ onMounted(() => {
   if (_ref.value) {
     useObserver(_ref, offsetWidth)
   }
+  formItemInject?.addFiled({ reset: reset, valid: valid, setValidResult: setValidResult })
 })
 
 watch(
@@ -62,7 +72,7 @@ defineExpose({
 })
 </script>
 <template>
-  <div ref="_ref" :class="namespace.className">
+  <div ref="_ref" :class="[namespace.className, { error: error, valid: validFlag }]">
     <div class="zl-select-sel">
       <input
         class="input"
@@ -75,6 +85,8 @@ defineExpose({
         @compositionstart="compositionStart"
         @compositionend="compositionEnd($event, handlerEnd)"
         @input="handlerInput($event, handlerEnd)" />
+      <ZlIcon v-if="validFlag && !error" name="success" color="green"></ZlIcon>
+      <ZlIcon v-if="validFlag && error" name="fail" color="red"></ZlIcon>
       <ZlIcon class="icon" :class="[{ hidden: disabled }]" :name="iconName"></ZlIcon>
     </div>
     <div :class="[namespace.cs('options'), { hidden: hidden }]">

@@ -35,7 +35,7 @@ defineExpose({
 })
 </script>
 <template>
-  <div :class="namespace.className" ref="_ref" @click="click($event)">
+  <div :class="[namespace.className, { disabled: disabled }]" ref="_ref" @click="click($event)">
     <input
       ref="inputRef"
       type="checkbox"

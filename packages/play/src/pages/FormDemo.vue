@@ -7,7 +7,8 @@ const data = ref({
   b: '',
   c: '',
   d: '',
-  file: ''
+  file: '',
+  date: ''
 })
 
 const options: Option[] = [
@@ -90,6 +91,18 @@ const valid = () => {
       <zl-col>
         <zl-form-item label="hi1" prop="d">
           <zl-select name="select" v-model="data.d" :options="options"></zl-select>
+        </zl-form-item>
+      </zl-col>
+    </zl-row>
+    <zl-row :columns="2">
+      <zl-col>
+        <zl-form-item prop="s" label="日期选择器">
+          <zl-date-picker
+            :clearable="true"
+            format="YYYYMMDD"
+            weekStart="monday"
+            v-model="data.date"
+            :required="true"></zl-date-picker>
         </zl-form-item>
       </zl-col>
     </zl-row>

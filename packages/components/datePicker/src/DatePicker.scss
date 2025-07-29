@@ -1,5 +1,19 @@
 .zl-date-picker {
-  width: 100%;
+  border: 1px solid black;
+  border-radius: var(--border-radius);
+  height: 2rem;
+  line-height: 2rem;
+  margin-left: 0.5rem;
+
+  &.valid {
+    &.error {
+      border-color: hsl(0, 100%, 50%);
+    }
+
+    input {
+      width: calc(100% - 30px);
+    }
+  }
 
   input {
     border: none;
@@ -41,13 +55,19 @@
     background-color: var(--primary);
   }
 
-  svg {
-    display: none;
-  }
+  .date-input {
+    &:hover {
+      svg {
+        &.close {
+          display: unset;
+        }
+      }
+    }
 
-  &:hover {
     svg {
-      display: unset;
+      &.close {
+        display: none;
+      }
     }
   }
 }

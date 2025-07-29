@@ -1,12 +1,11 @@
 export interface InputProps {
-  type: 'text' | 'password' | 'radio' | 'checkbox'
+  type: 'text' | 'password'
   name: string
   modelValue?: string | number
   placeholder?: string
   disabled?: boolean
   formatter?: (value: string | number | undefined) => string
   width?: number
-  height?: number
   max?: number
   maxlength?: number
   min?: number

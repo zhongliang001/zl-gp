@@ -57,11 +57,6 @@ const router = createRouter({
           component: () => import('../pages/FileInputDemo.vue')
         },
         {
-          path: '/datePicker',
-          name: 'datePicker',
-          component: () => import('../pages/DatePickerDemo.vue')
-        },
-        {
           path: '/switch',
           name: 'switch',
           component: () => import('../pages/SwitchDemo.vue')

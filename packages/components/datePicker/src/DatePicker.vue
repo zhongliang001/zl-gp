@@ -9,6 +9,7 @@ import offset from '@popperjs/core/lib/modifiers/offset'
 import { OnClickOutside } from '@vueuse/components'
 import type { DatePickerProps } from './types'
 import { FormItemInjectKey } from '../../form/src/FormItem'
+import ZlButton from '../../button'
 
 defineOptions({
   name: 'ZlDatePicker'
@@ -18,10 +19,11 @@ const {
   weekStart = 'sunday',
   editable = false,
   disabled = false,
-  format = 'YYYY-MM-DD'
+  format = 'YYYY-MM-DD',
+  required = false
 } = defineProps<DatePickerProps>()
 const formItemInject = inject(FormItemInjectKey, undefined)
-
+const setMessage = formItemInject?.setMessage
 const { namespace } = usenamespace('date-picker')
 const _ref = ref<HTMLDivElement | null>(null)
 const picker = ref<HTMLDivElement | null>(null)
@@ -36,7 +38,7 @@ onMounted(() => {
       {
         name: 'offset',
         options: {
-          offset: [0, 1]
+          offset: [0, 0]
         }
       }
     ]
@@ -44,7 +46,7 @@ onMounted(() => {
   if (_ref.value) {
     useObserver(_ref, offsetWidth)
   }
-  formItemInject?.addFiled({ reset: reset })
+  formItemInject?.addFiled({ reset: reset, valid: valid, setValidResult: setValidResult })
 })
 
 const hiddenDaySel = () => {
@@ -69,8 +71,24 @@ const {
   yearTableCache,
   addYearPage,
   reset,
-  subYearPage
-} = useDatePicker(day, year, month, weekStart, format, emit, disabled, input, show)
+  subYearPage,
+  setValidResult,
+  valid,
+  error,
+  validFlag
+} = useDatePicker(
+  day,
+  year,
+  month,
+  weekStart,
+  format,
+  emit,
+  disabled,
+  input,
+  show,
+  required,
+  setMessage
+)
 
 defineExpose({
   getMonth,
@@ -79,21 +97,35 @@ defineExpose({
 </script>
 <template>
   <OnClickOutside @trigger="hiddenDaySel">
-    <div ref="_ref" :class="namespace.className">
+    <div ref="_ref" :class="[namespace.className, { error: error, valid: validFlag }]">
       <div>
-        <div>
+        <div class="date-input">
           <input ref="input" type="text" :name="name" @click="chooseDate()" :readonly="!editable" />
-          <ZlIcon v-if="clearable" name="close" :width="10" @click="reset" />
+          <ZlIcon v-if="validFlag && !error" name="success" color="green"></ZlIcon>
+          <ZlIcon v-if="validFlag && error" name="fail" color="red"></ZlIcon>
+          <ZlIcon class="close" v-if="clearable" name="close" :width="10" @click="reset" />
         </div>
         <div ref="picker" class="picker" :style="[{ width: offsetWidth + 'px' }]">
           <div class="datepicker" v-show="show === 'date'">
             <div>
               <ZlIcon name="arrow-double-left" :width="10" :height="10" @click="subYear" />
               <ZlIcon name="arrow-left" :width="10" :height="10" @click="subMonth" />
-              <button type="button" class="year-btn" @click="chooseYear()">{{ year }}</button>
-              <button type="button" class="month-btn" @click="chooseMonth()">
+              <ZlButton
+                native-type="button"
+                type="primary"
+                class="year-btn"
+                size="mini"
+                @click="chooseYear()">
+                {{ year }}
+              </ZlButton>
+              <ZlButton
+                native-type="button"
+                type="primary"
+                class="month-btn"
+                size="mini"
+                @click="chooseMonth()">
                 {{ month }}
-              </button>
+              </ZlButton>
               <ZlIcon name="arrow-right" :width="10" :height="10" @click="addMonth" />
               <ZlIcon name="arrow-double-right" :width="10" :height="10" @click="addYear" />
             </div>

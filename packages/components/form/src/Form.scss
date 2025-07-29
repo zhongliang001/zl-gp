@@ -13,7 +13,7 @@
       line-height: 30px;
     }
 
-    .zl-form-item-lable {
+    .zl-form-item-label {
       display: inline-block;
       width: 90px;
       font-size: 0.8rem;
@@ -23,13 +23,9 @@
     }
 
     .zl-form-item-field {
-      border: 1px solid black;
       width: 100%;
-      border-radius: var(--border-radius);
-
-      &.error {
-        border: 1px solid red;
-      }
+      height: 2rem;
+      line-height: 1rem;
     }
 
     p {

@@ -1,6 +1,7 @@
 export type Field = {
   reset: (value: string | undefined) => void
   valid?: (msg?: string | undefined) => boolean
+  setValidResult: (result: boolean) => void
 }
 
 export interface FormProps {

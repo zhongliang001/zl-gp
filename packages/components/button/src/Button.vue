@@ -9,7 +9,8 @@ defineOptions({
 })
 const props = withDefaults(defineProps<ButtonProps>(), {
   nativeType: 'button',
-  type: 'primary'
+  type: 'primary',
+  size: 'normal'
 })
 const { namespace } = usenamespace('button')
 const emit: SetupContext<ButtonEmits>['emit'] = defineEmits(buttonEmits)
@@ -23,7 +24,7 @@ defineExpose({
 <template>
   <button
     ref="_ref"
-    :class="[namespace.bs(type)]"
+    :class="[namespace.bs(type), namespace.size(size)]"
     :name="name"
     v-bind="_props"
     @click="eventHandler">

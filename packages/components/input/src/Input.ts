@@ -9,14 +9,6 @@ export const useInput = (
 ) => {
   const formatter = props.formatter
   const _props = computed(() => {
-    const normalType = ['text', 'password']
-    const style =
-      normalType.indexOf(props.type) > -1
-        ? {
-            width: `calc(${props.width + '%'}  - 14px)`,
-            height: props.height + 'px'
-          }
-        : {}
     return {
       name: props.name,
       placeholder: props.placeholder,
@@ -27,8 +19,7 @@ export const useInput = (
       max: props.max,
       min: props.min,
       minlength: props.minlength,
-      step: props.step,
-      style
+      step: props.step
     }
   })
   const autocomplete = ref('off')
@@ -41,6 +32,8 @@ export const useInput = (
   }
 
   const error = ref(false)
+
+  const validFlag = ref(false)
 
   const handlerInput = (event: Event) => {
     const { value } = event.target as HTMLInputElement
@@ -56,14 +49,14 @@ export const useInput = (
     if (props.pattern && value && !new RegExp(props.pattern).test(value) && input) {
       input.value = ''
       if (setMessage) {
+        setValidResult(false)
         setMessage('输入数据格式不对')
-        error.value = true
       }
       emit('update:modelValue', '')
     } else {
       if (setMessage) {
+        setValidResult(true)
         setMessage('')
-        error.value = false
       }
     }
   }
@@ -79,8 +72,8 @@ export const useInput = (
     }
 
     if (setMessage) {
+      setValidResult(true)
       setMessage('')
-      error.value = false
     }
   }
 
@@ -101,8 +94,9 @@ export const useInput = (
     }
   }
 
-  const click = () => {
-    // event.stopPropagation()
+  const setValidResult = (result: boolean) => {
+    validFlag.value = true
+    error.value = !result
   }
 
   return {
@@ -110,10 +104,11 @@ export const useInput = (
     _props,
     autocomplete,
     handlerBlur,
-    click,
     error,
     handlerFocus,
     handlerInput,
-    reset
+    reset,
+    setValidResult,
+    validFlag
   }
 }

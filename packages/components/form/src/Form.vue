@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { onMounted, provide, reactive } from 'vue'
+import { provide, reactive } from 'vue'
 import { FormInjectkey, useForm } from './Form'
 import { usenamespace } from '@zl-gp/hooks'
 import type { FormProps } from './types'
@@ -12,10 +12,6 @@ const props = defineProps<FormProps>()
 const { namespace } = usenamespace('form')
 
 const { addItem, formItems, reset, _ref, validate } = useForm(props)
-
-onMounted(() => {
-  console.log(formItems)
-})
 
 provide(
   FormInjectkey,

@@ -6,12 +6,13 @@ $button-disbaled: color.adjust(blue, $lightness: 60%);
 
 .zl-button {
   border-radius: var(--border-radius);
-  border: 1px solid black;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  border: 1px solid;
+  padding-left: 0.3rem;
+  padding-right: 0.3rem;
   padding-bottom: 0.6rem;
   padding-top: 0.4rem;
   margin: 0.2rem;
+  cursor: pointer;
 
   &:disabled {
     background-color: $button-disbaled;
@@ -21,5 +22,24 @@ $button-disbaled: color.adjust(blue, $lightness: 60%);
 
   &:hover:not(:disabled) {
     background-color: $button-hover;
+    border-color: $button-hover;
+  }
+
+  &.button-mini {
+    height: 1.4rem;
+    font-size: 0.6rem;
+    line-height: 0.5rem;
+  }
+
+  &.button-small {
+    height: 1.8rem;
+    font-size: 0.6rem;
+    line-height: 0.9rem;
+  }
+
+  &.button-large {
+    height: 2.6rem;
+    font-size: 1.2rem;
+    line-height: 1.3rem;
   }
 }
