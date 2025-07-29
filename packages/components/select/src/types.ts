@@ -4,6 +4,7 @@ export interface SelectProps {
   disabled?: boolean
   filter?: boolean
   options?: Option[]
+  required?: boolean
 }
 
 export type SelectContext = {

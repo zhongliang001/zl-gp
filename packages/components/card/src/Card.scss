@@ -4,6 +4,7 @@
   width: 98%;
   border-radius: var(--border-radius);
   box-shadow: 0 0 10px #000;
+  margin-top: 0.2rem;
 
   .zl-card-header {
     @include base.position;

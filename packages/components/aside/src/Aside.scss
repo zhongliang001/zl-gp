@@ -3,4 +3,5 @@
 .zl-aside {
   border-radius: var(--border-radius);
   padding: 0.2rem;
+  @include base.position;
 }

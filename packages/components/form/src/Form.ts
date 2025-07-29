@@ -31,6 +31,7 @@ export const useForm = (props: FormProps) => {
         if (!result) {
           item.setMessage('校验失败')
           result = false
+          item.field?.setValidResult(result)
         } else {
           item.setMessage('')
           result = true
@@ -46,6 +47,7 @@ export const useForm = (props: FormProps) => {
             if (da && !ru.reg.test(da)) {
               item.setMessage(ru.message)
               result = false
+              item.field?.setValidResult(result)
             }
           }
         })

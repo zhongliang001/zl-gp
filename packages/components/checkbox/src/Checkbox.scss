@@ -2,8 +2,19 @@
 
 .zl-checkbox {
   display: inline-flex;
-  padding-left: 3px;
-  padding-top: 3px;
+  padding-left: 0.2rem;
+  padding-top: 0.2rem;
+  margin-top: 0.2rem;
+  cursor: pointer;
+
+  &.disabled {
+    cursor: not-allowed;
+
+    input,
+    label {
+      cursor: not-allowed;
+    }
+  }
 
   input {
     cursor: pointer;

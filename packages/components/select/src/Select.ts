@@ -7,7 +7,8 @@ export const useSelect = (
   props: SelectProps,
   emit: SetupContext<SelectEmits>['emit'],
   _ref: Ref<HTMLDivElement | null>,
-  selInput: Ref<HTMLInputElement | null>
+  selInput: Ref<HTMLInputElement | null>,
+  setMessage: ((msg: string) => void) | undefined
 ) => {
   const hidden = ref(true)
   const internalInstance = getCurrentInstance()
@@ -17,7 +18,9 @@ export const useSelect = (
   }
 
   const iconName = ref('arrow-right')
+  const error = ref(false)
 
+  const validFlag = ref(false)
   const addOption = (option: Option) => {
     if (props.options) {
       props.options?.push(option)
@@ -105,6 +108,33 @@ export const useSelect = (
     })
   }
 
+  const reset = (value: string | undefined) => {
+    const names = props.options?.filter((t) => {
+      return t.value === value
+    })
+    if (!names || names.length === 0) {
+      return
+    }
+    const input: HTMLInputElement | null = selInput.value
+    if (input) {
+      input.value = names[0].name
+    }
+    emit('update:modelValue', names[0].value)
+  }
+  const valid = () => {
+    validFlag.value = true
+    if (props.required && !props.modelValue && setMessage) {
+      setMessage('请选择一条数据')
+      setValidResult(false)
+      return false
+    }
+    return true
+  }
+
+  const setValidResult = (result: boolean) => {
+    validFlag.value = true
+    error.value = !result
+  }
   return {
     _props,
     addOption,
@@ -115,6 +145,11 @@ export const useSelect = (
     init,
     iconName,
     sel,
-    update
+    update,
+    reset,
+    setValidResult,
+    validFlag,
+    error,
+    valid
   }
 }

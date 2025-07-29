@@ -40,6 +40,10 @@ onMounted(() => {
     })
   }
 })
+
+defineExpose({
+  ref: _ref
+})
 </script>
 <template>
   <span ref="_ref" :class="[namespace.className, type]" :style="style">{{ text }}</span>

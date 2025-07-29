@@ -33,7 +33,7 @@ defineExpose({
 <template>
   <div :class="namespace.cs('item')" ref="_ref">
     <div class="field">
-      <label :class="namespace.cs('item-lable')">{{ label }}</label>
+      <label :class="namespace.cs('item-label')">{{ label }}</label>
       <div ref="input" :class="[namespace.cs('item-field'), { error: message }]">
         <slot></slot>
       </div>

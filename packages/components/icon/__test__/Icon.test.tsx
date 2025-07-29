@@ -4,7 +4,9 @@ import ZlIcon from '..'
 
 describe('测试Icon', () => {
   it('测试渲染', () => {
-    const wrapper = mount(ZlIcon)
+    const wrapper = mount(ZlIcon, {
+      props: { name: 'close', color: 'red' }
+    })
     expect(wrapper.find('svg').exists()).toBe(true)
   })
 

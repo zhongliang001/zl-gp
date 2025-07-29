@@ -1,10 +1,10 @@
 export interface ButtonProps {
   name?: string
   disabled?: boolean
-  nativeType?: 'button' | 'submit' | 'reset' | undefined
+  nativeType?: 'button' | 'submit' | 'reset'
   type?: 'primary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' | 'secondary'
-  width?: number
-  fontSize?: number
+  circle?: boolean
+  size?: 'large' | 'small' | 'normal' | 'mini'
 }
 
 export const buttonEmits = {

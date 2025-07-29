@@ -5,7 +5,11 @@ import ZlIcon from '../../icon'
 
 describe('测试Pagination', () => {
   it('测试渲染', () => {
-    const wrapper = mount(ZlPagination)
+    const wrapper = mount(ZlPagination, {
+      props: {
+        pageNum: 10
+      }
+    })
     expect(wrapper.find('.zl-pagination').exists()).toBe(true)
   })
 

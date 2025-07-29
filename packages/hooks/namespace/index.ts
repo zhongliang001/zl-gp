@@ -12,8 +12,11 @@ export function usenamespace(id: string) {
         return className + '-' + name
       },
       size: (size: string | undefined) => {
+        if (size === 'normal') {
+          return ''
+        }
         if (size) {
-          return id + '--' + size
+          return id + '-' + size
         }
       }
     }

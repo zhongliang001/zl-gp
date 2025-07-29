@@ -21,8 +21,17 @@ const _ref = ref<HTMLInputElement | null>(null)
 
 const setMessage = formItemInject?.setMessage
 
-const { _props, autocomplete, handlerBlur, click, handlerFocus, reset, handlerInput, error } =
-  useInput(props, emit, _ref, setMessage)
+const {
+  _props,
+  autocomplete,
+  handlerBlur,
+  handlerFocus,
+  reset,
+  handlerInput,
+  error,
+  setValidResult,
+  validFlag
+} = useInput(props, emit, _ref, setMessage)
 
 onMounted(() => {
   const input: HTMLInputElement | null = _ref.value
@@ -32,7 +41,7 @@ onMounted(() => {
   if (props) {
     emit('update:modelValue', props.modelValue)
   }
-  formItemInject?.addFiled({ reset: reset, valid: props.valid })
+  formItemInject?.addFiled({ reset: reset, valid: props.valid, setValidResult: setValidResult })
 })
 
 defineExpose({
@@ -40,16 +49,17 @@ defineExpose({
 })
 </script>
 <template>
-  <div :class="[namespace.className, { error: error }]">
+  <div :class="[namespace.className, { error: error, valid: validFlag }]">
     <input
       ref="_ref"
       v-bind="_props"
       :autocomplete="autocomplete"
       @input="handlerInput"
       @blur="handlerBlur"
-      @focus="handlerFocus"
-      @click="click" />
-    <ZlIcon v-if="clearable" name="close" :width="10" @click="reset" />
+      @focus="handlerFocus" />
+    <ZlIcon v-if="validFlag && !error" name="success" color="green"></ZlIcon>
+    <ZlIcon v-if="validFlag && error" name="fail" color="red"></ZlIcon>
+    <ZlIcon class="close" v-if="clearable" name="close" :width="10" @click="reset" />
   </div>
 </template>
 <style lang="css">

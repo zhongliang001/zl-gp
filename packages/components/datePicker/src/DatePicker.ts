@@ -12,7 +12,9 @@ export const useDatePicker = (
   emit: SetupContext<InputEmits>['emit'],
   disabled: boolean,
   input: Ref<HTMLInputElement | null>,
-  show: Ref<string>
+  show: Ref<string>,
+  required: boolean,
+  setMessage: ((msg: string) => void) | undefined
 ) => {
   watch(
     () => [year.value, month.value],
@@ -20,6 +22,11 @@ export const useDatePicker = (
       cal(newVal[0], newVal[1])
     }
   )
+
+  const error = ref(false)
+
+  const validFlag = ref(false)
+
   const addYear = () => {
     year.value++
   }
@@ -296,6 +303,22 @@ export const useDatePicker = (
     return month
   }
 
+  const setValidResult = (result: boolean) => {
+    validFlag.value = true
+    error.value = !result
+  }
+
+  const valid = () => {
+    validFlag.value = true
+    const inputRef: HTMLInputElement | null = input.value
+    if (required && !inputRef?.value && setMessage) {
+      setMessage('请选择日期')
+      setValidResult(false)
+      return false
+    }
+    return true
+  }
+
   return {
     addMonth,
     addYear,
@@ -311,6 +334,10 @@ export const useDatePicker = (
     chooseYear,
     addYearPage,
     subYearPage,
-    yearTableCache
+    yearTableCache,
+    setValidResult,
+    valid,
+    error,
+    validFlag
   }
 }

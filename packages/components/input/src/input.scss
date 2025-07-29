@@ -1,18 +1,39 @@
 .zl-input {
-  margin-left: 5px;
+  margin-left: 0.5rem;
   text-align: left;
+
+  border: 1px solid black;
+  border-radius: var(--border-radius);
+  height: 2rem;
+  line-height: 2rem;
+
+  &.valid {
+    input {
+      width: calc(100% - 30px);
+    }
+  }
+
+  &.error {
+    border-color: hsl(0, 100%, 50%);
+  }
 
   input {
     border: none;
+    height: 1rem;
+    width: calc(100% - 16px);
   }
 
   svg {
-    display: none;
+    &.close {
+      display: none;
+    }
   }
 
   &:hover {
     svg {
-      display: unset;
+      &.close {
+        display: unset;
+      }
     }
   }
 }

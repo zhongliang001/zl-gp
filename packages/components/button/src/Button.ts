@@ -8,8 +8,7 @@ export function useButton(emit: SetupContext<ButtonEmits>['emit'], props: Button
   const formInjectkey = inject(FormInjectkey, undefined)
   const _props = {
     style: {
-      width: props.width + 'rem',
-      fontSize: props.fontSize + 'rem'
+      '--border-radius': props.circle ? '1rem' : undefined
     },
     type: props.nativeType,
     disabled: props.disabled
