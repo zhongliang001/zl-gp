@@ -14,12 +14,11 @@ const { prop } = defineProps<MenuSubProp>()
 const menuInjectKey = inject(MenuInjectKey, null)
 
 const _ref = ref<HTMLDivElement | null>(null)
-const childRef = ref<HTMLDivElement | null>(null)
-const offsetWidth = ref(childRef.value?.offsetWidth)
+const offsetWidth = ref(_ref.value?.offsetWidth)
 
 onMounted(() => {
-  if (childRef.value) {
-    useObserver(childRef, offsetWidth)
+  if (_ref.value) {
+    useObserver(_ref, offsetWidth)
   }
 })
 
@@ -42,7 +41,6 @@ defineExpose({
   <div ref="_ref" :class="namespace.cs('sub')" @click.stop="sel">
     <span class="subtitle">{{ name }}</span>
     <div
-      ref="childRef"
       :class="[{ 'sub-menu': menuInjectKey && menuInjectKey.flex == 'row' }]"
       @mouseleave="leave"
       :style="[{ width: offsetWidth + 'px' }]">
